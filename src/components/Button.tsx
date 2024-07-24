@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 const StyledButton = styled.button`
 background-color: #344966;
@@ -12,8 +12,8 @@ font-weight: 500;
 line-height: 24px;
 
 cursor: pointer;
-`
+`;
 
-export default function Button () {
-  return <StyledButton>Value</StyledButton>
+export default function Button() {
+  return <StyledButton>Value</StyledButton>;
 }

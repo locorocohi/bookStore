@@ -1,8 +1,8 @@
-import styled from "styled-components"
-import Image from "next/image"
+import styled from 'styled-components';
+import Image from 'next/image';
 
-import whiteLogo from '@/images/whiteLogo.png'
-import map from '@/images/map.png'
+import whiteLogo from '@/images/whiteLogo.png';
+import map from '@/images/map.png';
 
 const StyledFooter = styled.footer`
 background-color: rgba(13, 24, 33, 1);
@@ -17,9 +17,9 @@ font-size: 20px;
 font-weight: 400;
 line-height: 30px;
 text-align: left;
-`
+`;
 
-export default function Footer () {
+export default function Footer() {
   return (
     <StyledFooter>
     <div>
@@ -37,6 +37,6 @@ export default function Footer () {
       <p>6391 Elgin St. Celina, Delaware 10299</p>
       <Image src={map} alt="map" />
     </div>
-  </StyledFooter>
-  )
+    </StyledFooter>
+  );
 }

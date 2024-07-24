@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "./node_modules/.bin/eslint . -c .eslintrc.js --quiet --fix --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "next": "14.2.5",
@@ -19,8 +20,13 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.17.0",
     "eslint": "^8",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-next": "14.2.5",
+    "eslint-plugin-no-inline-styles": "^1.0.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-styled-components-config": "^0.0.2",
     "typescript": "^5"
   }
 }
