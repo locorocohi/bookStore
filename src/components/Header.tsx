@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import loop from '@/images/Frame 209.png';
 import logo from '@/images/logo.png';
-import Button from './Button';
+import Button from './PrimaryButton';
 
 const StyledHeader = styled.header`
 display: flex;
@@ -40,7 +40,7 @@ export default function Header() {
           <StyledIcon src={loop} alt="loop" />
           <StyledInput type="search" placeholder="Search" />
         </StyledSearch>
-        <Button />
+        <Button>Log In/ Sign Up</Button>
     </StyledHeader>
   );
 }

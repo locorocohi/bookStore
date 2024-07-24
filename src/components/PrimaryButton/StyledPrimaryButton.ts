@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
 background-color: #344966;
 color: white;
 border: none;
@@ -13,7 +13,3 @@ line-height: 24px;
 
 cursor: pointer;
 `;
-
-export default function Button() {
-  return <StyledButton>Value</StyledButton>;
-}
