@@ -1,16 +1,14 @@
-import type { StaticImageData } from 'next/image';
 import { StyledInput, StyledWrapper, StyledIcon } from './StiledInput';
 
 export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  icon: StaticImageData;
-  width: number;
+  children: React.ReactNode;
 }
 
 const PrimoryInput: React.FC<IProps> = (props) => {
-  const { icon, width, ...rest } = props;
+  const { children, ...rest } = props;
   return (
-    <StyledWrapper width={width}>
-      <StyledIcon src={icon} alt="icon" />
+    <StyledWrapper>
+      <StyledIcon>{children}</StyledIcon>
       <StyledInput {...rest} />
     </StyledWrapper>
   );

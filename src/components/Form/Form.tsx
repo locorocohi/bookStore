@@ -1,24 +1,41 @@
-import passwordCloseEye from '@/images/passwordEye.png'
-import emailIcon from '@/images/Email.png'
+import passwordCloseEye from '@/images/Hide.svg'
+import emailIcon from '@/images/Email.svg'
 
 import { StyledForm } from './StyledForm';
 import { FormHint } from './StyledForm';
 import Button from '../PrimaryButton';
-import PrimoryInput from '../Input';
+import PrimaryInput from '../Input';
+import Image from 'next/image';
+
+import type { MouseEventHandler } from 'react';
 
 
-export default function Form() {
+const AuthForm: React.FC = () => {
+
+  const handler: MouseEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault()
+    console.log(event)
+  }
+
   return (
-    <StyledForm action="">
+    <StyledForm onSubmit={handler}>
       <label htmlFor="">
-        <PrimoryInput type="email" placeholder="Email" icon={emailIcon} width={413} />
+        <PrimaryInput type="email" placeholder="Email">
+          <Image src={emailIcon} alt="email"
+          width={24} height={24}
+           />
+        </PrimaryInput>
         <FormHint>Enter your email</FormHint>
       </label>
       <label>
-        <PrimoryInput type="password" placeholder="Password" icon={passwordCloseEye} width={413} />
+        <PrimaryInput type="password" placeholder="Password">
+          <Image src={passwordCloseEye} alt="eye" priority />
+        </PrimaryInput>
         <FormHint>Enter your password</FormHint>
       </label>
       <Button style='button'>Log In</Button>
     </StyledForm>
   );
 }
+
+export default AuthForm;

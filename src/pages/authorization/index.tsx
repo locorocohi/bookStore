@@ -33,7 +33,12 @@ export default function Auth() {
           <StyledH1>Log In</StyledH1>
           <Form />
         </FormWrapper>
-        <Image src={manPicture} alt="Man with book" />
+        <Image
+        src={manPicture}
+        alt="Man with book"
+        width={612}
+        height={522}
+        />
       </StyledSection>
 
       <Footer />

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 
 export const StyledInput = styled.input`
 width: 100%;
@@ -15,9 +14,10 @@ line-height: 28px;
 letter-spacing: 0.75px;
 `;
 
-export const StyledIcon = styled(Image)`
+export const StyledIcon = styled.div`
   position: absolute;
-  bottom: 0.5px;
+  top: 30%;
+  left: 6%
 `;
 
 export const StyledWrapper = styled.div`
@@ -25,6 +25,5 @@ input::placeholder{
   color: #B9BAC3;
 }
 
-width: ${width => width ? width : 630}px;
 position: relative;
 `;
