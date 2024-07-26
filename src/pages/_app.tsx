@@ -7,18 +7,19 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }`
+  }`;
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <style jsx global>{`
+      <style jsx global>
+        {`
         html {
           font-family: ${poppins.style.fontFamily};
-        }
-      `}</style>
+        }`}
+      </style>
       <GlobalStyles />
-      <Component {...pageProps} className={poppins.className}/>
+      <Component {...pageProps} className={poppins.className} />
     </>
   );
 }

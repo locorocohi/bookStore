@@ -2,9 +2,9 @@ import Image from 'next/image';
 import manPicture from '@/images/man.png';
 
 import styled from 'styled-components';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import Form from '@/components/Form';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
+import Form from '@/components/Form/Form';
 
 const StyledSection = styled.section`
 display: flex;

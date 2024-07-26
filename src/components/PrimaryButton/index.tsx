@@ -1,12 +1,13 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { StyledButton } from './StyledPrimaryButton';
 
-type Props= {
-  children: ReactNode
-}
+export type PropsType = {
+  style?: string;
+  children: ReactNode;
+};
 
-const PrimaryButton:React.FC<Props> = (props) => {
-  return <StyledButton>{props.children}</StyledButton>;
-}
+const PrimaryButton:React.FC<PropsType> = (props) => {
+  return <StyledButton className={props.style}>{props.children}</StyledButton>;
+};
 
 export default PrimaryButton;
