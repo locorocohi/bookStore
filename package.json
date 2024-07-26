@@ -10,9 +10,11 @@
     "lint:fix": "./node_modules/.bin/eslint . -c .eslintrc.js --quiet --fix --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.6",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-redux": "^9.1.2",
     "sharp": "^0.33.4",
     "styled-components": "^6.1.12"
   },
