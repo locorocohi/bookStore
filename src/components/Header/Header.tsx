@@ -9,8 +9,7 @@ import { StyledHeader } from './StyledHeader';
 export default function Header() {
   return (
     <StyledHeader>
-        <Image src={logo} alt="logo"
-        />
+        <Image src={logo} alt="logo" priority />
         <span>Catalog</span>
         <PrimoryInput type="search" placeholder="Search">
           <Image src={loop} alt="loop"

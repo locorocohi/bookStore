@@ -17,7 +17,8 @@ letter-spacing: 0.75px;
 export const StyledIcon = styled.div`
   position: absolute;
   top: 30%;
-  left: 6%
+  left: 6%;
+  pointer-events: none;
 `;
 
 export const StyledWrapper = styled.div`
