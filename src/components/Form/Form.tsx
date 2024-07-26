@@ -10,7 +10,7 @@ import PrimaryInput from '../Input';
 const AuthForm: React.FC = () => {
   const handler: MouseEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    // console.log(event);
+    console.log(event.target);
   };
 
   return (
@@ -29,7 +29,7 @@ const AuthForm: React.FC = () => {
         </PrimaryInput>
         <FormHint>Enter your password</FormHint>
       </label>
-      <Button class="button">Log In</Button>
+      <Button className="button">Log In</Button>
     </StyledForm>
   );
 };

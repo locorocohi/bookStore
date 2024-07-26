@@ -1,17 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { UserType } from '@/models/user';
 
-const initialState: UserType[] = [];
+type UsersStateType = {
+  users: UserType[];
+};
+
+const initialState: UsersStateType = { users: [] };
 
 export const userSlice = createSlice({
-  name: 'Users',
+  name: 'users',
 
   initialState,
 
   reducers: {
-
+    createUser: (state, action) => {
+      state.users.push(action.payload);
+    },
   },
 });
 
-// export const { } = userSlice.actions;
+export const { createUser } = userSlice.actions;
 export default userSlice.reducer;
