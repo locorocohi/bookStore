@@ -1,17 +1,15 @@
-import type { UserType } from '@/models/user';
+import axios from 'axios';
 import { config } from '../../config';
 
-const createUserDb = async (options: {login: string; password: string}): Promise<UserType> => {
-  const res = await fetch(`http://${config.HOST}:${config.PORT}/api/user/create`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      body: JSON.stringify(options),
-    });
+const instance = axios.create({
+  baseURL: `http://${config.HOST}:${config.PORT}/api/`,
+  timeout: 1000,
+  headers: { 'X-Custom-Header': 'foobar' },
+});
 
-  return res.json();
+const createUserDb = async (options: {email: string; password: string}) => {
+  const user = await instance.post('user/create', options);
+  return user;
 };
 
 export { createUserDb };

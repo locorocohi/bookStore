@@ -1,4 +1,4 @@
 export const config = {
-  HOST: 'localhosl',
+  HOST: 'localhost',
   PORT: 5000,
 };
