@@ -3,7 +3,8 @@ import emailIcon from '@/images/Email.svg';
 
 import { useState, type MouseEventHandler } from 'react';
 import Image from 'next/image';
-import { createUserDb } from '@/api/users';
+import { saveNewUser } from '@/api/users';
+import { setCookie } from 'cookies-next';
 import { StyledForm, FormHint, FormWrapper, StyledH1 } from './StyledForm';
 import Button from '../PrimaryButton';
 import PrimaryInput from '../Input';
@@ -18,8 +19,9 @@ const AuthForm: React.FC = () => {
       email,
       password,
     };
-    const user = await createUserDb(userData);
-    console.log(user.data);
+    const { accessToken, user } = await saveNewUser(userData);
+    setCookie('accessToken', accessToken);
+    return user;
   };
 
   return (

@@ -26,6 +26,7 @@ font-weight: 700;
 line-height: 60px;
 text-align: left;
 `;
+
 export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;

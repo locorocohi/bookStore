@@ -1,15 +1,8 @@
-import axios from 'axios';
-import { config } from '../../config';
+import instance from '@/axios/instance';
 
-const instance = axios.create({
-  baseURL: `http://${config.HOST}:${config.PORT}/api/`,
-  timeout: 1000,
-  headers: { 'X-Custom-Header': 'foobar' },
-});
-
-const createUserDb = async (options: {email: string; password: string}) => {
+const saveNewUser = async (options: {email: string; password: string}) => {
   const user = await instance.post('user/create', options);
-  return user;
+  return user.data;
 };
 
-export { createUserDb };
+export { saveNewUser };
