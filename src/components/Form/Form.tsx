@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { saveNewUser } from '@/api/users';
 import { setCookie } from 'cookies-next';
 import { useFormik } from 'formik';
+import { signUpSchema as validationSchema } from '@/validationSchemas/signUpForm';
 import { FormWrapper } from './StyledForm';
 import Button from '../Button';
 import Input from '../Input';
@@ -21,6 +22,7 @@ const AuthForm: React.FC = () => {
       email: '',
       password: '',
     },
+    validationSchema,
     onSubmit,
   });
 
@@ -57,6 +59,8 @@ const AuthForm: React.FC = () => {
           <p>Enter your password</p>
         </label>
         <Button type="submit" className="button">Log In</Button>
+        {formik.errors.email ? <p>{formik.errors.email}</p> : null}
+        {formik.errors.password ? <p>{formik.errors.password}</p> : null}
       </form>
     </FormWrapper>
   );
