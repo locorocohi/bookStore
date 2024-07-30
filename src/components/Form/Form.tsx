@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { saveNewUser } from '@/api/users';
 import { setCookie } from 'cookies-next';
 import { useFormik } from 'formik';
-import { StyledForm, FormHint, FormWrapper, StyledH1 } from './StyledForm';
+import { FormWrapper } from './StyledForm';
 import Button from '../Button';
 import Input from '../Input';
 
@@ -26,8 +26,8 @@ const AuthForm: React.FC = () => {
 
   return (
     <FormWrapper>
-      <StyledH1>Log In</StyledH1>
-      <StyledForm onSubmit={formik.handleSubmit}>
+      <h1>Log In</h1>
+      <form onSubmit={formik.handleSubmit}>
         <label htmlFor="">
           <Input
             id="email"
@@ -41,7 +41,7 @@ const AuthForm: React.FC = () => {
             width={24} height={24}
              />
           </Input>
-          <FormHint>Enter your email</FormHint>
+          <p>Enter your email</p>
         </label>
         <label>
           <Input
@@ -54,10 +54,10 @@ const AuthForm: React.FC = () => {
           >
             <Image src={passwordCloseEye} alt="eye" priority />
           </Input>
-          <FormHint>Enter your password</FormHint>
+          <p>Enter your password</p>
         </label>
         <Button type="submit" className="button">Log In</Button>
-      </StyledForm>
+      </form>
     </FormWrapper>
   );
 };
