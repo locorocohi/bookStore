@@ -5,8 +5,8 @@ export interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const PrimaryButton:React.FC<IProps> = (props) => {
+const Button:React.FC<IProps> = (props) => {
   return <StyledButton className={props.className}>{props.children}</StyledButton>;
 };
 
-export default PrimaryButton;
+export default Button;

@@ -1,45 +1,59 @@
 import passwordCloseEye from '@/images/Hide.svg';
 import emailIcon from '@/images/Email.svg';
 
-import { useState, type MouseEventHandler } from 'react';
 import Image from 'next/image';
 import { saveNewUser } from '@/api/users';
 import { setCookie } from 'cookies-next';
+import { useFormik } from 'formik';
 import { StyledForm, FormHint, FormWrapper, StyledH1 } from './StyledForm';
-import Button from '../PrimaryButton';
-import PrimaryInput from '../Input';
+import Button from '../Button';
+import Input from '../Input';
 
 const AuthForm: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const submitHandler: MouseEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
-    const userData = {
-      email,
-      password,
-    };
-    const { accessToken, user } = await saveNewUser(userData);
+  const onSubmit = async ({ email, password }:{email: string; password:string }) => {
+    const { accessToken, user } = await saveNewUser({ email, password });
     setCookie('accessToken', accessToken);
     return user;
   };
 
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: '',
+    },
+    onSubmit,
+  });
+
   return (
     <FormWrapper>
       <StyledH1>Log In</StyledH1>
-      <StyledForm onSubmit={submitHandler}>
+      <StyledForm onSubmit={formik.handleSubmit}>
         <label htmlFor="">
-          <PrimaryInput type="email" placeholder="Email" onChange={(event) => setEmail(event.currentTarget.value)}>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          >
             <Image src={emailIcon} alt="email"
             width={24} height={24}
              />
-          </PrimaryInput>
+          </Input>
           <FormHint>Enter your email</FormHint>
         </label>
         <label>
-          <PrimaryInput type="password" placeholder="Password" onChange={(event) => setPassword(event.currentTarget.value)}>
+          <Input
+            id="password"
+            name="password"
+            type="password"
+            placeholder="Password"
+            onChange={formik.handleChange}
+            value={formik.values.password}
+          >
             <Image src={passwordCloseEye} alt="eye" priority />
-          </PrimaryInput>
+          </Input>
           <FormHint>Enter your password</FormHint>
         </label>
         <Button type="submit" className="button">Log In</Button>
