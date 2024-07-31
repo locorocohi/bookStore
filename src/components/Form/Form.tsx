@@ -3,7 +3,6 @@ import emailIcon from '@/images/Email.svg';
 
 import Image from 'next/image';
 import { saveNewUser } from '@/api/users';
-import { setCookie } from 'cookies-next';
 import { useFormik } from 'formik';
 import { signUpSchema as validationSchema } from '@/validationSchemas/signUpForm';
 import { FormWrapper } from './StyledForm';
@@ -12,8 +11,7 @@ import Input from '../Input';
 
 const AuthForm: React.FC = () => {
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
-    const { accessToken, user } = await saveNewUser({ email, password });
-    setCookie('accessToken', accessToken);
+    const { user } = await saveNewUser({ email, password });
     return user;
   };
 

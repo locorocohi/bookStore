@@ -10,7 +10,7 @@ position: relative;
 .icon-wrapper {
   position: absolute;
   top: 30%;
-  left: 6%;
+  left: 25px;
   pointer-events: none;
 }
 
