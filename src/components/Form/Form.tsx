@@ -9,7 +9,7 @@ import { FormWrapper } from './StyledForm';
 import Button from '../Button';
 import Input from '../Input';
 
-const AuthForm: React.FC = () => {
+const SignUpForm: React.FC = () => {
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
     const { user } = await saveNewUser({ email, password });
     return user;
@@ -19,6 +19,7 @@ const AuthForm: React.FC = () => {
     initialValues: {
       email: '',
       password: '',
+      repeatedPassword: '',
     },
     validationSchema,
     onSubmit,
@@ -41,7 +42,9 @@ const AuthForm: React.FC = () => {
             width={24} height={24}
              />
           </Input>
-          <p>Enter your email</p>
+          {formik.errors.email
+            ? <p>{formik.errors.email}</p>
+            : <p>Enter your email</p>}
         </label>
         <label>
           <Input
@@ -54,14 +57,29 @@ const AuthForm: React.FC = () => {
           >
             <Image src={passwordCloseEye} alt="eye" priority />
           </Input>
-          <p>Enter your password</p>
+          {formik.errors.password
+            ? <p>{formik.errors.password}</p>
+            : <p>Enter your password</p>}
+        </label>
+        <label>
+          <Input
+            id="repeatedPassword"
+            name="repeatedPassword"
+            type="password"
+            placeholder="Password replay"
+            onChange={formik.handleChange}
+            value={formik.values.repeatedPassword}
+          >
+            <Image src={passwordCloseEye} alt="eye" priority />
+          </Input>
+          {formik.errors.repeatedPassword
+            ? <p>{formik.errors.repeatedPassword}</p>
+            : <p>Repeat your password without errors</p>}
         </label>
         <Button type="submit" className="button">Log In</Button>
-        {formik.errors.email ? <p>{formik.errors.email}</p> : null}
-        {formik.errors.password ? <p>{formik.errors.password}</p> : null}
       </form>
     </FormWrapper>
   );
 };
 
-export default AuthForm;
+export default SignUpForm;

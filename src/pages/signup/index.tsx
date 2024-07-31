@@ -3,17 +3,17 @@ import manPicture from '@/images/man.png';
 
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
-import Form from '@/components/Form/Form';
+import SignUpForm from '@/components/Form/Form';
 import { StyledSection } from './styles';
 
-export default function Auth() {
+const SignUp = () => {
   return (
     <>
       <Header />
 
       <StyledSection>
 
-        <Form />
+        <SignUpForm />
 
         <Image src={manPicture} alt="Man with book" />
 
@@ -22,4 +22,6 @@ export default function Auth() {
       <Footer />
     </>
   );
-}
+};
+
+export default SignUp;

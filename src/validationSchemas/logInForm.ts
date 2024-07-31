@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const signUpSchema = yup.object({
+export const logInSchema = yup.object({
   email: yup.string()
     .email()
     .required('Email is required'),
@@ -8,8 +8,4 @@ export const signUpSchema = yup.object({
   password: yup.string()
     .required('Password is required')
     .min(4, 'Password is too short - should be minimum 4 chars'),
-
-  repeatedPassword: yup.string()
-    .required('You must repeat your password')
-    .oneOf([yup.ref('password')], 'Пароли не совпадают'),
 });
