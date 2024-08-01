@@ -1,17 +1,20 @@
-import passwordCloseEye from '@/images/Hide.svg';
-import emailIcon from '@/images/Email.svg';
-
-import Image from 'next/image';
-import { saveNewUser } from '@/api/users';
 import { useFormik } from 'formik';
+import Image from 'next/image';
+
 import { logInSchema as validationSchema } from '@/validationSchemas/logInForm';
+
+import { saveNewUser } from '@/api/users';
+
+import passwordCloseEye from '@/images/hide.svg';
+import emailIcon from '@/images/email.svg';
+
 import { FormWrapper } from '../SignUpForm/StyledForm';
 import Button from '../../Button';
 import Input from '../../Input';
 
 const LogInForm: React.FC = () => {
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
-    const { user } = await saveNewUser({ email, password });
+    const user = await saveNewUser({ email, password });
     return user;
   };
 
@@ -21,8 +24,12 @@ const LogInForm: React.FC = () => {
       password: '',
     },
     validationSchema,
+    validateOnChange: false,
     onSubmit,
   });
+
+  const emailText = formik.errors.email || 'Enter your email';
+  const passText = formik.errors.password || 'Enter your password';
 
   return (
     <FormWrapper>
@@ -41,9 +48,7 @@ const LogInForm: React.FC = () => {
             width={24} height={24}
              />
           </Input>
-          {formik.errors.email
-            ? <p>{formik.errors.email}</p>
-            : <p>Enter your email</p>}
+          <p>{emailText}</p>
         </label>
         <label>
           <Input
@@ -56,9 +61,7 @@ const LogInForm: React.FC = () => {
           >
             <Image src={passwordCloseEye} alt="eye" priority />
           </Input>
-          {formik.errors.password
-            ? <p>{formik.errors.password}</p>
-            : <p>Enter your password</p>}
+          <p>{passText}</p>
         </label>
         <Button type="submit">Log In</Button>
       </form>

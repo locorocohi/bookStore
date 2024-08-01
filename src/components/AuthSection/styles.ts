@@ -8,4 +8,8 @@ justify-content: space-between;
 img {
   pointer-events: none;
 }
+
+.error-message {
+color: red
+}
 `;

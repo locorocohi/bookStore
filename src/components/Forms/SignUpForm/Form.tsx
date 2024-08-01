@@ -1,13 +1,14 @@
-import passwordCloseEye from '@/images/Hide.svg';
-import emailIcon from '@/images/Email.svg';
-
 import Image from 'next/image';
-import { saveNewUser } from '@/api/users';
 import { useFormik } from 'formik';
+
+import passwordCloseEye from '@/images/hide.svg';
+import emailIcon from '@/images/email.svg';
+
+import { saveNewUser } from '@/api/users';
 import { signUpSchema as validationSchema } from '@/validationSchemas/signUpForm';
+import Button from '@/components/Button';
+import Input from '@/components/Input';
 import { FormWrapper } from './StyledForm';
-import Button from '../../Button';
-import Input from '../../Input';
 
 const SignUpForm: React.FC = () => {
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
@@ -22,8 +23,13 @@ const SignUpForm: React.FC = () => {
       repeatedPassword: '',
     },
     validationSchema,
+    validateOnChange: false,
     onSubmit,
   });
+
+  const emailText = formik.errors.email || 'Enter your email';
+  const passText = formik.errors.password || 'Enter your password';
+  const repeatedPassText = formik.errors.repeatedPassword || 'Repeat your password without errors';
 
   return (
     <FormWrapper>
@@ -42,9 +48,7 @@ const SignUpForm: React.FC = () => {
             width={24} height={24}
              />
           </Input>
-          {formik.errors.email
-            ? <p>{formik.errors.email}</p>
-            : <p>Enter your email</p>}
+          <p>{emailText}</p>
         </label>
         <label>
           <Input
@@ -57,9 +61,7 @@ const SignUpForm: React.FC = () => {
           >
             <Image src={passwordCloseEye} alt="eye" priority />
           </Input>
-          {formik.errors.password
-            ? <p>{formik.errors.password}</p>
-            : <p>Enter your password</p>}
+          <p>{passText}</p>
         </label>
         <label>
           <Input
@@ -72,9 +74,7 @@ const SignUpForm: React.FC = () => {
           >
             <Image src={passwordCloseEye} alt="eye" priority />
           </Input>
-          {formik.errors.repeatedPassword
-            ? <p>{formik.errors.repeatedPassword}</p>
-            : <p>Repeat your password without errors</p>}
+          <p>{repeatedPassText}</p>
         </label>
         <Button type="submit" className="button">Log In</Button>
       </form>

@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import loop from '@/images/Search.svg';
 import logo from '@/images/logo.png';
+import loop from '@/images/search.svg';
 // import Link from 'next/link';
 import Button from '../Button';
 import Input from '../Input';

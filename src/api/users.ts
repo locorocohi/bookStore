@@ -1,7 +1,7 @@
 import instance from '@/axios/instance';
 import { setCookie } from 'cookies-next';
 
-const saveNewUser = async (options: {email: string; password: string}) => {
+export const saveNewUser = async (options: {email: string; password: string}) => {
   try {
     const user = await instance.post('user/create', options);
     const { accessToken, userData } = user.data;
@@ -12,4 +12,11 @@ const saveNewUser = async (options: {email: string; password: string}) => {
   }
 };
 
-export { saveNewUser };
+export const getMe = async () => {
+  try {
+    const user = await instance.get('user/me');
+    return user.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
