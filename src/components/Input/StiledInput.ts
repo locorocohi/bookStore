@@ -14,7 +14,7 @@ position: relative;
   pointer-events: none;
 }
 
-.input {
+.input-row {
   width: 100%;
   height: 64px;
   background-color: rgba(240, 244, 239, 1);

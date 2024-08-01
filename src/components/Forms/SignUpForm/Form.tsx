@@ -6,8 +6,8 @@ import { saveNewUser } from '@/api/users';
 import { useFormik } from 'formik';
 import { signUpSchema as validationSchema } from '@/validationSchemas/signUpForm';
 import { FormWrapper } from './StyledForm';
-import Button from '../Button';
-import Input from '../Input';
+import Button from '../../Button';
+import Input from '../../Input';
 
 const SignUpForm: React.FC = () => {
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
@@ -27,7 +27,7 @@ const SignUpForm: React.FC = () => {
 
   return (
     <FormWrapper>
-      <h1>Log In</h1>
+      <h1>Sign Up</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="">
           <Input

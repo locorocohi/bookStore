@@ -9,7 +9,7 @@ const PrimoryInput: React.FC<IProps> = (props) => {
   return (
     <Wrapper>
       <div className="icon-wrapper">{children}</div>
-      <input className="input" {...rest} />
+      <input className="input-row" {...rest} />
     </Wrapper>
   );
 };

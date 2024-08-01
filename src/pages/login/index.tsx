@@ -1,23 +1,16 @@
-import Image from 'next/image';
-import manPicture from '@/images/man.png';
-
 import Header from '@/components/Header/Header';
+import AuthSection from '@/components/AuthSection';
 import Footer from '@/components/Footer/Footer';
-import SignUpForm from '@/components/Form/Form';
-import { StyledSection } from '../signup/styles';
+import LogInForm from '@/components/Forms/LogInForm/Form';
 
 const LogIn = () => {
   return (
     <>
       <Header />
 
-      <StyledSection>
-
-        <SignUpForm />
-
-        <Image src={manPicture} alt="Man with book" />
-
-      </StyledSection>
+      <AuthSection>
+        <LogInForm />
+      </AuthSection>
 
       <Footer />
     </>
