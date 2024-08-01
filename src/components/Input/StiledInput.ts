@@ -31,14 +31,12 @@ input::placeholder{
   
 .close {
   position: absolute;
-  top: 20px;
+  top: 14px;
   right: 25px;
   cursor: pointer;
-  transition: 0.3s;
-}
-
-.close:hover {
-  transform: scale(1.25);
+  font-size: 26px;
+  transform: rotate(45deg);
+  color: #B9BAC3;
 }
 
 img {
@@ -46,8 +44,12 @@ img {
 }
 
 input:active,
-input:hover,
-input:focus {
+input:focus,
+input:hover {
   outline: none;
 } 
+input:active,
+input:focus {
+  border: 2.5px solid black;
+}
 `;

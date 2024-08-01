@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import close from '@/images/close.svg';
 import { Wrapper } from './StiledInput';
 
 export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -12,11 +10,7 @@ const PrimoryInput: React.FC<IProps> = (props) => {
     <Wrapper>
       <div className="icon-wrapper">{children}</div>
       <input className="input-row" {...rest} />
-      <div className="close">
-        <Image src={close} alt="X"
-        width={13} height={13}
-        />
-      </div>
+      <div className="close">+</div>
     </Wrapper>
   );
 };
