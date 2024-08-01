@@ -28,16 +28,6 @@ input::placeholder{
   line-height: 28px;
   letter-spacing: 0.75px;
 }
-  
-.close {
-  position: absolute;
-  top: 14px;
-  right: 25px;
-  cursor: pointer;
-  font-size: 26px;
-  transform: rotate(45deg);
-  color: #B9BAC3;
-}
 
 img {
   pointer-events: none;
@@ -52,4 +42,19 @@ input:active,
 input:focus {
   border: 2.5px solid black;
 }
+
+.close {
+  display: none;
+}
+
+input:active .close {
+    display: block;
+    position: absolute;
+    top: 14px;
+    right: 25px;
+    cursor: pointer;
+    font-size: 26px;
+    transform: rotate(45deg);
+    color: #B9BAC3;
+  }
 `;
