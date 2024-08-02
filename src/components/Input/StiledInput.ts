@@ -31,30 +31,31 @@ input::placeholder{
 
 img {
   pointer-events: none;
+  filter: contrast(1%) brightness(150%);
 }
 
-input:active,
-input:focus,
-input:hover {
-  outline: none;
-} 
 input:active,
 input:focus {
-  border: 2.5px solid black;
+  outline: #0D1821;
+  outline-style: solid;
 }
+
+/* .close {
+  display: none;
+} */
 
 .close {
-  display: none;
-}
+  display: block;
+  position: absolute;
+  top: 14px;
+  right: 25px;
+  cursor: pointer;
+  font-size: 26px;
+  transform: rotate(45deg);
+  color: #B9BAC3;
 
-input:active .close {
-    display: block;
-    position: absolute;
-    top: 14px;
-    right: 25px;
-    cursor: pointer;
-    font-size: 26px;
-    transform: rotate(45deg);
-    color: #B9BAC3;
-  }
+  border: none;
+  background-color: transparent;  
+  cursor: pointer;
+}
 `;

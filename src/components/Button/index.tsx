@@ -1,4 +1,4 @@
-import { StyledButton } from './StyledPrimaryButton';
+import { StyledButton } from './StyledButton';
 
 export interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -6,7 +6,8 @@ export interface IProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button:React.FC<IProps> = (props) => {
-  return <StyledButton className={props.className}>{props.children}</StyledButton>;
+  const { children, ...rest } = props;
+  return <StyledButton {...rest}>{children}</StyledButton>;
 };
 
 export default Button;
