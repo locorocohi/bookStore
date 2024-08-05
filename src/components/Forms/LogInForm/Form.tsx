@@ -1,8 +1,8 @@
-import { useFormik } from 'formik';
 import Image from 'next/image';
 
 import { logInSchema as validationSchema } from '@/validationSchemas/logInForm';
 
+import useCustomFormik from '@/hooks/useCustomFormik';
 import { saveNewUser } from '@/api/users';
 
 import passwordCloseEye from '@/images/hide.svg';
@@ -21,11 +21,7 @@ const LogInForm: React.FC = () => {
     return user;
   };
 
-  const clearInputValue = (valueType: string) => {
-    formik.setFieldValue(valueType, '');
-  };
-
-  const formik = useFormik({
+  const { formik, clearInputValue } = useCustomFormik({
     initialValues: {
       email: '',
       password: '',
@@ -34,15 +30,6 @@ const LogInForm: React.FC = () => {
     validateOnChange: false,
     onSubmit,
   });
-
-  // const {values, errors, clearInputValue} = useTest({
-  //   initialValues: {
-  //     email: '',
-  //     password: '',
-  //   },
-  //   validationSchema,
-  //   onSubmit,
-  // });
 
   const emailText = formik.errors.email || 'Enter your email';
   const passText = formik.errors.password || 'Enter your password';
