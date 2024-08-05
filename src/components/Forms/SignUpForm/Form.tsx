@@ -1,16 +1,17 @@
 import Image from 'next/image';
-import { useFormik } from 'formik';
 
 import passwordCloseEye from '@/images/hide.svg';
 import emailIcon from '@/images/email.svg';
 import openEye from '@/images/openEye.svg';
 
+import useCustomFormik from '@/hooks/useCustomFormik';
 import { saveNewUser } from '@/api/users';
 import { signUpSchema as validationSchema } from '@/validationSchemas/signUpForm';
+
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import PasswordInput from '@/components/PasswordInput';
-import { FormWrapper } from './StyledForm';
+import { FormWrapper } from './styles';
 
 const SignUpForm: React.FC = () => {
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
@@ -18,11 +19,7 @@ const SignUpForm: React.FC = () => {
     return user;
   };
 
-  const clearInputValue = (valueType: string) => {
-    formik.setFieldValue(valueType, '');
-  };
-
-  const formik = useFormik({
+  const { formik, clearInputValue } = useCustomFormik({
     initialValues: {
       email: '',
       password: '',
@@ -33,16 +30,6 @@ const SignUpForm: React.FC = () => {
     onSubmit,
   });
 
-  // const {values, errors, clearInputValue} = useTest({
-  //   initialValues: {
-  //     email: '',
-  //     password: '',
-  //     repeatedPassword: '',
-  //   },
-  //   validationSchema,
-  //   onSubmit,
-  // });
-
   const emailText = formik.errors.email || 'Enter your email';
   const passText = formik.errors.password || 'Enter your password';
   const repeatedPassText = formik.errors.repeatedPassword || 'Repeat your password without errors';
@@ -51,7 +38,7 @@ const SignUpForm: React.FC = () => {
     <FormWrapper>
       <h1>Sign Up</h1>
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="">
+        <label>
           <Input
             id="email"
             name="email"
@@ -67,8 +54,8 @@ const SignUpForm: React.FC = () => {
           </Input>
           <p>{emailText}</p>
         </label>
-        <label>
-        <PasswordInput
+        <div>
+          <PasswordInput
             id="password"
             name="password"
             type="password"
@@ -79,10 +66,10 @@ const SignUpForm: React.FC = () => {
           >
             <Image src={passwordCloseEye} alt="eye" priority />
             <Image src={openEye} alt="view" priority />
-        </PasswordInput>
-          <p>{passText}</p>
-        </label>
-        <label>
+          </PasswordInput>
+        <p>{passText}</p>
+        </div>
+        <div>
           <PasswordInput
             id="repeatedPassword"
             name="repeatedPassword"
@@ -96,7 +83,7 @@ const SignUpForm: React.FC = () => {
             <Image src={openEye} alt="view" priority />
           </PasswordInput>
           <p>{repeatedPassText}</p>
-        </label>
+        </div>
         <Button type="submit" className="button">Log In</Button>
       </form>
     </FormWrapper>

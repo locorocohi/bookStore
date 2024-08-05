@@ -10,7 +10,7 @@ import emailIcon from '@/images/email.svg';
 import openEye from '@/images/openEye.svg';
 
 import PasswordInput from '@/components/PasswordInput';
-import { FormWrapper } from '../SignUpForm/StyledForm';
+import { FormWrapper } from '../SignUpForm/styles';
 import Button from '../../Button';
 import Input from '../../Input';
 
@@ -33,11 +33,12 @@ const LogInForm: React.FC = () => {
 
   const emailText = formik.errors.email || 'Enter your email';
   const passText = formik.errors.password || 'Enter your password';
+  const formStatus = formik.errors ? 'denied' : 'access';
 
   return (
     <FormWrapper>
       <h1>Log In</h1>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className={formStatus}>
         <label>
           <Input
             id="email"

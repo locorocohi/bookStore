@@ -13,7 +13,7 @@ const PrimoryInput: React.FC<IProps> = (props) => {
     <Wrapper>
       <div className="icon-wrapper">{children}</div>
       <input className="input-row" {...rest} />
-      <button type="button" className="close" onClick={clearInputValue}>+</button>
+      <button type="button" className="clear" onClick={clearInputValue}>+</button>
     </Wrapper>
   );
 };

@@ -36,18 +36,18 @@ img {
 
 input:active,
 input:focus {
-  outline: #0D1821;
+  outline: 2px #0D1821;
   outline-style: solid;
 }
 
-/* .close {
+/* .clear {
   display: none;
 } */
 
-.close {
+.clear {
   display: block;
   position: absolute;
-  top: 14px;
+  top: 15px;
   right: 25px;
   cursor: pointer;
   font-size: 26px;

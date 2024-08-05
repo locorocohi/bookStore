@@ -7,7 +7,7 @@ type OptionsType = {
     password: string;
     repeatedPassword?: string;
   };
-  validationSchema?: unknown | (() => unknown);
+  validationSchema?: object;
   validateOnChange?: boolean;
   onSubmit: (values: OptionsType['initialValues'], formikHelpers: FormikHelpers<OptionsType['initialValues']>) => void | Promise<unknown>;
 };

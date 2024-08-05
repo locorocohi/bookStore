@@ -17,6 +17,9 @@ export const userSlice = createSlice({
       state.users.push(action.payload);
     },
   },
+  // extraReducers: (builder) => {
+
+  // },
 });
 
 export const { createUser } = userSlice.actions;

@@ -14,14 +14,13 @@ export default function Header() {
   return (
     <HeaderWrap>
       <Image src={logo} alt="logo" priority />
-      <Link href="http://localhost:3000/">Catalog</Link>
+      <Link className="catalog" href="http://localhost:3000/">Catalog</Link>
       <Input type="search" placeholder="Search">
         <Image src={loop} alt="loop"
           width={24} height={24}
         />
       </Input>
-      <Link href={`${path === '/signup' ? 'login' : 'signup'}`}>Log In/ Sign Up</Link>
-      {/* <Button type="button" onClick={replace}>Log In/ Sign Up</Button> */}
+      <Link className="login-button" href={`${path === '/signup' ? 'login' : 'signup'}`}>Log In/ Sign Up</Link>
     </HeaderWrap>
   );
 }

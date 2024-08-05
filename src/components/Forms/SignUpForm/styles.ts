@@ -23,6 +23,7 @@ export const FormWrapper = styled.div`
       text-align: left;
       color: rgba(52, 73, 102, 1);
       padding-top: 9px;
+      cursor: inherit;
     }
   
     h1 {
@@ -31,5 +32,37 @@ export const FormWrapper = styled.div`
       line-height: 60px;
       text-align: left;
     }
+    }
+
+    .access {
+      input {
+        outline: 2px #00BA88;
+        outline-style: solid;
+      }
+
+      .clear {
+        color: #00BA88;
+      }
+
+      p {
+        color: #00BA88;
+        cursor: inherit
+      }
+    }
+
+    .denied {
+      input {
+        outline: 2px #ED2E7E;
+        outline-style: solid;
+      }
+
+      .clear {
+        color: #ED2E7E;
+      }
+
+      p {
+        color: #ED2E7E;
+        cursor: inherit
+      }
     }
 `;
