@@ -26,7 +26,6 @@ const SignUpForm: React.FC = () => {
       repeatedPassword: '',
     },
     validationSchema,
-    validateOnChange: false,
     onSubmit,
   });
 
@@ -48,6 +47,8 @@ const SignUpForm: React.FC = () => {
             value={formik.values.email}
             clearInputValue={() => clearInputValue('email')}
             filled={!!formik.values.email}
+            isError={!!formik.errors.email?.length}
+            signature="Email"
           >
             <Image src={emailIcon} alt="email"
             width={24} height={24}
@@ -65,6 +66,8 @@ const SignUpForm: React.FC = () => {
             value={formik.values.password}
             clearInputValue={() => clearInputValue('password')}
             filled={!!formik.values.password}
+            isError={!!formik.errors.password?.length}
+            signature="Password"
           >
             <Image src={passwordCloseEye} alt="eye" priority />
             <Image src={openEye} alt="view" priority />
@@ -81,6 +84,8 @@ const SignUpForm: React.FC = () => {
             value={formik.values.repeatedPassword}
             clearInputValue={() => clearInputValue('repeatedPassword')}
             filled={!!formik.values.repeatedPassword}
+            isError={!!formik.errors.repeatedPassword?.length}
+            signature="Password again"
           >
             <Image src={passwordCloseEye} alt="eye" priority />
             <Image src={openEye} alt="view" priority />

@@ -16,7 +16,6 @@ const useCustomFormik = (options: OptionsType) => {
   const formik = useFormik({
     initialValues: options.initialValues,
     validationSchema: options.validationSchema,
-    validateOnChange: false,
     onSubmit: options.onSubmit,
   });
 

@@ -1,22 +1,26 @@
-import React from 'react';
 import { Wrapper } from './StiledInput';
 
 export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   children: React.ReactNode;
   clearInputValue?: () => void;
-  filled: boolean;
+  isFilled?: boolean;
+  signature: string;
+
+  isError?: boolean;
+  isDisabled?: boolean;
 }
 
-const PrimoryInput: React.FC<IProps> = (props) => {
-  const { children, clearInputValue, filled, ...rest } = props;
-
+const Input: React.FC<IProps> = (props) => {
+  const { children, clearInputValue, signature, isFilled, isError, isDisabled, ...rest } = props;
+  const inputStatus = isError ? 'denied' : 'access';
   return (
-    <Wrapper>
+    <Wrapper className={isFilled ? inputStatus : ''} isFilled={isFilled}>
       <div className="icon-wrapper">{children}</div>
-      <input className="input-row" {...rest} />
-      { filled ? <button type="button" className="clear" onClick={clearInputValue}>+</button> : null }
+      { isFilled ? <span className="input-span">{signature}</span> : null }
+      <input className="input-row" disabled={isDisabled} {...rest} />
+      { isFilled ? <button type="button" className="clear" onClick={clearInputValue}>+</button> : null }
     </Wrapper>
   );
 };
 
-export default PrimoryInput;
+export default Input;

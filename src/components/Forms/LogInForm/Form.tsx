@@ -27,18 +27,16 @@ const LogInForm: React.FC = () => {
       password: '',
     },
     validationSchema,
-    validateOnChange: false,
     onSubmit,
   });
 
-  const emailText = formik.errors.email || 'Enter your email';
+  const emailText = formik.values.email?.length && formik.errors.email?.length ? formik.errors.email : 'Enter your email';
   const passText = formik.errors.password || 'Enter your password';
-  const formStatus = formik.errors ? 'denied' : 'access';
 
   return (
     <FormWrapper>
       <h1>Log In</h1>
-      <form onSubmit={formik.handleSubmit} className={formStatus}>
+      <form onSubmit={formik.handleSubmit}>
         <label>
           <Input
             id="email"
@@ -48,7 +46,9 @@ const LogInForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.email}
             clearInputValue={() => clearInputValue('email')}
-            filled={!!formik.values.email}
+            isFilled={!!formik.values.email}
+            isError={!!formik.errors.email?.length}
+            signature="Email"
           >
             <Image src={emailIcon} alt="email"
             width={24} height={24}
@@ -65,7 +65,9 @@ const LogInForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
             clearInputValue={() => clearInputValue('password')}
-            filled={!!formik.values.password}
+            isFilled={!!formik.values.password}
+            isError={!!formik.errors.password?.length}
+            signature="Password"
           >
             <Image src={passwordCloseEye} alt="eye" priority />
             <Image src={openEye} alt="view" priority />

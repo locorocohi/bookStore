@@ -5,8 +5,8 @@ import loop from '@/images/search.svg';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import Input from '../Input';
 import { HeaderWrap } from './StyledHeader';
+import PrimoryInput from '../Input';
 
 export default function Header() {
   const path = usePathname();
@@ -15,11 +15,17 @@ export default function Header() {
     <HeaderWrap>
       <Image src={logo} alt="logo" priority />
       <Link className="catalog" href="http://localhost:3000/">Catalog</Link>
-      <Input type="search" placeholder="Search">
+      <PrimoryInput
+        type="search"
+        placeholder="Search"
+        // clearInputValue={() => clearInputValue('search')}
+        // filled={!!formik.values.search}
+        signature="Search"
+        >
         <Image src={loop} alt="loop"
           width={24} height={24}
         />
-      </Input>
+      </PrimoryInput>
       <Link className="login-button" href={`${path === '/signup' ? 'login' : 'signup'}`}>Log In/ Sign Up</Link>
     </HeaderWrap>
   );

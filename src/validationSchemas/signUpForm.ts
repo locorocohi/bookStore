@@ -11,5 +11,5 @@ export const signUpSchema = yup.object({
 
   repeatedPassword: yup.string()
     .required('You must repeat your password')
-    .oneOf([yup.ref('password')], 'Пароли не совпадают'),
+    .oneOf([yup.ref('password')], 'Password mismatch'),
 });

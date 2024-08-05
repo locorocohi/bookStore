@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{isFilled?: boolean}>`
 
 position: relative;
 
-input::placeholder{
+.input-row::placeholder{
   color: #B9BAC3;
 }
 
@@ -17,15 +17,16 @@ input::placeholder{
 .input-row {
   width: 100%;
   height: 64px;
-  background-color: rgba(240, 244, 239, 1);
+  background-color: #F0F4EF;
   border: none;
   border-radius: 16px;
   padding-left: 70px;
   padding-right: 3.5rem;
-  
+  padding-top: ${(props) => (props.isFilled ? '25px' : '0px')};
+
   font-weight: 400;
-  font-size: 16px;
-  line-height: 28px;
+  font-size: ${(props) => (props.isFilled ? '14px' : '16px')};
+  line-height: ${(props) => (props.isFilled ? '24px' : '28px')};
   letter-spacing: 0.75px;
 }
 
@@ -36,13 +37,24 @@ img {
 
 input:active,
 input:focus {
-  outline: 2px #0D1821;
-  outline-style: solid;
+  outline: none;
+  box-shadow: 0 0 0 2px #0D1821;
 }
 
-/* .clear {
-  display: none;
-} */
+input:disabled {
+  pointer-events: none;
+  background-color: #F0F4EF;
+
+  input::placeholder {
+    color: #A0A3BD;
+  }
+}
+
+input:active:disabled ,
+  input:focus:disabled  {
+  outline: none;
+  box-shadow: none;
+}
 
 .clear {
   display: block;
@@ -57,5 +69,17 @@ input:focus {
   border: none;
   background-color: transparent;  
   cursor: pointer;
+}
+
+.input-span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.75px;
+  padding-top: 6px;
+  padding-left: 70px;
+  cursor: inherit;
+
+  position: absolute;
 }
 `;
