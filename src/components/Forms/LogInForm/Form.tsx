@@ -48,6 +48,7 @@ const LogInForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.email}
             clearInputValue={() => clearInputValue('email')}
+            filled={!!formik.values.email}
           >
             <Image src={emailIcon} alt="email"
             width={24} height={24}
@@ -64,6 +65,7 @@ const LogInForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
             clearInputValue={() => clearInputValue('password')}
+            filled={!!formik.values.password}
           >
             <Image src={passwordCloseEye} alt="eye" priority />
             <Image src={openEye} alt="view" priority />
