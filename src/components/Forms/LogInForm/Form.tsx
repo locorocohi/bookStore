@@ -54,7 +54,7 @@ const LogInForm: React.FC = () => {
             width={24} height={24}
              />
           </Input>
-          <p>{emailText}</p>
+          <p className="hint">{emailText}</p>
         </label>
         <div>
           <PasswordInput
@@ -72,7 +72,7 @@ const LogInForm: React.FC = () => {
             <Image src={passwordCloseEye} alt="eye" priority />
             <Image src={openEye} alt="view" priority />
           </PasswordInput>
-          <p>{passText}</p>
+          <p className="hint">{passText}</p>
         </div>
         <Button type="submit" className="button">Log In</Button>
       </form>

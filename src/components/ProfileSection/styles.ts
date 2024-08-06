@@ -61,4 +61,14 @@ export const Wrapper = styled.section`
     flex-direction: column;
     gap: 20px;
   }
+
+  .input-row {
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(52, 73, 102, 1);
+  }
+
+  .clear {
+    display: none;
+  }
 `;

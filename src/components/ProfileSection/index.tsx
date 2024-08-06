@@ -30,6 +30,7 @@ const ProfileSection = () => {
           <Input
             value="Guy Hawkins"
             signature="Your name"
+            isFilled={!!true}
           >
             <Image src={profilePic} alt="profile"
               width={24} height={24}
@@ -39,6 +40,7 @@ const ProfileSection = () => {
           <Input
           value="test@example.ru"
           signature="Your email"
+          isFilled={!!true}
           >
             <Image src={emailIcon} alt="email"
               width={24} height={24}
@@ -53,6 +55,7 @@ const ProfileSection = () => {
           <PasswordInput
           value="testasdasd"
           signature="Your password"
+          isFilled={!!true}
           >
            <Image src={passwordCloseEye} alt="eye" priority />
            <Image src={openEye} alt="view" priority />

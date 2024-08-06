@@ -2,10 +2,10 @@ import { Wrapper } from './StiledInput';
 
 export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   children: React.ReactNode;
-  clearInputValue?: () => void;
-  isFilled?: boolean;
   signature: string;
 
+  clearInputValue?: () => void;
+  isFilled?: boolean;
   isError?: boolean;
   isDisabled?: boolean;
 }

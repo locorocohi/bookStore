@@ -35,26 +35,26 @@ export const FormWrapper = styled.div`
     }
 
 .access {
-  input {
+  .input-row {
     box-shadow: 0 0 0 2px #00BA88;
   }
   .clear {
     color: #00BA88;
   }
-  p {
+  .hint {
     color: #00BA88;
     cursor: inherit
   }
 }
 
 .denied {
-  input {
+  .input-row {
     box-shadow: 0 0 0 2px #ED2E7E;
   }
   .clear {
     color: #ED2E7E;
   }
-  p {
+  .hint {
     color: #ED2E7E;
     cursor: inherit
   }
