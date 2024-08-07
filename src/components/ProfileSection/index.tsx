@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import Image from 'next/image';
+import { saveNewAvatar } from '@/api/users';
 
 import type { IUserData } from '@/pages/profile';
 
@@ -15,14 +17,32 @@ type PropsType = {
 };
 
 const ProfileSection = (props: PropsType) => {
+  const [image, setImage] = useState('');
   const { id, email } = props.userData;
+
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
+    if (event.target.files) {
+      const reader = new FileReader();
+      const newPicture = event.target.files[0];
+
+      reader.readAsDataURL(newPicture);
+      reader.onload = (event) => {
+        // console.log(event.target.result);
+        setImage(event.target.result);
+      };
+    }
+    await saveNewAvatar({ image, id });
+  };
+
   return (
     <Wrapper>
-      <div className=".avatar">
+      <div className="avatar">
         <Image src={chelik} alt="avatar" />
-        <button type="button" className="button">
+
+        <label className="upload-button">
+          <input type="file" className="input-file" onChange={onChange} />
           <Image src={cameraPic} alt="photo" />
-        </button>
+        </label>
       </div>
 
       <div className="profile-info">

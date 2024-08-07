@@ -12,7 +12,11 @@ export const Wrapper = styled.section`
     border-radius: 16px;
   }
 
-  .button {
+  .input-file {
+      display: none;
+  }
+
+  .upload-button {
     position: absolute;
     width: 48px;
     height: 48px;
@@ -20,9 +24,10 @@ export const Wrapper = styled.section`
     background-color: transparent;
     cursor: pointer;
 
-    top: 405px;
-    left: 325px;
-    }
+    top: 85%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
 
   .profile-info {
     display: flex;

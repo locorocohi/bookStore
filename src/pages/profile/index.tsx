@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   if (!data) {
     return {
-      redirect: { destination: '/login' },
+      redirect: { destination: '/login', statusCode: 303 },
     };
   }
 

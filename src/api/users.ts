@@ -31,3 +31,12 @@ export const logIn = async (options: {email: string; password: string}) => {
     console.log(error);
   }
 };
+
+export const saveNewAvatar = async (options: {image: string; id: number}) => {
+  try {
+    const user = await instance.patch('user/avatar', options);
+    console.log(user.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
