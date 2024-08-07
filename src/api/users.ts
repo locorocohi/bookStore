@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import instance from '@/axios/instance';
 import { setCookie } from 'cookies-next';
 
@@ -16,6 +17,16 @@ export const getMe = async () => {
   try {
     const user = await instance.get('user/me');
     return user.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const logIn = async (options: {email: string; password: string}) => {
+  try {
+    const user = await instance.post('user/login', options);
+    const { accessToken } = user.data;
+    setCookie('accessToken', accessToken);
   } catch (error) {
     console.log(error);
   }

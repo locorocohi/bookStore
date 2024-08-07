@@ -3,22 +3,25 @@ import Image from 'next/image';
 import { logInSchema as validationSchema } from '@/validationSchemas/logInForm';
 
 import useCustomFormik from '@/hooks/useCustomFormik';
-import { saveNewUser } from '@/api/users';
+import { logIn } from '@/api/users';
 
 import passwordCloseEye from '@/images/hide.svg';
 import emailIcon from '@/images/email.svg';
 import openEye from '@/images/openEye.svg';
 
 import PasswordInput from '@/components/PasswordInput';
+import { useRouter } from 'next/router';
 import { FormWrapper } from '../SignUpForm/styles';
 import Button from '../../Button';
 import Input from '../../Input';
+import { config } from '../../../../config';
 
 const LogInForm: React.FC = () => {
+  const router = useRouter();
   const onSubmit = async (options: {email: string; password:string }) => {
     const { email, password } = options;
-    const user = await saveNewUser({ email, password });
-    return user;
+    await logIn({ email, password });
+    router.push(new URL(`http://${config.HOST}:${config.LOCAL_PORT}/profile`));
   };
 
   const { formik, clearInputValue } = useCustomFormik({

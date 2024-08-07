@@ -7,11 +7,15 @@ import profilePic from '@/images/profile.svg';
 import chelik from '@/images/chelik.svg';
 import cameraPic from '@/images/button_photo.svg';
 
+import type { UserType } from '@/models/user';
+
 import { Wrapper } from './styles';
 import Input from '../Input';
 import PasswordInput from '../PasswordInput';
 
-const ProfileSection = () => {
+const ProfileSection = (props: UserType) => {
+  const userData = props;
+  
   return (
     <Wrapper>
       <div className=".avatar">
@@ -30,7 +34,7 @@ const ProfileSection = () => {
           <Input
             value="Guy Hawkins"
             signature="Your name"
-            isFilled={!!true}
+            isFilled
           >
             <Image src={profilePic} alt="profile"
               width={24} height={24}
@@ -40,7 +44,7 @@ const ProfileSection = () => {
           <Input
           value="test@example.ru"
           signature="Your email"
-          isFilled={!!true}
+          isFilled
           >
             <Image src={emailIcon} alt="email"
               width={24} height={24}
@@ -55,7 +59,7 @@ const ProfileSection = () => {
           <PasswordInput
           value="testasdasd"
           signature="Your password"
-          isFilled={!!true}
+          isFilled
           >
            <Image src={passwordCloseEye} alt="eye" priority />
            <Image src={openEye} alt="view" priority />
