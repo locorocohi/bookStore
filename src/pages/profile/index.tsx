@@ -9,11 +9,13 @@ import Header from '@/components/Header/Header';
 import ProfileSection from '@/components/ProfileSection';
 import { Wrapper } from './styles';
 
+export interface IUserData extends Omit<UserType, 'password'> {}
+
 type PropsType = {
-  data: UserType;
+  data: IUserData;
 };
 
-const Profile = (props:PropsType) => {
+const Profile = (props: PropsType) => {
   return (
     <Wrapper>
 
@@ -31,6 +33,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = ctx.req.cookies.accessToken;
   setToken(token);
   const data = await getMe();
+
+  if (!data) {
+    return {
+      redirect: { destination: '/login' },
+    };
+  }
 
   return {
     props: { data },

@@ -1,21 +1,21 @@
 import Image from 'next/image';
 
-import passwordCloseEye from '@/images/hide.svg';
-import emailIcon from '@/images/email.svg';
-import openEye from '@/images/openEye.svg';
-import profilePic from '@/images/profile.svg';
-import chelik from '@/images/chelik.svg';
-import cameraPic from '@/images/button_photo.svg';
+import type { IUserData } from '@/pages/profile';
 
-import type { UserType } from '@/models/user';
+import emailIcon from '@/images/email.svg';
+import profilePic from '@/images/profile.svg';
+import cameraPic from '@/images/button_photo.svg';
+import chelik from '@/images/chelik.svg';
 
 import { Wrapper } from './styles';
 import Input from '../Input';
-import PasswordInput from '../PasswordInput';
 
-const ProfileSection = (props: UserType) => {
-  const userData = props;
-  
+type PropsType = {
+  userData: IUserData;
+};
+
+const ProfileSection = (props: PropsType) => {
+  const { id, email } = props.userData;
   return (
     <Wrapper>
       <div className=".avatar">
@@ -32,7 +32,7 @@ const ProfileSection = (props: UserType) => {
             <button>Change information</button>
           </div>
           <Input
-            value="Guy Hawkins"
+            value={`User${id}`}
             signature="Your name"
             isFilled
           >
@@ -42,7 +42,7 @@ const ProfileSection = (props: UserType) => {
           </Input>
 
           <Input
-          value="test@example.ru"
+          value={email}
           signature="Your email"
           isFilled
           >
@@ -56,14 +56,6 @@ const ProfileSection = (props: UserType) => {
             <h3>Password</h3>
             <button>Change password</button>
           </div>
-          <PasswordInput
-          value="testasdasd"
-          signature="Your password"
-          isFilled
-          >
-           <Image src={passwordCloseEye} alt="eye" priority />
-           <Image src={openEye} alt="view" priority />
-          </PasswordInput>
         </div>
       </div>
 
