@@ -10,6 +10,7 @@ export const Wrapper = styled.section`
     width: 305px;
     height: 305px;
     border-radius: 16px;
+    overflow: hidden;
   }
 
   .input-file {

@@ -17,8 +17,8 @@ type PropsType = {
 };
 
 const ProfileSection = (props: PropsType) => {
-  const [image, setImage] = useState('');
-  const { id, email } = props.userData;
+  const [image, setImage] = useState(chelik);
+  const { id, email, avatar } = props.userData;
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
@@ -26,19 +26,18 @@ const ProfileSection = (props: PropsType) => {
       const newPicture = event.target.files[0];
 
       reader.readAsDataURL(newPicture);
-      reader.onload = (event) => {
-        // console.log(event.target.result);
-        setImage(event.target.result);
+      reader.onload = async (event) => {
+        const newPic = event.target?.result;
+        setImage(newPic);
+        await saveNewAvatar({ image: newPic, id });
       };
     }
-    await saveNewAvatar({ image, id });
   };
 
   return (
     <Wrapper>
       <div className="avatar">
-        <Image src={chelik} alt="avatar" />
-
+        <Image fill src={image} alt="avatar" />
         <label className="upload-button">
           <input type="file" className="input-file" onChange={onChange} />
           <Image src={cameraPic} alt="photo" />
@@ -54,7 +53,8 @@ const ProfileSection = (props: PropsType) => {
           <Input
             value={`User${id}`}
             signature="Your name"
-            isFilled
+            readOnly
+            $isFilled
           >
             <Image src={profilePic} alt="profile"
               width={24} height={24}
@@ -64,7 +64,8 @@ const ProfileSection = (props: PropsType) => {
           <Input
           value={email}
           signature="Your email"
-          isFilled
+          readOnly
+          $isFilled
           >
             <Image src={emailIcon} alt="email"
               width={24} height={24}

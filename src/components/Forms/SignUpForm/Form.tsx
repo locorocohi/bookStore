@@ -46,7 +46,7 @@ const SignUpForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.email}
             clearInputValue={() => clearInputValue('email')}
-            isFilled={!!formik.values.email}
+            $isFilled={!!formik.values.email}
             isError={!!formik.errors.email?.length}
             signature="Email"
           >
@@ -65,7 +65,7 @@ const SignUpForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
             clearInputValue={() => clearInputValue('password')}
-            isFilled={!!formik.values.password}
+            $isFilled={!!formik.values.password}
             isError={!!formik.errors.password?.length}
             signature="Password"
           >
@@ -83,7 +83,7 @@ const SignUpForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.repeatedPassword}
             clearInputValue={() => clearInputValue('repeatedPassword')}
-            isFilled={!!formik.values.repeatedPassword}
+            $isFilled={!!formik.values.repeatedPassword}
             isError={!!formik.errors.repeatedPassword?.length}
             signature="Password again"
           >

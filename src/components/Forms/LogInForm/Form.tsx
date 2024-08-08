@@ -49,7 +49,7 @@ const LogInForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.email}
             clearInputValue={() => clearInputValue('email')}
-            isFilled={!!formik.values.email}
+            $isFilled={!!formik.values.email}
             isError={!!formik.errors.email?.length}
             signature="Email"
           >
@@ -68,7 +68,7 @@ const LogInForm: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
             clearInputValue={() => clearInputValue('password')}
-            isFilled={!!formik.values.password}
+            $isFilled={!!formik.values.password}
             isError={!!formik.errors.password?.length}
             signature="Password"
           >
