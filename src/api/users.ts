@@ -32,11 +32,11 @@ export const logIn = async (options: {email: string; password: string}) => {
   }
 };
 
-export const saveNewAvatar = async (options: {image: string; id: number}) => {
+export const saveNewAvatar = async (options: {base64Img:string; fileType:string; id:number}) => {
   try {
     const user = await instance.patch('user/avatar', options);
-    return user.data;
+    console.log(user.data);
   } catch (error) {
-    console.log(error);
+    console.log(error.name);
   }
 };
