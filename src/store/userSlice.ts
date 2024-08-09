@@ -1,20 +1,21 @@
+/* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import type { UserType } from '@/models/user';
+import type { IUserData } from '@/pages/profile';
 
 type UsersStateType = {
-  users: UserType[];
+  user: IUserData | null;
 };
 
-const initialState: UsersStateType = { users: [] };
+const initialState: UsersStateType = { user: null };
 
 export const userSlice = createSlice({
-  name: 'users',
+  name: 'user',
 
   initialState,
 
   reducers: {
-    createUser: (state, action) => {
-      state.users.push(action.payload);
+    setUser: (state, action) => {
+      state.user = action.payload;
     },
   },
   // extraReducers: (builder) => {
@@ -22,5 +23,5 @@ export const userSlice = createSlice({
   // },
 });
 
-export const { createUser } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

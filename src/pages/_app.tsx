@@ -1,6 +1,8 @@
 import type { AppProps } from 'next/app';
 import { poppins } from '@/fonts';
 import { createGlobalStyle } from 'styled-components';
+import { Provider } from 'react-redux';
+import { store } from '@/store/store';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -31,7 +33,9 @@ export default function App({ Component, pageProps }: AppProps) {
         }`}
       </style>
       <GlobalStyles />
-      <Component {...pageProps} className={poppins.className} />
+      <Provider store={store}>
+        <Component {...pageProps} className={poppins.className} />
+      </Provider>
     </>
   );
 }

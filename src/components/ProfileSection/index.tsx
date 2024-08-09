@@ -2,22 +2,25 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { saveNewAvatar } from '@/api/users';
 
-import type { IUserData } from '@/pages/profile';
+// import type { IUserData } from '@/pages/profile';
 
 import emailIcon from '@/images/email.svg';
 import profilePic from '@/images/profile.svg';
 import cameraPic from '@/images/button_photo.svg';
+import emptyAvatar from '@/images/emptyAvatar.svg';
 
+import { useAppSelector } from '@/store/hooks';
 import { Wrapper } from './styles';
 import Input from '../Input';
 
-type PropsType = {
-  userData: IUserData;
-};
+// type PropsType = {
+//   userData: IUserData;
+// };
 
-const ProfileSection = (props: PropsType) => {
-  const [currAvatar, setAvatar] = useState(props.userData.avatar);
-  const { id, email } = props.userData;
+const ProfileSection = () => {
+  const user = useAppSelector((store) => store.user.user);
+  const [currAvatar, setAvatar] = useState(user?.avatar || emptyAvatar);
+  const { id, email } = user!;
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
@@ -27,9 +30,9 @@ const ProfileSection = (props: PropsType) => {
 
       reader.readAsDataURL(newPicture);
       reader.onload = async (event) => {
-        const base64Img = event.target?.result;
-        setAvatar(base64Img);
-        await saveNewAvatar({ base64Img, fileType, id });
+        const encodedImage = event.target?.result;
+        setAvatar(encodedImage);
+        await saveNewAvatar({ encodedImage, fileType, id });
       };
     }
   };

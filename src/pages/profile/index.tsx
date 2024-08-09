@@ -1,5 +1,7 @@
 import { setToken } from '@/axios/instance';
 import { getMe } from '@/api/users';
+import { useAppDispatch } from '@/store/hooks';
+import { setUser } from '@/store/userSlice';
 
 import type { GetServerSideProps } from 'next';
 import type { UserType } from '@/models/user';
@@ -16,12 +18,16 @@ type PropsType = {
 };
 
 const Profile = (props: PropsType) => {
+  const dispatch = useAppDispatch();
+  dispatch(setUser(props.data));
+
   return (
     <Wrapper>
 
       <Header />
 
-      <ProfileSection userData={props.data} />
+      {/* <ProfileSection userData={props.data} /> */}
+      <ProfileSection />
 
       <Footer />
 
