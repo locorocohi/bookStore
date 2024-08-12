@@ -7,11 +7,12 @@ import { saveNewAvatar } from '@/api/users';
 import emailIcon from '@/images/email.svg';
 import profilePic from '@/images/profile.svg';
 import cameraPic from '@/images/button_photo.svg';
-import emptyAvatar from '@/images/emptyAvatar.svg';
+import emptyAvatar from '@/images/profilePic.svg';
 
 import { useAppSelector } from '@/store/hooks';
 import { Wrapper } from './styles';
 import Input from '../Input';
+import ChangeForm from '../Forms/ChangeForm/ChangeForm';
 
 // type PropsType = {
 //   userData: IUserData;
@@ -20,7 +21,8 @@ import Input from '../Input';
 const ProfileSection = () => {
   const user = useAppSelector((store) => store.user.user);
   const [currAvatar, setAvatar] = useState(user?.avatar || emptyAvatar);
-  const { id, email } = user!;
+  const [isChanging, setChangingStatus] = useState(false);
+  const { id, email, name } = user!;
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
@@ -30,11 +32,15 @@ const ProfileSection = () => {
 
       reader.readAsDataURL(newPicture);
       reader.onload = async (event) => {
-        const encodedImage = event.target?.result;
+        const encodedImage = event.target?.result as string;
         setAvatar(encodedImage);
         await saveNewAvatar({ encodedImage, fileType, id });
       };
     }
+  };
+
+  const changeProfileInfo = () => {
+    setChangingStatus(!isChanging);
   };
 
   return (
@@ -51,29 +57,33 @@ const ProfileSection = () => {
         <div className="profile-personal">
           <div className="profile-title">
             <h3>Personal information</h3>
-            <button>Change information</button>
+            <button onClick={changeProfileInfo}>Change information</button>
           </div>
-          <Input
-            value=" "
-            signature="Your name"
-            readOnly
-            $isFilled
-          >
-            <Image src={profilePic} alt="profile"
-              width={24} height={24}
-            />
-          </Input>
+          { isChanging
+            ? <ChangeForm changeProfileInfo={changeProfileInfo} />
+            : (<>
+              <Input
+                value={name}
+                signature="Your name"
+                readOnly
+                $isFilled
+              >
+                <Image src={profilePic} alt="profile"
+                  width={24} height={24}
+/>
+              </Input>
 
-          <Input
-          value={email}
-          signature="Your email"
-          readOnly
-          $isFilled
-          >
-            <Image src={emailIcon} alt="email"
-              width={24} height={24}
-            />
-          </Input>
+              <Input
+                value={email}
+                signature="Your email"
+                readOnly
+                $isFilled
+              >
+                <Image src={emailIcon} alt="email"
+                  width={24} height={24}
+                />
+              </Input>
+               </>)}
         </div>
         <div className="profile-password">
           <div className="profile-title">

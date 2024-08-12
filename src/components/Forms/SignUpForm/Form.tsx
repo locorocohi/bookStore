@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import passwordCloseEye from '@/images/hide.svg';
 import emailIcon from '@/images/email.svg';
@@ -11,11 +12,14 @@ import { signUpSchema as validationSchema } from '@/validationSchemas/signUpForm
 import Button from '@/components/Button';
 import Input from '@/components/Input';
 import PasswordInput from '@/components/PasswordInput';
+import { config } from '../../../../config';
 import { FormWrapper } from './styles';
 
 const SignUpForm: React.FC = () => {
+  const router = useRouter();
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
     const { user } = await saveNewUser({ email, password });
+    router.push(new URL(`http://${config.HOST}:${config.LOCAL_PORT}/profile`));
     return user;
   };
 

@@ -35,8 +35,17 @@ export const logIn = async (options: {email: string; password: string}) => {
 export const saveNewAvatar = async (options: {encodedImage:string; fileType:string; id:number}) => {
   try {
     const user = await instance.patch('user/avatar', options);
-    console.log(user.data);
+    return user.data;
   } catch (error) {
-    console.log(error.name);
+    console.log(error);
+  }
+};
+
+export const changeInfo = async (options: { email: string; name:string }) => {
+  try {
+    const user = await instance.patch('user/changeinfo', options);
+    return user.data;
+  } catch (error) {
+    console.log(error);
   }
 };

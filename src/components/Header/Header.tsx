@@ -1,3 +1,5 @@
+import { useAppSelector } from '@/store/hooks';
+
 import Image from 'next/image';
 import logo from '@/images/logo.png';
 import loop from '@/images/search.svg';
@@ -7,8 +9,10 @@ import { usePathname } from 'next/navigation';
 
 import { HeaderWrap } from './StyledHeader';
 import PrimoryInput from '../Input';
+import Menu from '../Menu/Menu';
 
 export default function Header() {
+  const user = useAppSelector((store) => store.user.user);
   const path = usePathname();
 
   return (
@@ -26,7 +30,10 @@ export default function Header() {
           width={24} height={24}
         />
       </PrimoryInput>
-      <Link className="login-button" href={`${path === '/signup' ? 'login' : 'signup'}`}>Log In/ Sign Up</Link>
+      {user
+        ? <Menu />
+        : <Link className="login-button" href={`${path === '/signup' ? 'login' : 'signup'}`}>Log In/ Sign Up</Link>
+      }
     </HeaderWrap>
   );
 }

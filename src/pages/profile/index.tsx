@@ -26,7 +26,6 @@ const Profile = (props: PropsType) => {
 
       <Header />
 
-      {/* <ProfileSection userData={props.data} /> */}
       <ProfileSection />
 
       <Footer />

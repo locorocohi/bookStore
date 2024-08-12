@@ -3,8 +3,9 @@ import { useFormik } from 'formik';
 
 type OptionsType = {
   initialValues: {
-    email: string;
-    password: string;
+    name?: string;
+    email?: string;
+    password?: string;
     repeatedPassword?: string;
   };
   validationSchema?: object;
