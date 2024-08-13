@@ -1,9 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import passwordCloseEye from '@/images/hide.svg';
 import emailIcon from '@/images/email.svg';
-import openEye from '@/images/openEye.svg';
 
 import useCustomFormik from '@/hooks/useCustomFormik';
 import { saveNewUser } from '@/api/users';
@@ -27,7 +25,7 @@ const SignUpForm: React.FC = () => {
     initialValues: {
       email: '',
       password: '',
-      repeatedPassword: '',
+      secondPassword: '',
     },
     validationSchema,
     onSubmit,
@@ -35,7 +33,7 @@ const SignUpForm: React.FC = () => {
 
   const emailText = formik.errors.email || 'Enter your email';
   const passText = formik.errors.password || 'Enter your password';
-  const repeatedPassText = formik.errors.repeatedPassword || 'Repeat your password without errors';
+  const repeatedPassText = formik.errors.secondPassword || 'Repeat your password without errors';
 
   return (
     <FormWrapper>
@@ -72,28 +70,22 @@ const SignUpForm: React.FC = () => {
             $isFilled={!!formik.values.password}
             isError={!!formik.errors.password?.length}
             signature="Password"
-          >
-            <Image src={passwordCloseEye} alt="eye" priority />
-            <Image src={openEye} alt="view" priority />
-          </PasswordInput>
+          />
         <p className="hint">{passText}</p>
         </div>
         <div>
           <PasswordInput
-            id="repeatedPassword"
-            name="repeatedPassword"
+            id="secondPassword"
+            name="secondPassword"
             type="password"
             placeholder="Password replay"
             onChange={formik.handleChange}
-            value={formik.values.repeatedPassword}
-            clearInputValue={() => clearInputValue('repeatedPassword')}
-            $isFilled={!!formik.values.repeatedPassword}
-            isError={!!formik.errors.repeatedPassword?.length}
+            value={formik.values.secondPassword}
+            clearInputValue={() => clearInputValue('secondPassword')}
+            $isFilled={!!formik.values.secondPassword}
+            isError={!!formik.errors.secondPassword?.length}
             signature="Password again"
-          >
-            <Image src={passwordCloseEye} alt="eye" priority />
-            <Image src={openEye} alt="view" priority />
-          </PasswordInput>
+          />
           <p className="hint">{repeatedPassText}</p>
         </div>
         <Button type="submit" className="button">Log In</Button>

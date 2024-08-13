@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Input from '@/components/Input';
 
 import { changeSchema as validationSchema } from '@/validationSchemas/changeForm';
 import { changeInfo } from '@/api/users';
@@ -10,19 +9,20 @@ import useCustomFormik from '@/hooks/useCustomFormik';
 import emailIcon from '@/images/email.svg';
 import profilePic from '@/images/profile.svg';
 
+import Input from '@/components/Input';
 import Button from '@/components/Button';
 import { FormWrapper } from '../SignUpForm/styles';
 
 type PropsType = {
-  changeProfileInfo: () => void;
+  toggleInfoForm: () => void;
 };
 
-const ChangeForm = (props: PropsType) => {
+const ChangeForm: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
   const onSubmit = async ({ name = '', email }:{ email: string; name:string }) => {
     const user = await changeInfo({ name, email });
     dispatch(setUser(user));
-    props.changeProfileInfo();
+    props.toggleInfoForm();
   };
 
   const { formik, clearInputValue } = useCustomFormik({
@@ -57,7 +57,7 @@ const ChangeForm = (props: PropsType) => {
               width={24} height={24}
             />
           </Input>
-          <p className="hint">{emailText}</p>
+          <p className="hint">Enter your name</p>
         </label>
         <label>
           <Input

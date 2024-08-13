@@ -50,7 +50,7 @@ export const Wrapper = styled.section`
     line-height: 30px;
   }
 
-  .profile-title button{
+  .profile-title-button{
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;

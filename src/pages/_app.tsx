@@ -3,6 +3,8 @@ import { poppins } from '@/fonts';
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
 import { store } from '@/store/store';
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -13,14 +15,12 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
   }
 
   body {
-    width: 1440px;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    max-width: 1440px;
   }`;
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -34,7 +34,11 @@ export default function App({ Component, pageProps }: AppProps) {
       </style>
       <GlobalStyles />
       <Provider store={store}>
+        <>
+        <Header />
         <Component {...pageProps} className={poppins.className} />
+        <Footer />
+        </>
       </Provider>
     </>
   );

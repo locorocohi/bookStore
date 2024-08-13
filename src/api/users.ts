@@ -49,3 +49,12 @@ export const changeInfo = async (options: { email: string; name:string }) => {
     console.log(error);
   }
 };
+
+export const changePassword = async (options: {password: string; secondPassword: string}) => {
+  try {
+    const user = await instance.patch('user/changepassword', options);
+    return user.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
