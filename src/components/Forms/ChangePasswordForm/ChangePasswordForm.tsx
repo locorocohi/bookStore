@@ -39,7 +39,7 @@ const ChangePasswordForm: React.FC<PropsType> = (props) => {
 
   return (
     <FormWrapper>
-      <form onSubmit={formik.handleSubmit}>
+      <form className="change-form" onSubmit={formik.handleSubmit}>
         <div>
           <PasswordInput
             id="password"

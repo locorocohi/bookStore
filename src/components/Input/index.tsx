@@ -14,7 +14,7 @@ const Input: React.FC<IProps> = (props) => {
   const { children, clearInputValue, signature, $isFilled, isError, isDisabled, ...rest } = props;
   const inputStatus = isError ? 'denied' : 'access';
   return (
-    <Wrapper className={$isFilled ? inputStatus : ''} isFilled={$isFilled}>
+    <Wrapper className={$isFilled ? inputStatus : ''} $isFilled={$isFilled}>
       <div className="icon-wrapper">{children}</div>
       { $isFilled ? <span className="input-span">{signature}</span> : null }
       <input className="input-row" disabled={isDisabled} {...rest} />

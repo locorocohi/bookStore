@@ -42,10 +42,6 @@ const ProfileSection = () => {
     setChangingPass(!isChangingPass);
   };
 
-  if (!user) {
-    return null;
-  }
-
   return (
     <Wrapper>
       <div className="avatar">
@@ -66,7 +62,7 @@ const ProfileSection = () => {
             ? <ChangeForm toggleInfoForm={toggleInfoForm} />
             : (<>
               <Input
-                value={user.name}
+                value={user?.name}
                 signature="Your name"
                 readOnly
                 $isFilled
@@ -77,7 +73,7 @@ const ProfileSection = () => {
               </Input>
 
               <Input
-                value={user.email}
+                value={user?.email}
                 signature="Your email"
                 readOnly
                 $isFilled

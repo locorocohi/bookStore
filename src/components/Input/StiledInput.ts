@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div<{isFilled?: boolean}>`
+export const Wrapper = styled.div<{$isFilled?: boolean}>`
 
 position: relative;
 
@@ -22,11 +22,11 @@ position: relative;
   border-radius: 16px;
   padding-left: 70px;
   padding-right: 3.5rem;
-  padding-top: ${(props) => (props.isFilled ? '25px' : '0px')};
+  padding-top: ${(props) => (props.$isFilled ? '25px' : '0px')};
 
   font-weight: 400;
-  font-size: ${(props) => (props.isFilled ? '14px' : '16px')};
-  line-height: ${(props) => (props.isFilled ? '24px' : '28px')};
+  font-size: ${(props) => (props.$isFilled ? '14px' : '16px')};
+  line-height: ${(props) => (props.$isFilled ? '24px' : '28px')};
   letter-spacing: 0.75px;
 }
 

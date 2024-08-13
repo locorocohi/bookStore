@@ -7,6 +7,14 @@ gap: 27px;
 .button {
   background: transparent;
   padding: 0;
+  margin: 0;
   pointer-events: auto;
+  width: 48px;
+  height: 48px;
+  background-color: #344966;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 `;

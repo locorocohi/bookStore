@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 
-import cart from '@/images/button_cart.svg';
-import profile from '@/images/button_user profile.svg';
-import favorite from '@/images/button_save.svg';
+import cart from '@/images/Cart.svg';
+import profile from '@/images/profile-button.svg';
+import favorite from '@/images/Heart.svg';
 import { config } from '../../../config';
 
 import Button from '../Button';

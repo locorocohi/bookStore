@@ -5,7 +5,7 @@ background-color: rgba(13, 24, 33, 1);
 padding: 73px 80px;
 width: 100vw;
 display: flex;
-justify-content: flex-start;
+justify-content: center;
 
 .wrapper {
 display: flex;
