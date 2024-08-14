@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   width: 100%;
+  max-width: 1280px;
+  max-height: 400px;
+  height: 100%;
+
   position: relative;
   margin-top: 30px;
   margin-bottom: 110px;
@@ -11,8 +15,8 @@ export const Wrapper = styled.div`
   justify-content: space-around;
 
   border-radius: 16px;
-  background-color: #F0F4EF;
   overflow: hidden;
+  background-color: #F0F4EF;
 
   .content {
     display: flex;
@@ -35,8 +39,6 @@ export const Wrapper = styled.div`
     font-weight: 400;
     line-height: 30px;
     color: #344966;
-
-    max-width: 217px;
   }
 
   .content .button {
@@ -51,12 +53,22 @@ export const Wrapper = styled.div`
     height: 327px;
 
     left: 0;
-    top: 100px;
+    top: 25%;
     z-index: 0;
   }
 
   .girl-picture {
     width: 406px;
     height: 400px;
+    align-self: flex-end;
+  }
+
+  .fairy-picture {
+    position: absolute;
+    right: 1%;
+  }
+
+  .castle-picture {
+    align-self: flex-end;
   }
 `;
