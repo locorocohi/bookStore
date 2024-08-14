@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 import PasswordInput from '@/components/PasswordInput';
 import useCustomFormik from '@/hooks/useCustomFormik';
 import { changePasswordSchema as validationSchema } from '@/validationSchemas/changePasswordForm';
-import { FormWrapper } from '../SignUpForm/styles';
+import { ChangeFormWrapper } from '../ChangeForm/styles';
 
 type PropsType = {
   togglePasswordForm: () => void;
@@ -16,12 +16,12 @@ const ChangePasswordForm: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
   const onSubmit = async ({
     password,
-    secondPassword,
+    thirdPassword,
   }: {
     password: string;
-    secondPassword: string;
+    thirdPassword: string;
   }) => {
-    const user = await changePassword({ password, secondPassword });
+    const user = await changePassword({ password, thirdPassword });
     dispatch(setUser(user));
     props.togglePasswordForm();
   };
@@ -34,33 +34,33 @@ const ChangePasswordForm: React.FC<PropsType> = (props) => {
     validationSchema,
     onSubmit,
   });
-  const passText = formik.errors.password || 'Enter your password';
-  const secondPassText = formik.errors.secondPassword || 'Enter NEW password';
+
+  const secondPassText = formik.errors.secondPassword || 'Enter your password';
+  const thirdPassText = formik.errors.thirdPassword || 'Repeat your password without errors';
 
   return (
-    <FormWrapper>
+    <ChangeFormWrapper>
       <form className="change-form" onSubmit={formik.handleSubmit}>
         <div>
           <PasswordInput
             id="password"
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder="Old password"
             onChange={formik.handleChange}
             value={formik.values.password}
             clearInputValue={() => clearInputValue('password')}
             $isFilled={!!formik.values.password}
             isError={!!formik.errors.password?.length}
-            signature="Password"
+            signature="Old password"
            />
-          <p className="hint">{passText}</p>
         </div>
         <div>
           <PasswordInput
             id="secondPassword"
             name="secondPassword"
             type="password"
-            placeholder="Password replay"
+            placeholder="New password"
             onChange={formik.handleChange}
             value={formik.values.secondPassword}
             clearInputValue={() => clearInputValue('secondPassword')}
@@ -70,11 +70,26 @@ const ChangePasswordForm: React.FC<PropsType> = (props) => {
            />
           <p className="hint">{secondPassText}</p>
         </div>
+        <div>
+          <PasswordInput
+            id="thirdPassword"
+            name="thirdPassword"
+            type="password"
+            placeholder="New password"
+            onChange={formik.handleChange}
+            value={formik.values.thirdPassword}
+            clearInputValue={() => clearInputValue('thirdPassword')}
+            $isFilled={!!formik.values.thirdPassword}
+            isError={!!formik.errors.thirdPassword?.length}
+            signature="New password"
+           />
+          <p className="hint">{thirdPassText}</p>
+        </div>
         <Button type="submit" className="button">
-          Submit
+          Confirm
         </Button>
       </form>
-    </FormWrapper>
+    </ChangeFormWrapper>
   );
 };
 

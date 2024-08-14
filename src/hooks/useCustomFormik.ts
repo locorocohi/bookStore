@@ -7,6 +7,7 @@ type OptionsType = {
     email?: string;
     password?: string;
     secondPassword?: string;
+    thirdPassword?: string;
   };
   validationSchema?: object;
   validateOnChange?: boolean;

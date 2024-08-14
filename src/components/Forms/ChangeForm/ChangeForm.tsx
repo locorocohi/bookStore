@@ -11,7 +11,7 @@ import profilePic from '@/images/profile.svg';
 
 import Input from '@/components/Input';
 import Button from '@/components/Button';
-import { FormWrapper } from '../SignUpForm/styles';
+import { ChangeFormWrapper } from './styles';
 
 type PropsType = {
   toggleInfoForm: () => void;
@@ -38,8 +38,8 @@ const ChangeForm: React.FC<PropsType> = (props) => {
   const emailText = formik.errors.email || 'Enter your email';
 
   return (
-    <FormWrapper>
-      <form onSubmit={formik.handleSubmit}>
+    <ChangeFormWrapper>
+      <form className="change-form" onSubmit={formik.handleSubmit}>
         <label>
           <Input
           id="name"
@@ -78,9 +78,9 @@ const ChangeForm: React.FC<PropsType> = (props) => {
           </Input>
           <p className="hint">{emailText}</p>
         </label>
-        <Button type="submit" className="button">Submit</Button>
+        <Button type="submit" className="button">Confirm</Button>
       </form>
-    </FormWrapper>
+    </ChangeFormWrapper>
   );
 };
 

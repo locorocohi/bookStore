@@ -16,9 +16,8 @@ import { FormWrapper } from './styles';
 const SignUpForm: React.FC = () => {
   const router = useRouter();
   const onSubmit = async ({ email, password }:{email: string; password:string }) => {
-    const { user } = await saveNewUser({ email, password });
+    await saveNewUser({ email, password });
     router.push(new URL(`http://${config.HOST}:${config.LOCAL_PORT}/profile`));
-    return user;
   };
 
   const { formik, clearInputValue } = useCustomFormik({
