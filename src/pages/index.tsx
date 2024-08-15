@@ -6,6 +6,7 @@ import castlePic from '@/images/castle.svg';
 import fairy from '@/images/fairy.svg';
 
 import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
+import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
 import { Catalog } from './styles';
@@ -30,6 +31,8 @@ const Main = () => {
       </Banner>
 
       <FilterToolbar />
+
+      <BooksSection />
 
       <Banner>
         <>
