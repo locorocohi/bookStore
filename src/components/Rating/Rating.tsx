@@ -1,14 +1,25 @@
+import { useState } from 'react';
 import { Wrapper } from './styles';
 
 const Rating = () => {
+  const stars = Array(5).fill(0);
+  const [currItem, setCurrItem] = useState();
+
   return (
     <Wrapper>
-     <div className="star" data-rating="1" />
-     <div className="star" data-rating="2" />
-     <div className="star" data-rating="3" />
-     <div className="star" data-rating="4" />
-     <div className="star" data-rating="5" />
-     <p className="rating">{null}</p>
+
+      {stars.map((item, index) => {
+        return (
+            <div key={index}
+              className={index <= currItem ? 'star selected' : 'star'}
+              onClick={() => setCurrItem(index)}
+            />
+        );
+      })
+      }
+
+      <p className="rating">5.0</p>
+
     </Wrapper>
   );
 };

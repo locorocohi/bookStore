@@ -14,7 +14,7 @@ import { Catalog } from './styles';
 const Main = () => {
   return (
     <Catalog>
-      <Banner>
+      {/* <Banner>
         <>
         <div className="content">
           <h2 className="title">Build your library with us</h2>
@@ -28,13 +28,13 @@ const Main = () => {
           <Image className="books-picture" src={booksPic} alt = "Books" />
         </div>
         </>
-      </Banner>
+      </Banner> */}
 
-      <FilterToolbar />
+      {/* <FilterToolbar /> */}
 
       <BooksSection />
 
-      <Banner>
+      {/* <Banner>
         <>
         <Image className="castle-picture" src={castlePic} alt = "Castle" />
 
@@ -48,7 +48,7 @@ const Main = () => {
           <Image className="fairy-picture" src={fairy} alt = "Fairy" />
         </div>
         </>
-      </Banner>
+      </Banner> */}
     </Catalog>
   );
 };
