@@ -1,14 +1,13 @@
 import { genres } from '@/constants';
 import Select from './Select/Selector';
 import { Wrapper } from './styles';
+import MultiSelector from './MultiSelector/MultiSelector';
 
 const FilterToolbar = () => {
   return (
     <Wrapper>
-     <Select multiple filters={genres} />
-     {/* <Select />
-     <Select /> */}
-     <select multiple />
+     <MultiSelector filters={genres} />
+     {/* <Select /> */}
     </Wrapper>
   );
 };

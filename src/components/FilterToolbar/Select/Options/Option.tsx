@@ -12,7 +12,7 @@ const Option: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
       {/* <Image className="checkbox-size" src={checked} alt="Checkbox" /> */}
-      <span className="option-text">{props.children}</span>
+      {props.children}
     </Wrapper>
   );
 };

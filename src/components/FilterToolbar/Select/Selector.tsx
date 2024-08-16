@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import { Wrapper } from './styles';
-import Option from './Options/Option';
 
 type PropsType = {
   children?: ReactNode;
@@ -11,7 +10,6 @@ type PropsType = {
 const Select: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
-      {props.filters.map((genre, index) => <Option key={index}>{genre}</Option>)}
     </Wrapper>
   );
 };
