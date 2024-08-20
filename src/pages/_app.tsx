@@ -10,15 +10,15 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyles font={poppins.style.fontFamily} />
-      <Provider store={store}>
-        <div className="app-wrapper">
-          <div className="width-limiter">
-            <Header />
-            <Component {...pageProps} className={poppins.className} />
+        <Provider store={store}>
+          <div className="app-wrapper">
+            <div className="width-limiter">
+              <Header />
+              <Component {...pageProps} className={poppins.className} />
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </Provider>
+        </Provider>
     </>
   );
 }
