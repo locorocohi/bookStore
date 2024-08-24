@@ -15,12 +15,8 @@ export const Wrapper = styled.div`
     color: #344966;
   }
 
-  .element > input {
-    /* display: none; */
-  }
-  
-  input:checked {
-
+  .hidden-checkbox {
+    display: none;
   }
 
   .element > label {
