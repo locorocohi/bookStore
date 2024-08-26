@@ -24,4 +24,8 @@ export const Wrapper = styled.div`
   .star.selected {
     background-image: url('${star.src}');
   }
+
+  .star:hover {
+    background-image: url('${star.src}');
+  }
 `;

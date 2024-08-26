@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Wrapper } from './styles';
 
-const Rating = () => {
+const Rating: React.FC = () => {
   const stars = Array(5).fill(0);
   const [currItem, setCurrItem] = useState();
 
@@ -10,7 +10,8 @@ const Rating = () => {
 
       {stars.map((item, index) => {
         return (
-            <div key={index}
+            <div
+              key={index}
               className={index <= currItem ? 'star selected' : 'star'}
               onClick={() => setCurrItem(index)}
             />
