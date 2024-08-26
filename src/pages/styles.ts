@@ -67,4 +67,15 @@ export const Catalog = styled.section`
     position: absolute;
     inset: 0;
   }
+
+  .main.title {
+    color: #0D1821;
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
 `;

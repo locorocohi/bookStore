@@ -1,4 +1,4 @@
-import { genres } from '@/constants';
+import { genres, sortOptions } from '@/constants';
 
 import { Wrapper } from './styles';
 import MultiSelector from './MultiSelector/MultiSelector';
@@ -11,7 +11,7 @@ const FilterToolbar = () => {
 
      <MultiSelector filters={genres} />
      <Slider />
-     <Selector />
+     <Selector options={sortOptions} />
 
     </Wrapper>
   );

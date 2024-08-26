@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
     height: 48px;
     padding: 10px 8px 10px 15px;
 
-    margin-bottom: 16px;
     cursor: pointer;
   }
 
@@ -31,6 +30,10 @@ export const Wrapper = styled.div`
     line-height: 28px;
     letter-spacing: 0.75px;
     color: #344966;
+  }
+
+  .secondary .dropdown-title {
+    color: #0D1821;
   }
   
   .arrow {
@@ -50,6 +53,7 @@ export const Wrapper = styled.div`
     max-width: 305px;
     width: 100%;
     padding: 15px;
+    margin-top: 16px;
     cursor: auto;
 
     background-color: #F0F4EF;
