@@ -6,6 +6,7 @@ import castlePic from '@/images/castle.svg';
 import fairy from '@/images/fairy.svg';
 
 import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
+import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
 import { Catalog } from './styles';
@@ -13,7 +14,7 @@ import { Catalog } from './styles';
 const Main = () => {
   return (
     <Catalog>
-      <Banner>
+      {/* <Banner>
         <>
         <div className="content">
           <h2 className="title">Build your library with us</h2>
@@ -27,11 +28,13 @@ const Main = () => {
           <Image className="books-picture" src={booksPic} alt = "Books" />
         </div>
         </>
-      </Banner>
+      </Banner> */}
 
-      <FilterToolbar />
+      {/* <FilterToolbar /> */}
 
-      <Banner>
+      <BooksSection />
+
+      {/* <Banner>
         <>
         <Image className="castle-picture" src={castlePic} alt = "Castle" />
 
@@ -45,7 +48,7 @@ const Main = () => {
           <Image className="fairy-picture" src={fairy} alt = "Fairy" />
         </div>
         </>
-      </Banner>
+      </Banner> */}
     </Catalog>
   );
 };
