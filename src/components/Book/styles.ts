@@ -20,8 +20,6 @@ export const Wrapper = styled.div`
   
   .book-name,
   .author{
-    font-size: 20px;
-    line-height: 30px;
-    font-weight: 400;
+    ${(p) => p.theme.fonts.main_content};
   }
 `;

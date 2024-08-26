@@ -48,9 +48,7 @@ export const Wrapper = styled.div`
   .thumb-value {
     color: ${(p) => p.theme.colors.dark_blue};
 
-    font-weight: 400;
-    font-size: 16px;
+    ${(p) => p.theme.fonts.filters};
     line-height: 34px;
-    letter-spacing: 0.75px;
   }
 `;

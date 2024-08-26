@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 export const genres = ['Fiction', 'Non-fiction', 'Science', 'Fasion', 'History', 'Horror'];
 
 export const sortOptions = ['Price', 'Name', 'Author name', 'Rating', 'Date of issue'];
@@ -15,6 +17,36 @@ const colors = {
 
 const fonts = {
 
+  title: css`
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 60px;
+  `,
+
+  main_content: css`
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 30px;
+  `,
+
+  filters: css`
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0.75px;
+  `,
+
+  button: css`
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  `,
+
+  form_hint: css`
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.75px;`,
 };
 
 export const theme = {

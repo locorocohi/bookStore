@@ -14,17 +14,13 @@ export const Catalog = styled.section`
   }
 
   .title {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 60px;
+    ${(p) => p.theme.fonts.title};
     text-align: left;
     padding-bottom: 10px;
   }
 
   .text {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 30px;
+    ${(p) => p.theme.fonts.main_content};
     color: ${(p) => p.theme.colors.dark_blue};
   }
 

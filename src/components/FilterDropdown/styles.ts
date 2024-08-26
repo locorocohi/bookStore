@@ -25,10 +25,8 @@ export const Wrapper = styled.div`
   }
 
   .dropdown-title {
+    ${(p) => p.theme.fonts.filters};
     font-size: 18px;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: 0.75px;
     color: ${(p) => p.theme.colors.dark_blue};
   }
 

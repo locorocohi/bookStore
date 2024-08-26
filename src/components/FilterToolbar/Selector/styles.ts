@@ -9,10 +9,7 @@ export const Wrapper = styled.div`
   }
 
   .option {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 28px;
-    letter-spacing: 0.75px;
+    ${(p) => p.theme.fonts.filters};
     color: ${(p) => p.theme.colors.dark_grey};
 
     cursor: pointer;

@@ -17,10 +17,7 @@ export const FormWrapper = styled.div`
     }
   
     p {
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 24px;
-      letter-spacing: 0.75px;
+      ${(p) => p.theme.fonts.form_hint};
       text-align: left;
       color: rgba(52, 73, 102, 1);
       padding-top: 9px;
@@ -28,9 +25,7 @@ export const FormWrapper = styled.div`
     }
   
     h1 {
-      font-size: 40px;
-      font-weight: 700;
-      line-height: 60px;
+      ${(p) => p.theme.fonts.title};
       text-align: left;
     }
     }

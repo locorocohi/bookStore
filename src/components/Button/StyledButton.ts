@@ -7,9 +7,7 @@ export const StyledButton = styled.button`
   border-radius: 16px;
   padding: 10px 50px;
 
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
+  ${(p) => p.theme.fonts.button};
 
   &:hover{
     background-color: ${(p) => p.theme.colors.dark};

@@ -9,8 +9,7 @@ export const Wrapper = styled.div`
 
   .rating {
     color: ${(p) => p.theme.colors.dark_grey};
-    font-size: 16px;
-    line-height: 24px;
+    ${(p) => p.theme.fonts.button};
     font-weight: 400;
   }
 
