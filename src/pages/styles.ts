@@ -25,7 +25,7 @@ export const Catalog = styled.section`
     font-size: 20px;
     font-weight: 400;
     line-height: 30px;
-    color: #344966;
+    color: ${(p) => p.theme.colors.dark_blue};
   }
 
   .content .button {
@@ -69,7 +69,7 @@ export const Catalog = styled.section`
   }
 
   .main.title {
-    color: #0D1821;
+    color: ${(p) => p.theme.colors.dark};
   }
 
   .toolbar {

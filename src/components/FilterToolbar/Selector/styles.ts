@@ -13,12 +13,12 @@ export const Wrapper = styled.div`
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 0.75px;
-    color: #B9BAC3;
+    color: ${(p) => p.theme.colors.dark_grey};
 
     cursor: pointer;
   }
 
   .option.selected {
-    color: #344966;
+    color: ${(p) => p.theme.colors.dark_blue};
   }
 `;

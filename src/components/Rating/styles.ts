@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   margin-bottom: 30px;
 
   .rating {
-    color: #B9BAC3;
+    color: ${(p) => p.theme.colors.dark_grey};
     font-size: 16px;
     line-height: 24px;
     font-weight: 400;

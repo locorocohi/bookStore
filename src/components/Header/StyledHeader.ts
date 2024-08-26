@@ -26,7 +26,7 @@ export const HeaderWrap = styled.header`
 
   .login-button {
     text-decoration:none;
-    background-color: #344966;
+    background-color: ${(p) => p.theme.colors.dark_blue};
     color: white;
     border: none;
     border-radius: 16px;
@@ -40,7 +40,7 @@ export const HeaderWrap = styled.header`
   }
 
   .login-button:hover {
-    background-color: #0D1821;
+    background-color: ${(p) => p.theme.colors.dark};
   }
 
   .login-button:focus {
@@ -52,6 +52,6 @@ export const HeaderWrap = styled.header`
   }
 
   .catalog:visited {
-    color: #0D1821;
+    color: ${(p) => p.theme.colors.dark};
   }
 `;

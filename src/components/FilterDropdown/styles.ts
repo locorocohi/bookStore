@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
 
   .primary {
-    background-color: #F0F4EF;
+    background-color: ${(p) => p.theme.colors.light};
     border-radius: 16px;
   }
 
@@ -29,11 +29,11 @@ export const Wrapper = styled.div`
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 0.75px;
-    color: #344966;
+    color: ${(p) => p.theme.colors.dark_blue};
   }
 
   .secondary .dropdown-title {
-    color: #0D1821;
+    color: ${(p) => p.theme.colors.dark};
   }
   
   .arrow {
@@ -56,7 +56,7 @@ export const Wrapper = styled.div`
     margin-top: 16px;
     cursor: auto;
 
-    background-color: #F0F4EF;
+    background-color: ${(p) => p.theme.colors.light};
     border-radius: 16px;
   }
 
@@ -69,7 +69,7 @@ export const Wrapper = styled.div`
     height: 0; 
     border-left: 15px solid transparent;
     border-right: 15px solid transparent; 
-    border-bottom: 15px solid #F0F4EF;
+    border-bottom: 15px solid ${(p) => p.theme.colors.light};
   }
 
 `;

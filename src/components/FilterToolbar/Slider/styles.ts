@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 12px;
     border-radius: 40px;
-    background-color: #D6D8E7;
+    background-color: ${(p) => p.theme.colors.light_grey};
   }
 
   .track.track-1 {
     height: 12px;
-    background-color: #BFCC94;
+    background-color: ${(p) => p.theme.colors.green};
     border-radius: 999px;
   }
 
@@ -20,15 +20,15 @@ export const Wrapper = styled.div`
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 2px #BFCC94 solid;
-    background-color: #F7F7FC;
+    border: 2px ${(p) => p.theme.colors.green} solid;
+    background-color: ${(p) => p.theme.colors.white};
     top: -9px;
 
     cursor: pointer;
   }
 
   .slider:hover .thumb {
-    border: 2px #8D9F4F solid;
+    border: 2px ${(p) => p.theme.colors.dark_green} solid;
   }
 
   .thumb:focus {
@@ -36,7 +36,7 @@ export const Wrapper = styled.div`
   }
 
   .slider:hover .track-1 {
-    background-color: #8D9F4F;
+    background-color: ${(p) => p.theme.colors.dark_green};
   }
 
   .values {
@@ -46,7 +46,7 @@ export const Wrapper = styled.div`
   }
 
   .thumb-value {
-    color: #344966;
+    color: ${(p) => p.theme.colors.dark_blue};
 
     font-weight: 400;
     font-size: 16px;

@@ -5,7 +5,7 @@ export const Wrapper = styled.div<{$isFilled?: boolean}>`
 position: relative;
 
 .input-row::placeholder{
-  color: #B9BAC3;
+  color: ${(p) => p.theme.colors.dark_grey};
 }
 
 .icon-wrapper {
@@ -17,7 +17,7 @@ position: relative;
 .input-row {
   width: 100%;
   height: 64px;
-  background-color: #F0F4EF;
+  background-color: ${(p) => p.theme.colors.light};
   border: none;
   border-radius: 16px;
   padding-left: 70px;
@@ -38,7 +38,7 @@ img {
 .input-row:active,
 .input-row:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #0D1821;
+  box-shadow: 0 0 0 2px ${(p) => p.theme.colors.dark};
 }
 
 .input-row:active:disabled ,
@@ -49,7 +49,7 @@ img {
 
 .input-row:disabled {
   pointer-events: none;
-  background-color: #F0F4EF;
+  background-color: ${(p) => p.theme.colors.light};
 
   .input-row::placeholder {
     color: #A0A3BD;
@@ -64,7 +64,7 @@ img {
   right: 25px;
   font-size: 26px;
   transform: rotate(45deg);
-  color: #B9BAC3;
+  color: ${(p) => p.theme.colors.dark_grey};
 
   border: none;
   background-color: transparent;  

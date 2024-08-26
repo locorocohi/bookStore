@@ -11,7 +11,7 @@ gap: 27px;
   pointer-events: auto;
   width: 48px;
   height: 48px;
-  background-color: #344966;
+  background-color: ${(p) => p.theme.colors.dark_blue};
   border-radius: 50%;
   display: flex;
   justify-content: center;

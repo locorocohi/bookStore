@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
     font-weight: 400;
     line-height: 28px;
     letter-spacing: 0.75px;
-    color: #344966;
+    color: ${(p) => p.theme.colors.dark_blue};
   }
 
 `;

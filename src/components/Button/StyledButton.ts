@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-  background-color: #344966;
-  color: white;
+  background-color: ${(p) => p.theme.colors.dark_blue};
+  color: ${(p) => p.theme.colors.white};
   border: none;
   border-radius: 16px;
   padding: 10px 50px;
@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
   line-height: 24px;
 
   &:hover{
-    background-color: #0D1821;
+    background-color: ${(p) => p.theme.colors.dark};
   }
 
   &:focus {
