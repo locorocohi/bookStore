@@ -30,9 +30,9 @@ const Main = () => {
         </>
       </Banner> */}
 
-      {/* <FilterToolbar /> */}
+      <FilterToolbar />
 
-      <BooksSection />
+      {/* <BooksSection /> */}
 
       {/* <Banner>
         <>

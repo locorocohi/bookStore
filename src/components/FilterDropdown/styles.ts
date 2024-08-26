@@ -22,6 +22,7 @@ export const Wrapper = styled.div`
     padding: 10px 8px 10px 15px;
 
     margin-bottom: 16px;
+    cursor: pointer;
   }
 
   .dropdown-title {

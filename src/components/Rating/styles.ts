@@ -19,6 +19,8 @@ export const Wrapper = styled.div`
     height: 26px;
     background-image: url('${emptyStar.src}');
     cursor: pointer;
+    border: none;
+    background-color: transparent;
   }
 
   .star.selected {

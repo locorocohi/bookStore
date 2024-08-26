@@ -11,7 +11,7 @@ const FilterToolbar = () => {
 
      <MultiSelector filters={genres} />
      <Slider />
-     {/* <Selector /> */}
+     <Selector />
 
     </Wrapper>
   );

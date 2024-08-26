@@ -3,6 +3,12 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   cursor: pointer;
 
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .element {
     display: flex;
     gap: 10px;
@@ -23,6 +29,7 @@ export const Wrapper = styled.div`
     display: flex;
     gap: 10px;
     align-items: center;
+    width: 100%;
 
     cursor: pointer;
   }

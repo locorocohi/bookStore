@@ -15,13 +15,15 @@ const MultiSelector: React.FC<PropsType> = (props) => {
 
       <FilterDropdown buttonType="primary" title="Genres">
 
-      {props.filters.map((genre, index) => (
+      <ul className="filters">
+        {props.filters.map((genre, index) => (
 
-          <li key={index} className="element">
-            <Checkbox genre={genre} />
-          </li>
+            <li key={index} className="element">
+              <Checkbox genre={genre} />
+            </li>
 
-      ))}
+        ))}
+      </ul>
 
       </FilterDropdown>
 

@@ -3,16 +3,17 @@ import { Wrapper } from './styles';
 
 const Rating: React.FC = () => {
   const stars = Array(5).fill(0);
-  const [currItem, setCurrItem] = useState();
+  const [currItem, setCurrItem] = useState<number | null>(null);
 
   return (
     <Wrapper>
 
-      {stars.map((item, index) => {
+      {stars.map((_, index) => {
+        const isSelected = typeof currItem === 'number' && index <= currItem;
         return (
-            <div
+            <button
               key={index}
-              className={index <= currItem ? 'star selected' : 'star'}
+              className={isSelected ? 'star selected' : 'star'}
               onClick={() => setCurrItem(index)}
             />
         );
