@@ -11,11 +11,11 @@ export const StyledButton = styled.button`
   font-weight: 500;
   line-height: 24px;
 
-  :hover{
+  &:hover{
     background-color: #0D1821;
   }
 
-  :focus {
+  &:focus {
     box-shadow: 0px 0px 0px 8px rgba(185, 186, 195, 0.5);
   }
   

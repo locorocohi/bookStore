@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import disabledCheck from '@/images/Unchecked.svg';
 import activeCheck from '@/images/checked.svg';
+import { Wrapper } from './styles';
 
 type PropsType = {
   genre: string;
@@ -16,7 +17,7 @@ const Checkbox:React.FC<PropsType> = (props) => {
   };
 
   return (
-    <>
+    <Wrapper>
       <input type="checkbox" id={props.genre} onChange={toggleFilter} className="hidden-checkbox" />
       <label htmlFor={props.genre}>
         {isChecked
@@ -25,7 +26,7 @@ const Checkbox:React.FC<PropsType> = (props) => {
         }
         {props.genre}
       </label>
-    </>
+    </Wrapper>
   );
 };
 

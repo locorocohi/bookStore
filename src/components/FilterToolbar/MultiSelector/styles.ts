@@ -21,21 +21,4 @@ export const Wrapper = styled.div`
     color: #344966;
   }
 
-  .hidden-checkbox {
-    display: none;
-  }
-
-  .element > label {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
-
-    cursor: pointer;
-  }
-
-  .checkbox {
-    width: 24px;
-    height: 24px;
-  }
 `;

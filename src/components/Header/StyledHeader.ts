@@ -39,6 +39,14 @@ export const HeaderWrap = styled.header`
     cursor: pointer;
   }
 
+  .login-button:hover {
+    background-color: #0D1821;
+  }
+
+  .login-button:focus {
+    box-shadow: 0px 0px 0px 8px rgba(185, 186, 195, 0.5);
+  }
+
   .catalog {
     text-decoration:none;
   }
