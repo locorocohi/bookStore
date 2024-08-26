@@ -64,6 +64,12 @@ export const Wrapper = styled.div`
     position: absolute;
     top: -10px;
     pointer-events: none;
+
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent; 
+    border-bottom: 15px solid #F0F4EF;
   }
 
 `;

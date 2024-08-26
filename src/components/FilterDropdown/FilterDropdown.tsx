@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 
 import { useOutsideClick } from '@/hooks/useOutsideClick';
-import triangle from '@/images/triangle.svg';
 import arrowPic from '@/images/Forward.svg';
 
 import { Wrapper } from './styles';
@@ -37,7 +36,7 @@ const FilterDropdown: React.FC<PropsType> = (props) => {
 
       { !isOpen && (
         <div className="list">
-          <Image src={triangle} alt="triangle" className="triangle" />
+          <div className="triangle" />
           {props.children}
         </div>)
       }
