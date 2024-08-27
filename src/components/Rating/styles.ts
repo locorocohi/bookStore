@@ -8,9 +8,8 @@ export const Wrapper = styled.div`
   margin-bottom: 30px;
 
   .rating {
-    color: #B9BAC3;
-    font-size: 16px;
-    line-height: 24px;
+    color: ${(p) => p.theme.colors.dark_grey};
+    ${(p) => p.theme.fonts.button};
     font-weight: 400;
   }
 
@@ -19,6 +18,8 @@ export const Wrapper = styled.div`
     height: 26px;
     background-image: url('${emptyStar.src}');
     cursor: pointer;
+    border: none;
+    background-color: transparent;
   }
 
   .star.selected {

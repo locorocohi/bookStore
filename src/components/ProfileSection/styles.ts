@@ -45,9 +45,7 @@ export const Wrapper = styled.section`
   }
 
   .profile-title h3{
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 30px;
+    ${(p) => p.theme.fonts.main_content};
   }
 
   .profile-title-button{
