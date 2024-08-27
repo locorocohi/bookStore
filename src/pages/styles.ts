@@ -14,18 +14,14 @@ export const Catalog = styled.section`
   }
 
   .title {
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 60px;
+    ${(p) => p.theme.fonts.title};
     text-align: left;
     padding-bottom: 10px;
   }
 
   .text {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 30px;
-    color: #344966;
+    ${(p) => p.theme.fonts.main_content};
+    color: ${(p) => p.theme.colors.dark_blue};
   }
 
   .content .button {
@@ -66,5 +62,16 @@ export const Catalog = styled.section`
     overflow: hidden;
     position: absolute;
     inset: 0;
+  }
+
+  .main.title {
+    color: ${(p) => p.theme.colors.dark};
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
   }
 `;

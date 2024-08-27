@@ -26,17 +26,23 @@ export const HeaderWrap = styled.header`
 
   .login-button {
     text-decoration:none;
-    background-color: #344966;
+    background-color: ${(p) => p.theme.colors.dark_blue};
     color: white;
     border: none;
     border-radius: 16px;
     padding: 10px 50px;
 
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
+    ${(p) => p.theme.fonts.button};
 
     cursor: pointer;
+  }
+
+  .login-button:hover {
+    background-color: ${(p) => p.theme.colors.dark};
+  }
+
+  .login-button:focus {
+    box-shadow: 0px 0px 0px 8px rgba(185, 186, 195, 0.5);
   }
 
   .catalog {
@@ -44,6 +50,6 @@ export const HeaderWrap = styled.header`
   }
 
   .catalog:visited {
-    color: #0D1821;
+    color: ${(p) => p.theme.colors.dark};
   }
 `;

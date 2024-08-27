@@ -16,6 +16,5 @@ export const Wrapper = styled.div`
   justify-content: space-between;
 
   border-radius: 16px;
-  /* overflow: hidden; */
-  background-color: #F0F4EF;
+  background-color: ${(p) => p.theme.colors.light};
 `;

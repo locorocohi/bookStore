@@ -14,9 +14,7 @@ color: white;
 width: 100%;
 max-width: 1280px;
 
-font-size: 20px;
-font-weight: 400;
-line-height: 30px;
 text-align: left;
+${(p) => p.theme.fonts.main_content};
 }
 `;
