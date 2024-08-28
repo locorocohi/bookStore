@@ -16,7 +16,6 @@ import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
-import Book from '@/components/Book/Book';
 import { Catalog } from './styles';
 
 type PropsType = {
@@ -56,9 +55,7 @@ const Main: React.FC<PropsType> = (props) => {
         <FilterToolbar />
       </div>
 
-      <BooksSection>
-        {props.data.map((book, idx) => (<Book info={book} key={idx} />))}
-      </BooksSection>
+      <BooksSection />
 
       <Banner>
         <>

@@ -1,16 +1,14 @@
 import { useAppSelector } from '@/store/hooks';
-import { Wrapper } from './styles';
 
-type PropsType = {
-  children: React.ReactNode;
-};
-const BooksSection: React.FC<PropsType> = (props) => {
+import { Wrapper } from './styles';
+import Book from '../Book/Book';
+
+const BooksSection: React.FC = () => {
   const books = useAppSelector((store) => store.book.books);
-  console.log(books);
 
   return (
     <Wrapper>
-      {props.children}
+      { books ? books.map((book, idx) => (<Book info={book} key={idx} />)) : null}
     </Wrapper>
   );
 };
