@@ -1,17 +1,20 @@
-import { genres, sortOptions } from '@/constants';
-
 import { Wrapper } from './styles';
 import MultiSelector from './MultiSelector/MultiSelector';
 import Slider from './Slider/Slider';
 import Selector from './Selector/Selector';
 
-const FilterToolbar = () => {
+type PropsType = {
+  genres: string [];
+  sortOptions: string [];
+};
+
+const FilterToolbar: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
 
-     <MultiSelector filters={genres} />
+     <MultiSelector filters={props.genres} />
      <Slider />
-     <Selector options={sortOptions} />
+     <Selector options={props.sortOptions} />
 
     </Wrapper>
   );

@@ -19,15 +19,19 @@ import Button from '@/components/Button';
 import { Catalog } from './styles';
 
 type PropsType = {
-  data: BookType[];
+  data: {
+    booksArray: BookType[];
+    genres: string [];
+    sortOptions: string [];
+  };
 };
 
 const Main: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
-  const books = props.data;
+  const { booksArray, genres, sortOptions } = props.data;
 
   useEffect(() => {
-    dispatch(setBooks(books));
+    dispatch(setBooks(booksArray));
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -52,7 +56,7 @@ const Main: React.FC<PropsType> = (props) => {
 
       <div className="toolbar">
         <h1 className="main title">Catalog</h1>
-        <FilterToolbar />
+        <FilterToolbar genres={genres} sortOptions={sortOptions} />
       </div>
 
       <BooksSection />
@@ -78,6 +82,7 @@ const Main: React.FC<PropsType> = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const data = await getBooks();
+
   return {
     props: { data },
   };
