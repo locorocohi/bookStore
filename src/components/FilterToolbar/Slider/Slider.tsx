@@ -33,9 +33,10 @@ const Slider = () => {
           onChange={handleSliderChange}
         />
         <div className="values">
-          <div className="thumb-value min">$ {minValue}</div>
-          <div className="thumb-value max">$ {maxValue}</div>
+          <div className="thumb-value min">$ {minValue},00</div>
+          <div className="thumb-value max">$ {maxValue},00</div>
         </div>
+
       </Wrapper>
     </FilterDropdown>
   );

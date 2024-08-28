@@ -1,3 +1,4 @@
+import type { GetServerSideProps } from 'next';
 import Image from 'next/image';
 
 import girlWithBooks from '@/images/girlWithBook.svg';
@@ -9,9 +10,16 @@ import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
+import { getBooks } from '@/api/books';
+import type { BookType } from '@/models/book';
+import Book from '@/components/Book/Book';
 import { Catalog } from './styles';
 
-const Main = () => {
+type PropsType = {
+  data: BookType[];
+};
+
+const Main: React.FC<PropsType> = (props) => {
   return (
     <Catalog>
       <Banner>
@@ -35,7 +43,9 @@ const Main = () => {
         <FilterToolbar />
       </div>
 
-      <BooksSection />
+      <BooksSection>
+        {props.data.map((book, idx) => (<Book info={book} key={idx} />))}
+      </BooksSection>
 
       <Banner>
         <>
@@ -54,6 +64,13 @@ const Main = () => {
       </Banner>
     </Catalog>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const data = await getBooks();
+  return {
+    props: { data },
+  };
 };
 
 export default Main;

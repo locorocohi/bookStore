@@ -1,10 +1,13 @@
 import { Wrapper } from './styles';
-import Book from '../Book/Book';
 
-const BooksSection = () => {
+type PropsType = {
+  children: React.ReactNode;
+};
+const BooksSection: React.FC<PropsType> = (props) => {
+  //useAppSelector
   return (
     <Wrapper>
-      <Book />
+      {props.children}
     </Wrapper>
   );
 };

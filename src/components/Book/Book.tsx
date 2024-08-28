@@ -1,21 +1,24 @@
 import Image from 'next/image';
 
-import bookPic from '@/images/bookPic.svg';
-
+import type { BookType } from '@/models/book';
 import { Wrapper } from './styles';
 import Rating from '../Rating/Rating';
 import Button from '../Button';
 
-const Book = () => {
+type PropsType = {
+  info: BookType;
+};
+
+const Book: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
-      <Image src={bookPic} alt="bookPic" className="book-cover" />
+      <Image height={448} width={305} src={props.info.cover} alt="bookPic" className="book-cover" />
       <div>
-        <p className="book-name">The Chronicles of Narnia</p>
-        <p className="author">C. S. Lewis</p>
+        <p className="book-name">{props.info.name}</p>
+        <p className="author">{props.info.author}</p>
       </div>
       <Rating />
-      <Button>$14.99 USD</Button>
+      <Button>$ {props.info.price} USD</Button>
     </Wrapper>
   );
 };

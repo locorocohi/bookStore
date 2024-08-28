@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   }
 
   .book-name {
-    color: ${(p) => p.theme.colors.dark_blue}
+    color: ${(p) => p.theme.colors.dark_blue};
   }
 
   .author {
@@ -21,5 +21,7 @@ export const Wrapper = styled.div`
   .book-name,
   .author{
     ${(p) => p.theme.fonts.main_content};
+    white-space: nowrap;
+    overflow: hidden;
   }
 `;
