@@ -1,17 +1,21 @@
-import type { GetServerSideProps } from 'next';
 import Image from 'next/image';
+import { useEffect } from 'react';
+import { useAppDispatch } from '@/store/hooks';
+import { setBooks } from '@/store/bookSlice';
+import { getBooks } from '@/api/books';
 
 import girlWithBooks from '@/images/girlWithBook.svg';
 import booksPic from '@/images/twoBooks.svg';
 import castlePic from '@/images/castle.svg';
 import fairy from '@/images/fairy.svg';
 
+import type { GetServerSideProps } from 'next';
+import type { BookType } from '@/models/book';
+
 import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
-import { getBooks } from '@/api/books';
-import type { BookType } from '@/models/book';
 import Book from '@/components/Book/Book';
 import { Catalog } from './styles';
 
@@ -20,6 +24,15 @@ type PropsType = {
 };
 
 const Main: React.FC<PropsType> = (props) => {
+  const dispatch = useAppDispatch();
+  const books = props.data;
+
+  useEffect(() => {
+    dispatch(setBooks(books));
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Catalog>
       <Banner>
