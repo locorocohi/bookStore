@@ -16,6 +16,7 @@ import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
+import Pagination from '@/components/Pagination/Pagination';
 import { Catalog } from './styles';
 
 type PropsType = {
@@ -60,6 +61,7 @@ const Main: React.FC<PropsType> = (props) => {
       </div>
 
       <BooksSection />
+      <Pagination />
 
       <Banner>
         <>

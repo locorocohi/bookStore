@@ -3,8 +3,14 @@ import instance from '@/axios/instance';
 
 export const getBooks = async () => {
   try {
-    const req = await instance.get('book/');
-    const { booksArray, genres, sortOptions } = req.data;
+    const response = await instance.get('book/',
+      {
+        params: {
+          order_by: 'asc',
+          test: 'test',
+        },
+      });
+    const { booksArray, genres, sortOptions } = response.data;
     return { booksArray, genres, sortOptions };
   } catch (error) {
     console.log(error);
