@@ -19,7 +19,7 @@ const MultiSelector: React.FC<PropsType> = (props) => {
         {props.filters.map((genre) => (
 
             <li key={genre} className="element">
-              <Checkbox option={genre} />
+              <Checkbox genre={genre} />
             </li>
 
         ))}
