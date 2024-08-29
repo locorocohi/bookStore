@@ -1,15 +1,20 @@
 import type { NextRouter } from 'next/router';
+import type { ParsedUrlQuery } from 'querystring';
 
-type KeysType = 'genre' | 'sortOption' | 'minPrice' | 'maxPrice';
+type KeysType = 'genre' | 'sortOption' | 'minPrice' | 'maxPrice' | 'page';
 
-const buildQueryString = (
-  router: NextRouter,
-  key: KeysType,
-  option: string,
-  isChecked?: boolean,
-) => {
+type OptionsType = {
+  query: ParsedUrlQuery;
+  key: KeysType;
+  option: string;
+  isChecked?: boolean;
+};
+
+const createQueryString = (options: OptionsType) => {
+  const { query, key, option, isChecked } = options;
+
   if (key === 'genre') {
-    const prevQueryParams = router.query[key] ?? '';
+    const prevQueryParams = query[key] ?? '';
 
     if (Array.isArray(prevQueryParams)) {
       return '';
@@ -17,7 +22,7 @@ const buildQueryString = (
 
     const arrayQueryParams = prevQueryParams.length ? prevQueryParams.split(',') : [];
 
-    if (!isChecked && typeof isChecked === 'boolean') {
+    if (!isChecked) {
       arrayQueryParams.push(option);
       const newQueryString = arrayQueryParams.join();
       return newQueryString;
@@ -40,4 +45,4 @@ const replaceURLQueryParams = (router: NextRouter, key: string, queryString: str
   });
 };
 
-export { buildQueryString, replaceURLQueryParams };
+export { createQueryString, replaceURLQueryParams };

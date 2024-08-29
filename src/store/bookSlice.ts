@@ -3,7 +3,7 @@ import type { BookType } from '@/models/book';
 import { createSlice } from '@reduxjs/toolkit';
 
 type BooksStateType = {
-  books: BookType [] | null;
+  books: BookType [] | [];
 };
 
 const initialState: BooksStateType = { books: [] };

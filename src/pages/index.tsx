@@ -16,7 +16,6 @@ import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
-import Pagination from '@/components/Pagination/Pagination';
 import { Catalog } from './styles';
 
 type PropsType = {
@@ -24,12 +23,13 @@ type PropsType = {
     booksArray: BookType[];
     genres: string [];
     sortOptions: string [];
+    pageCount: number;
   };
 };
 
 const Main: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
-  const { booksArray, genres, sortOptions } = props.data;
+  const { booksArray, genres, sortOptions, pageCount } = props.data;
 
   useEffect(() => {
     dispatch(setBooks(booksArray));
@@ -60,8 +60,7 @@ const Main: React.FC<PropsType> = (props) => {
         <FilterToolbar genres={genres} sortOptions={sortOptions} />
       </div>
 
-      <BooksSection />
-      <Pagination />
+      <BooksSection pageCount={pageCount} />
 
       <Banner>
         <>
@@ -84,7 +83,6 @@ const Main: React.FC<PropsType> = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const data = await getBooks(ctx.query);
-
   return {
     props: { data },
   };

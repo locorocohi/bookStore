@@ -53,3 +53,5 @@ export const theme = {
   colors,
   fonts,
 };
+
+export const itemsPerPage = 12;

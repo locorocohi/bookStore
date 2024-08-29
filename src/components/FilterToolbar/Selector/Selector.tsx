@@ -2,7 +2,7 @@ import type { MouseEventHandler } from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { buildQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
+import { createQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
 
 import FilterDropdown from '@/components/FilterDropdown/FilterDropdown';
 import { Wrapper } from './styles';
@@ -20,7 +20,11 @@ const Selector: React.FC<PropsType> = (props) => {
     const currValue = String(currOption.textContent).toLowerCase();
     setSelectedOption(currValue);
 
-    const queryString = buildQueryString(router, 'sortOption', currValue);
+    const queryString = createQueryString({
+      query: router.query,
+      key: 'sortOption',
+      option: currValue,
+    });
     replaceURLQueryParams(router, 'sortOption', queryString);
   };
 

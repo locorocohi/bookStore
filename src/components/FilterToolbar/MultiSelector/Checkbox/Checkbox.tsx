@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { buildQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
+import { createQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
 
 import disabledCheck from '@/images/Unchecked.svg';
 import activeCheck from '@/images/checked.svg';
@@ -27,7 +27,12 @@ const Checkbox:React.FC<PropsType> = (props) => {
 
   const toggleFilter = () => {
     setChecked(!isChecked);
-    const queryString = buildQueryString(router, 'genre', props.genre, isChecked);
+    const queryString = createQueryString({
+      query: router.query,
+      key: 'genre',
+      option: props.genre,
+      isChecked,
+    });
     replaceURLQueryParams(router, 'genre', queryString);
   };
 
