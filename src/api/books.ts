@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 import instance from '@/axios/instance';
+import type { ParsedUrlQuery } from 'querystring';
 
-export const getBooks = async () => {
+export const getBooks = async (query: ParsedUrlQuery) => {
   try {
     const response = await instance.get('book/',
       {
         params: {
-          order_by: 'asc',
-          test: 'test',
+          ...query,
         },
       });
     const { booksArray, genres, sortOptions } = response.data;

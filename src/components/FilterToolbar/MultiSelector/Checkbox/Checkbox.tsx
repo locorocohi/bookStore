@@ -22,13 +22,13 @@ const Checkbox:React.FC<PropsType> = (props) => {
 
   const [isChecked, setChecked] = useState(getInitState({
     genre: props.genre,
-    genres: router.query.genres ?? '',
+    genres: router.query.genre ?? '',
   }));
 
   const toggleFilter = () => {
     setChecked(!isChecked);
-    const queryString = buildQueryString(router, 'genres', props.genre, isChecked);
-    replaceURLQueryParams(router, 'genres', queryString);
+    const queryString = buildQueryString(router, 'genre', props.genre, isChecked);
+    replaceURLQueryParams(router, 'genre', queryString);
   };
 
   return (

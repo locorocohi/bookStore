@@ -82,8 +82,8 @@ const Main: React.FC<PropsType> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const data = await getBooks();
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const data = await getBooks(ctx.query);
 
   return {
     props: { data },

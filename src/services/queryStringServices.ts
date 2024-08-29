@@ -1,13 +1,20 @@
 import type { NextRouter } from 'next/router';
 
+type KeysType = 'genre' | 'sortOption' | 'minPrice' | 'maxPrice';
+
 const buildQueryString = (
   router: NextRouter,
-  key: string,
+  key: KeysType,
   option: string,
   isChecked?: boolean,
 ) => {
-  if (key === 'genres') {
-    const prevQueryParams = router.query[key] as string ?? '';
+  if (key === 'genre') {
+    const prevQueryParams = router.query[key] ?? '';
+
+    if (Array.isArray(prevQueryParams)) {
+      return '';
+    }
+
     const arrayQueryParams = prevQueryParams.length ? prevQueryParams.split(',') : [];
 
     if (!isChecked && typeof isChecked === 'boolean') {

@@ -53,6 +53,7 @@ export const Wrapper = styled.div`
     padding: 15px;
     margin-top: 16px;
     cursor: auto;
+    z-index: 1000;
 
     background-color: ${(p) => p.theme.colors.light};
     border-radius: 16px;
