@@ -1,8 +1,10 @@
 import ReactPaginate from 'react-paginate';
-import { useAppSelector } from '@/store/hooks';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { createQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
+import { getFilteredBooks } from '@/store/thunks';
 
 import { Wrapper } from './styles';
 import Book from '../Book/Book';
@@ -14,6 +16,7 @@ type PropsType = {
 
 const BooksSection: React.FC<PropsType> = (props) => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const books = useAppSelector((store) => store.book.books);
 
@@ -27,6 +30,10 @@ const BooksSection: React.FC<PropsType> = (props) => {
     });
     replaceURLQueryParams(router, 'page', newQueryStr);
   };
+
+  useEffect(() => {
+    dispatch(getFilteredBooks(router.query));
+  }, [dispatch, router.query]);
 
   return (
     <Wrapper>

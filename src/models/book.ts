@@ -6,4 +6,5 @@ export type BookType = {
   price: string;
   name: string;
   author: string;
+  available: boolean;
 };
