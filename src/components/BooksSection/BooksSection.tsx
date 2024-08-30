@@ -30,19 +30,26 @@ const BooksSection: React.FC<PropsType> = (props) => {
 
   return (
     <Wrapper>
-      { books.length
-        ? books.map((book, idx) => (<Book info={book} key={idx} />))
-        : null
-      }
+      <div className="books">
+        { books.length
+          ? books.map((book, idx) => (<Book info={book} key={idx} />))
+          : null
+        }
+      </div>
 
       <ReactPaginate
         breakLabel="..."
-        nextLabel="next >"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={props.pageCount}
-        previousLabel="< previous"
+        nextLabel=""
+        previousLabel=""
         renderOnZeroPageCount={null}
+        className="pages-container"
+        pageLinkClassName="page-link"
+        previousLinkClassName="previous-link"
+        nextLinkClassName="next-link"
+        pageLabelBuilder={() => (<div className="page" />) }
       />
 
     </Wrapper>

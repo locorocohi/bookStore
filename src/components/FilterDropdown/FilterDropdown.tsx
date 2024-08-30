@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import arrowPic from '@/images/Forward.svg';
+import blackForward from '@/images/blackForward.svg';
 
 import { Wrapper } from './styles';
 
@@ -29,7 +30,7 @@ const FilterDropdown: React.FC<PropsType> = (props) => {
       >
         <span className="dropdown-title">{props.title}</span>
         <div className={`arrow ${isOpen ? 'rotate' : ''}`}>
-          <Image src={arrowPic} alt="Arrow" />
+          { props.buttonType === 'primary' ? <Image src={arrowPic} alt="Arrow" /> : <Image src={blackForward} alt="Arrow" />}
         </div>
 
       </button>

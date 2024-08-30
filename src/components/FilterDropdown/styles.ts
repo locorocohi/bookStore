@@ -11,6 +11,14 @@ export const Wrapper = styled.div`
     background-color: transparent;
   }
 
+  .secondary .arrow {
+    transform: rotate(90deg);
+  }
+
+  .secondary .arrow.rotate {
+    transform: rotate(0deg);
+  }
+
   .selected-row {
     display: flex;
     align-items: center;
