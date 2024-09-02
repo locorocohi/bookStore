@@ -60,29 +60,29 @@ const ProfileSection = () => {
           </div>
           { isChanging
             ? <ChangeForm toggleInfoForm={toggleInfoForm} />
-            : (<>
-              <Input
-                value={user?.name}
-                signature="Your name"
-                readOnly
-                $isFilled
-              >
-                <Image src={profilePic} alt="profile"
-                  width={24} height={24}
-                />
-              </Input>
+            : (<div className="info-wrapper">
+                 <Input
+                   value={user?.name}
+                   signature="Your name"
+                   readOnly
+                   $isFilled
+                 >
+                   <Image src={profilePic} alt="profile"
+                     width={24} height={24}
+                   />
+                 </Input>
 
-              <Input
-                value={user?.email}
-                signature="Your email"
-                readOnly
-                $isFilled
-              >
-                <Image src={emailIcon} alt="email"
-                  width={24} height={24}
-                />
-              </Input>
-               </>)}
+                 <Input
+                   value={user?.email}
+                   signature="Your email"
+                   readOnly
+                   $isFilled
+                 >
+                   <Image src={emailIcon} alt="email"
+                     width={24} height={24}
+                   />
+                 </Input>
+               </div>)}
         </div>
         <div className="profile-password">
           <div className="profile-title">

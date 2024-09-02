@@ -13,7 +13,7 @@ type PropsType = {
 
 const Selector: React.FC<PropsType> = (props) => {
   const router = useRouter();
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState('price');
 
   const handleClick: MouseEventHandler = (event) => {
     const currOption = event.target as HTMLLIElement;

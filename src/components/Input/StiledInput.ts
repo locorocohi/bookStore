@@ -44,7 +44,6 @@ img {
 .input-row:active:disabled ,
 .input-row:focus:disabled  {
   outline: none;
-  box-shadow: none;
 }
 
 .input-row:disabled {

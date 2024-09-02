@@ -75,4 +75,18 @@ export const Wrapper = styled.section`
   .clear {
     display: none;
   }
+
+  .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-wrapper span {
+    color: ${(p) => p.theme.colors.dark_blue};
+  }
+
+  .info-wrapper .input-row:focus {
+    outline: none;
+  }
 `;
