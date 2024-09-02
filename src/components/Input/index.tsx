@@ -13,10 +13,11 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
 const Input: React.FC<IProps> = (props) => {
   const { children, clearInputValue, signature, $isFilled, isError, isDisabled, ...rest } = props;
   const inputStatus = isError ? 'denied' : 'access';
+  const spanStatus = isError ? 'span-denied' : 'span-access';
   return (
     <Wrapper className={$isFilled ? inputStatus : ''} $isFilled={$isFilled}>
       <div className="icon-wrapper">{children}</div>
-      { $isFilled ? <span className="input-span">{signature}</span> : null }
+      { $isFilled ? <span className={`${spanStatus} input-span`}>{signature}</span> : null }
       <input className="input-row" disabled={isDisabled} {...rest} />
       { $isFilled ? <button type="button" className="clear" onClick={clearInputValue}>+</button> : null }
     </Wrapper>

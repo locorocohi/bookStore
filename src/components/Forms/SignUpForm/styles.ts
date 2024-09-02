@@ -4,7 +4,8 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
-
+  width: 100%;
+  
   form {
     display: flex;
     flex-direction: column;
@@ -30,29 +31,33 @@ export const FormWrapper = styled.div`
     }
     }
 
-.access {
-  .input-row {
-    box-shadow: 0 0 0 2px #00BA88;
+  .access {
+    .input-row {
+      outline: 2px solid #00BA88;
+      outline-offset:-2px;
+    }
+    .clear {
+      color: #00BA88;
+    }
   }
-  .clear {
-    color: #00BA88;
-  }
-  .hint {
-    color: #00BA88;
-    cursor: inherit
-  }
-}
 
-.denied {
-  .input-row {
-    box-shadow: 0 0 0 2px #ED2E7E;
+  .access + .hint {
+      color: #00966D;
+      cursor: inherit
+    }
+
+  .denied {
+    .input-row {
+      outline: 2px solid #ED2E7E;
+      outline-offset:-2px;
+    }
+    .clear {
+      color: #ED2E7E;
+    }
   }
-  .clear {
-    color: #ED2E7E;
-  }
-  .hint {
-    color: #ED2E7E;
-    cursor: inherit
-  }
-}
+
+  .denied + .hint {
+      color: #C30052;
+      cursor: inherit
+    }
 `;

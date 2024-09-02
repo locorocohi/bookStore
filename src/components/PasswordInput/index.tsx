@@ -10,13 +10,13 @@ import { Wrapper } from './styles';
 
 const PasswordInput: React.FC<InputProps> = (props) => {
   const [isHide, setHide] = useState(false);
-
+  const { isError, $isFilled } = props;
   const toggleInput = () => {
     setHide(!isHide);
   };
-
+  const inputStatus = isError ? 'denied' : 'access';
   return (
-    <Wrapper>
+    <Wrapper className={$isFilled ? inputStatus : ''}>
       <PrimoryInput {...props} type={isHide ? 'text' : 'password'}>
         <button type="button" onClick={toggleInput}>
           {isHide
