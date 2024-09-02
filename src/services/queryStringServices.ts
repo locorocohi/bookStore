@@ -38,6 +38,7 @@ const replaceURLQueryParams = (router: NextRouter, key: string, queryString: str
   router.push({
     query: {
       ...router.query,
+      page: '1',
       [key]: queryString,
     },
   }, '', {

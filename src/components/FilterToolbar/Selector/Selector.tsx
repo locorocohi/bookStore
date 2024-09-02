@@ -25,7 +25,7 @@ const Selector: React.FC<PropsType> = (props) => {
       key: 'sortOption',
       option: currValue,
     });
-    replaceURLQueryParams(router, 'sortOption', queryString);
+    replaceURLQueryParams(router, 'sort', queryString);
   };
 
   return (

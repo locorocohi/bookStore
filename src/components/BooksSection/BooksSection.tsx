@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { createQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
 import { getFilteredBooks } from '@/store/thunks';
 
 import { Wrapper } from './styles';
@@ -17,18 +16,18 @@ type PropsType = {
 const BooksSection: React.FC<PropsType> = (props) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-
   const books = useAppSelector((store) => store.book.books);
 
   const handlePageClick: PageHandlerType = (event) => {
     const pageNumber = event.selected;
-
-    const newQueryStr = createQueryString({
-      query: router.query,
-      key: 'page',
-      option: pageNumber.toString(),
+    router.push({
+      query: {
+        ...router.query,
+        page: (pageNumber + 1).toString(),
+      },
+    }, '', {
+      scroll: false,
     });
-    replaceURLQueryParams(router, 'page', newQueryStr);
   };
 
   useEffect(() => {
@@ -36,7 +35,9 @@ const BooksSection: React.FC<PropsType> = (props) => {
   }, [dispatch, router.query]);
 
   return (
-    <Wrapper>
+    <Wrapper
+      $count={books.length}
+    >
       <div className="books">
         { books.length
           ? books.map((book, idx) => (<Book info={book} key={idx} />))
