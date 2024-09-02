@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { Wrapper } from './styles';
 
-const Rating: React.FC = () => {
+type PropsType = {
+  rating: string | number;
+};
+
+const Rating: React.FC<PropsType> = (props) => {
   const stars = Array(5).fill(0);
-  const [currItem, setCurrItem] = useState<number | null>(null);
+  const [currItem, setCurrItem] = useState(props.rating);
 
   return (
     <Wrapper>
 
       {stars.map((_, index) => {
-        const isSelected = typeof currItem === 'number' && index <= currItem;
+        const isSelected = index <= Number(currItem);
         return (
             <button
               key={index}
@@ -20,7 +24,7 @@ const Rating: React.FC = () => {
       })
       }
 
-      <p className="rating">5.0</p>
+      <p className="rating">{(Number(currItem) + 1).toFixed(1)}</p>
 
     </Wrapper>
   );

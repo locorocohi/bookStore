@@ -17,7 +17,7 @@ const Book: React.FC<PropsType> = (props) => {
         <p className="book-name">{props.info.name}</p>
         <p className="author">{props.info.author}</p>
       </div>
-      <Rating />
+      <Rating rating={props.info.rating} />
       <Button>$ {props.info.price} USD</Button>
     </Wrapper>
   );
