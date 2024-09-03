@@ -27,12 +27,13 @@ const GlobalStyles = createGlobalStyle<{font: string}>`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: calc(100vh - 344px);
   }
 
   .width-limiter {
     width: 100%;
     max-width: 1440px;
-    height: 100%;
+    min-height: 100%
   }
   `;
 

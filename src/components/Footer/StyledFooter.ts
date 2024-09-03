@@ -6,6 +6,7 @@ export const StyledFooter = styled.footer`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-self: end;
 
   .wrapper {
     display: flex;

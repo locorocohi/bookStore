@@ -1,9 +1,10 @@
 import type { GetServerSideProps } from 'next';
 
+import { getBookById } from '@/api/books';
 import type { BookType } from '@/models/book';
 
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
-import { getBookById } from '@/api/books';
+import Comments from '@/components/Comments/CommentsSection';
 import { Wrapper } from './styles';
 
 type PropsType = {
@@ -13,6 +14,7 @@ const ProductPage = (props: PropsType) => {
   return (
     <Wrapper>
       <ProductInfo book={props.data} />
+      <Comments />
     </Wrapper>
   );
 };

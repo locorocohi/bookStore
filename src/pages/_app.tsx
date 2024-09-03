@@ -20,9 +20,9 @@ export default function App({ Component, pageProps }: AppProps) {
               <div className="width-limiter">
                 <Header />
                 <Component {...pageProps} className={poppins.className} />
+                <ToastContainer />
               </div>
               <Footer />
-              <ToastContainer />
             </div>
           </ThemeProvider>
         </Provider>
