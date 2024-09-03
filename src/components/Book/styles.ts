@@ -18,6 +18,10 @@ export const Wrapper = styled.div`
     margin-bottom: 20px;
   }
   
+  .product-link {
+    text-decoration: none;
+  }
+
   .book-name,
   .author{
     ${(p) => p.theme.fonts.main_content};
