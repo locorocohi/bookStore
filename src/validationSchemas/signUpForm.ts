@@ -9,7 +9,7 @@ export const signUpSchema = yup.object({
     .required('Password is required')
     .min(4, 'Password is too short - should be minimum 4 chars'),
 
-  repeatedPassword: yup.string()
+  secondPassword: yup.string()
     .required('You must repeat your password')
     .oneOf([yup.ref('password')], 'Password mismatch'),
 });

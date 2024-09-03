@@ -15,7 +15,9 @@ import { FormWrapper } from './styles';
 
 const SignUpForm: React.FC = () => {
   const router = useRouter();
-  const onSubmit = async ({ email, password }:{email: string; password:string }) => {
+
+  const onSubmit = async (options: {email: string; password:string ; secondPassword: string}) => {
+    const { email, password } = options;
     await saveNewUser({ email, password });
     router.push(new URL(`http://${config.HOST}:${config.LOCAL_PORT}/profile`));
   };
@@ -87,7 +89,7 @@ const SignUpForm: React.FC = () => {
           />
           <p className="hint">{repeatedPassText}</p>
         </div>
-        <Button type="submit" className="button">Log In</Button>
+        <Button type="submit" className="button">Sign Up</Button>
       </form>
     </FormWrapper>
   );

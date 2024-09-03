@@ -7,6 +7,8 @@ import Footer from '@/components/Footer/Footer';
 import GlobalStyles from '@/styles/globalStyles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from '@/constants';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -21,8 +23,23 @@ export default function App({ Component, pageProps }: AppProps) {
               </div>
               <Footer />
             </div>
+            <ToastContainer />
           </ThemeProvider>
         </Provider>
     </>
   );
 }
+
+const erroredToast = (message: string) => {
+  toast.error(message, {
+    position: 'top-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'light',
+    transition: Bounce,
+  });
+};

@@ -1,17 +1,18 @@
-import type { FormikHelpers } from 'formik';
 import { useFormik } from 'formik';
 
+type ValuesType = {
+  name?: string;
+  email?: string;
+  password?: string;
+  secondPassword?: string;
+  thirdPassword?: string;
+};
+
 type OptionsType = {
-  initialValues: {
-    name?: string;
-    email?: string;
-    password?: string;
-    secondPassword?: string;
-    thirdPassword?: string;
-  };
+  initialValues: ValuesType;
   validationSchema?: object;
   validateOnChange?: boolean;
-  onSubmit: (values: OptionsType['initialValues'], formikHelpers: FormikHelpers<OptionsType['initialValues']>) => void | Promise<unknown>;
+  onSubmit: (options: ValuesType) => Promise<void>;
 };
 
 const useCustomFormik = (options: OptionsType) => {

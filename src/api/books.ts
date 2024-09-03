@@ -10,6 +10,7 @@ export const getBooks = async (query: ParsedUrlQuery) => {
           ...query,
         },
       });
+
     const { booksArray, genres, sortOptions, pageCount } = response.data;
     return { booksArray, genres, sortOptions, pageCount };
   } catch (error) {
