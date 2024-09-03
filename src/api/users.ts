@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import instance from '@/axios/instance';
+import { erroredToast } from '@/toasts/errorToast';
 import { setCookie } from 'cookies-next';
 
 export const saveNewUser = async (options: {email: string; password: string}) => {
@@ -9,7 +10,7 @@ export const saveNewUser = async (options: {email: string; password: string}) =>
     setCookie('accessToken', accessToken);
     return userData;
   } catch (error) {
-    console.log(error);
+    erroredToast(error.message);
   }
 };
 
@@ -18,7 +19,7 @@ export const getMe = async () => {
     const user = await instance.get('user/me');
     return user.data;
   } catch (error) {
-    console.log(error);
+    erroredToast(error.message);
   }
 };
 
@@ -28,7 +29,7 @@ export const logIn = async (options: {email: string; password: string}) => {
     const { accessToken } = user.data;
     setCookie('accessToken', accessToken);
   } catch (error) {
-    console.log(error);
+    erroredToast(error.message);
   }
 };
 
@@ -37,7 +38,7 @@ export const saveNewAvatar = async (options: {encodedImage:string; fileType:stri
     const user = await instance.patch('user/avatar', options);
     return user.data;
   } catch (error) {
-    console.log(error);
+    erroredToast(error.message);
   }
 };
 
@@ -46,7 +47,7 @@ export const changeInfo = async (options: { email: string; name:string }) => {
     const user = await instance.patch('user/changeinfo', options);
     return user.data;
   } catch (error) {
-    console.log(error);
+    erroredToast(error.message);
   }
 };
 
@@ -55,6 +56,6 @@ export const changePassword = async (options: {password: string; thirdPassword: 
     const user = await instance.patch('user/changepassword', options);
     return user.data;
   } catch (error: unknown) {
-    console.log(error);
+    erroredToast(error.message);
   }
 };
