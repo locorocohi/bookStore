@@ -17,5 +17,11 @@ export const StyledButton = styled.button`
     box-shadow: 0px 0px 0px 8px rgba(185, 186, 195, 0.5);
   }
   
+  &:disabled {
+    background-color: ${(p) => p.theme.colors.dark_grey};
+    color: ${(p) => p.theme.colors.light};
+    cursor: auto;
+  }
+
   cursor: pointer;
 `;

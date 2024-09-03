@@ -5,13 +5,6 @@ import emptyStar from '@/images/Star(1).svg';
 export const Wrapper = styled.div`
   display: flex;
   gap: 30px;
-  margin-bottom: 30px;
-
-  .rating {
-    color: ${(p) => p.theme.colors.dark_grey};
-    ${(p) => p.theme.fonts.button};
-    font-weight: 400;
-  }
 
   .star {
     width: 26px;

@@ -5,6 +5,18 @@ export const Wrapper = styled.div`
   flex-direction: column;
   max-width: 305px;
 
+  .rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .rating {
+    color: ${(p) => p.theme.colors.dark_grey};
+    ${(p) => p.theme.fonts.button};
+    font-weight: 400;
+  }
+
   .book-cover{
     margin-bottom: 30px;
   }
@@ -27,5 +39,9 @@ export const Wrapper = styled.div`
     ${(p) => p.theme.fonts.main_content};
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  .margin-top {
+    margin-top: 30px;
   }
 `;

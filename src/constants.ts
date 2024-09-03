@@ -38,8 +38,9 @@ const fonts = {
 
   button: css`
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 24px;
+    letter-spacing: 0.75px;
   `,
 
   form_hint: css`

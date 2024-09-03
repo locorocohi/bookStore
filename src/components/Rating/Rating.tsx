@@ -24,8 +24,6 @@ const Rating: React.FC<PropsType> = (props) => {
       })
       }
 
-      <p className="rating">{(Number(currItem) + 1).toFixed(1)}</p>
-
     </Wrapper>
   );
 };

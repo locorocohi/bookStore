@@ -24,8 +24,14 @@ const Book: React.FC<PropsType> = (props) => {
         </Link>
         <p className="author">{props.info.author}</p>
       </div>
-      <Rating rating={props.info.rating} />
-      <Button>$ {props.info.price} USD</Button>
+      <div className="rating-container">
+        <Rating rating={props.info.rating} />
+        <p className="rating">{(Number(props.info.rating) + 1).toFixed(1)}</p>
+      </div>
+
+      <Button className="margin-top" disabled={!props.info.available}>
+        $ {props.info.price} USD
+      </Button>
     </Wrapper>
   );
 };
