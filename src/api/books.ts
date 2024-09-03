@@ -17,3 +17,12 @@ export const getBooks = async (query: ParsedUrlQuery) => {
     console.log(error);
   }
 };
+
+export const getBookById = async (id: string) => {
+  try {
+    const response = await instance.get(`book/product/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

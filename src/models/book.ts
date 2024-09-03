@@ -7,4 +7,5 @@ export type BookType = {
   name: string;
   author: string;
   available: boolean;
+  description: string;
 };

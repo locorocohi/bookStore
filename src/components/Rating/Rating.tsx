@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Wrapper } from './styles';
 
 type PropsType = {
-  rating: string | number;
+  rating?: string | number;
 };
 
 const Rating: React.FC<PropsType> = (props) => {
