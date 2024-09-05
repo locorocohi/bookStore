@@ -1,9 +1,12 @@
+import { useEffect } from 'react';
 import type { GetServerSideProps } from 'next';
+import { useAppDispatch } from '@/store/hooks';
 
+import { setComments } from '@/store/commentSlice';
 import { getBookById } from '@/api/books';
 import type { BookType } from '@/models/book';
-
 import type { CommentType } from '@/components/Comments/Comment/Comment';
+
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
 import Comments from '@/components/Comments/CommentsSection';
 import { Wrapper } from './styles';
@@ -13,10 +16,17 @@ type PropsType = {
 };
 
 const ProductPage = (props: PropsType) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setComments(props.data.findedComments));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Wrapper>
       <ProductInfo product={props.data.findedBook} />
-      <Comments comments={props.data.findedComments} />
+      <Comments />
     </Wrapper>
   );
 };

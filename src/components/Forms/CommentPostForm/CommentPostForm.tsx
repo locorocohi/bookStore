@@ -20,6 +20,7 @@ const CommentPostForm = () => {
     const query = router.query;
     const bookId = Number(query.id);
     await createComment({ text, bookId });
+    setText('');
   };
 
   const handleChangeArea = (event: ChangeEvent<HTMLTextAreaElement>) => {
