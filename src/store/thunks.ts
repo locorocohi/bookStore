@@ -1,4 +1,4 @@
-import { getBookById, getBooks } from '@/api/books';
+import { getBookById, getBooks, updateRating } from '@/api/books';
 import type { CommentType } from '@/components/Comments/Comment/Comment';
 import type { BookType } from '@/models/book';
 import { createAsyncThunk } from '@reduxjs/toolkit';
@@ -17,6 +17,23 @@ export const getFilteredBooks = createAsyncThunk<
     const data = await getBooks(params);
     return data?.booksArray;
   } catch (err) {
+    return thunkAPI.rejectWithValue({ errorMessage: 'ERROR' });
+  }
+});
+
+export const setBookRating = createAsyncThunk<
+  BookType,
+  {rating: number; bookId: number},
+  {
+    rejectValue: {
+      errorMessage: string;
+    };
+  }
+>('books/setBookRating', async (params, thunkAPI) => {
+  try {
+    const data = await updateRating(params);
+    return data;
+  } catch (error) {
     return thunkAPI.rejectWithValue({ errorMessage: 'ERROR' });
   }
 });

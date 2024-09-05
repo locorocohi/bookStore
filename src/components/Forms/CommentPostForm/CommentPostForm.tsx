@@ -1,6 +1,7 @@
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 import { useAppDispatch } from '@/store/hooks';
 import { createComment } from '@/api/comments';
@@ -17,6 +18,7 @@ const CommentPostForm:React.FC = () => {
 
   const handleClick = async () => {
     if (!text) {
+      toast('Comment cannot be empty');
       return;
     }
     validatate(text);

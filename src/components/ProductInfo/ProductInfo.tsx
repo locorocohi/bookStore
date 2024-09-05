@@ -27,7 +27,7 @@ const ProductInfo = (props: PropsType) => {
         <div className="rating-container">
           <div className="star-wrapper">
             <div className="star-pic" />
-            <p className="rating">{(Number(rating) + 1).toFixed(1)}</p>
+            <p className="rating">{Number(rating).toFixed(1)}</p>
           </div>
 
           <Rating />

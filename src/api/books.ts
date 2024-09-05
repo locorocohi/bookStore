@@ -26,3 +26,12 @@ export const getBookById = async (id: string) => {
     console.log(error);
   }
 };
+
+export const updateRating = async (options: {rating: number; bookId: number}) => {
+  try {
+    const response = await instance.patch(`book/product/${options.bookId}`, { rating: options.rating });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

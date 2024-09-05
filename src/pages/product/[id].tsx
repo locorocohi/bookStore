@@ -9,7 +9,7 @@ import type { CommentType } from '@/components/Comments/Comment/Comment';
 
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
 import Comments from '@/components/Comments/CommentsSection';
-import Recomendations from '@/components/Recomendations/Recomendations';
+// import Recomendations from '@/components/Recomendations/Recomendations';
 import { Wrapper } from './styles';
 
 type PropsType = {
@@ -28,10 +28,10 @@ const ProductPage = (props: PropsType) => {
     <Wrapper>
       <ProductInfo product={props.data.findedBook} />
       <Comments />
-      { props.data.recommendedBooks.length > 0
+      {/* { props.data.recommendedBooks.length > 0
         ? <Recomendations books={props.data.recommendedBooks} />
         : null
-      }
+      } */}
     </Wrapper>
   );
 };
