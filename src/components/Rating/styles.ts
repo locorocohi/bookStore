@@ -22,4 +22,9 @@ export const Wrapper = styled.div`
   .star:hover {
     background-image: url('${star.src}');
   }
+
+&.disabled {
+  cursor: auto;
+  pointer-events: none;
+}
 `;

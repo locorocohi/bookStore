@@ -15,6 +15,8 @@ export const Wrapper = styled.div`
     color: ${(p) => p.theme.colors.dark_grey};
     ${(p) => p.theme.fonts.button};
     font-weight: 400;
+    cursor: auto;
+    pointer-events: none;
   }
 
   .book-cover{

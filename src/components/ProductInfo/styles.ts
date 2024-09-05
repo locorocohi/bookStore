@@ -36,6 +36,8 @@ export const Wrapper = styled.div`
     display: flex;
     gap: 13px;
     align-items: center;
+    cursor: auto;
+    pointer-events: none;
   }
 
   .hint {

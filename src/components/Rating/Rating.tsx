@@ -3,6 +3,7 @@ import { Wrapper } from './styles';
 
 type PropsType = {
   rating?: string | number;
+  disabled?: boolean;
 };
 
 const Rating: React.FC<PropsType> = (props) => {
@@ -10,7 +11,7 @@ const Rating: React.FC<PropsType> = (props) => {
   const [currItem, setCurrItem] = useState(props.rating);
 
   return (
-    <Wrapper>
+    <Wrapper className={props.disabled ? 'disabled' : ''}>
 
       {stars.map((_, index) => {
         const isSelected = index <= Number(currItem);

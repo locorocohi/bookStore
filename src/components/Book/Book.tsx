@@ -25,7 +25,7 @@ const Book: React.FC<PropsType> = (props) => {
         <p className="author">{props.info.author}</p>
       </div>
       <div className="rating-container">
-        <Rating rating={props.info.rating} />
+        <Rating rating={props.info.rating} disabled />
         <p className="rating">{(Number(props.info.rating) + 1).toFixed(1)}</p>
       </div>
 
