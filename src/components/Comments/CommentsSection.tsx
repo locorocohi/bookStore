@@ -6,6 +6,7 @@ import { Wrapper } from './styles';
 
 const Comments: React.FC = () => {
   const comments = useAppSelector((state) => state.comment.comments);
+
   return (
     <Wrapper>
       <h2 className="title">Comments</h2>
