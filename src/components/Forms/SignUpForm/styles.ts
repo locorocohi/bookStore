@@ -4,6 +4,7 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
+  max-width: 413px;
   width: 100%;
   
   form {

@@ -10,6 +10,6 @@ img {
 }
 
 .error-message {
-color: red
+  color: red
 }
 `;

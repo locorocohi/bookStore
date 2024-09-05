@@ -8,11 +8,11 @@ import Rating from '../Rating/Rating';
 import Button from '../Button';
 
 type PropsType = {
-  book: BookType;
+  product: BookType;
 };
 
 const ProductInfo = (props: PropsType) => {
-  const { cover, name, author, rating, description, price } = props.book;
+  const { cover, name, author, rating, description, price } = props.product;
   return (
     <Wrapper>
       <Image src={cover} alt="Cover" height={779} width={522} />

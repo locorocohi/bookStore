@@ -27,7 +27,6 @@ const GlobalStyles = createGlobalStyle<{font: string}>`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: calc(100vh - 344px);
   }
 
   .width-limiter {

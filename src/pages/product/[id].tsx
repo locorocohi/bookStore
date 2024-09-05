@@ -7,13 +7,22 @@ import ProductInfo from '@/components/ProductInfo/ProductInfo';
 import Comments from '@/components/Comments/CommentsSection';
 import { Wrapper } from './styles';
 
-type PropsType = {
-  data: BookType;
+type CommentType = {
+  id: number;
+  text: string;
+  creationTime: string;
+  book: number;
+  author: number;
 };
+
+type PropsType = {
+  data: { findedBook: BookType; findedComments: CommentType[] };
+};
+
 const ProductPage = (props: PropsType) => {
   return (
     <Wrapper>
-      <ProductInfo book={props.data} />
+      <ProductInfo product={props.data.findedBook} />
       <Comments />
     </Wrapper>
   );
@@ -22,7 +31,7 @@ const ProductPage = (props: PropsType) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const params = ctx.params as {id: string};
   const data = await getBookById(params.id);
-
+  console.log('!!Comments >> ', data.findedComments);
   return {
     props: { data },
   };

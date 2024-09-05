@@ -32,7 +32,13 @@ export default function Header() {
       </PrimoryInput>
       {user
         ? <Menu />
-        : <Link className="login-button" href={`${path === '/signup' ? 'login' : 'signup'}`}>Log In/ Sign Up</Link>
+        : (<Link className="login-button"
+            href={`${path === '/signup'
+              ? 'http://localhost:3000/login'
+              : 'http://localhost:3000/signup'}`}
+          >
+              Log In/ Sign Up
+           </Link>)
       }
     </HeaderWrap>
   );
