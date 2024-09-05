@@ -3,13 +3,26 @@ import Image from 'next/image';
 
 import putin from '@/images/Putin.jpg';
 
+import type { UserType } from '@/models/user';
 import { Wrapper } from './styles';
 
-const Comment = () => {
+export type CommentType = {
+  id: number;
+  text: string;
+  creationTime: string;
+  author: UserType;
+};
+
+type PropsType = {
+  comment: CommentType;
+};
+
+const Comment:React.FC<PropsType> = (props) => {
+  const { text, creationTime, author } = props.comment;
   return (
     <Wrapper>
       <div className="avatar-wrapper">
-        <Image src={putin} alt="human"
+        <Image src={author.avatar.length > 0 ? author.avatar : putin} alt="human"
           width={60} height={60}
           style={{
             objectFit: 'cover',
@@ -18,9 +31,9 @@ const Comment = () => {
         />
       </div>
       <div className="comment-content">
-        <p className="name">Vladimir</p>
-        <p className="creation-time">Left a comment yesterday</p>
-        <p className="comment-text">Love this so much! This book opened up a new world for me! I advise everyone to get acquainted with the author of this book. He is awesome!</p>
+        <p className="name">{author.name}</p>
+        <p className="creation-time">Left a comment {creationTime}</p>
+        <p className="comment-text">{text}</p>
       </div>
     </Wrapper>
   );

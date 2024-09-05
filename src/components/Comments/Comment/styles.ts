@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   margin-bottom: 10px;
-  max-width: 738px;
-  width: 100%;
   background-color: ${(p) => p.theme.colors.light};
   padding: 30px 30px 25px;
   border-radius: 16px;
