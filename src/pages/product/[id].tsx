@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import type { GetServerSideProps } from 'next';
 import { useAppDispatch } from '@/store/hooks';
 
+import { setBooks } from '@/store/bookSlice';
 import { setComments } from '@/store/commentSlice';
 import { getBookById } from '@/api/books';
 import type { BookType } from '@/models/book';
@@ -18,15 +19,15 @@ type PropsType = {
 
 const ProductPage = (props: PropsType) => {
   const dispatch = useAppDispatch();
-
   useEffect(() => {
+    dispatch(setBooks([props.data.findedBook]));
     dispatch(setComments(props.data.findedComments));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Wrapper>
-      <ProductInfo product={props.data.findedBook} />
+      <ProductInfo />
       <Comments />
       { props.data.recommendedBooks.length > 0
         ? <Recomendations books={props.data.recommendedBooks} />

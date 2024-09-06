@@ -22,7 +22,7 @@ export const getFilteredBooks = createAsyncThunk<
 });
 
 export const setBookRating = createAsyncThunk<
-  BookType,
+  number,
   {rating: number; bookId: number},
   {
     rejectValue: {

@@ -51,8 +51,7 @@ export const booksSlice = createSlice({
 
     builder.addCase(setBookRating.fulfilled,
       (state, action) => {
-        const findedBookIdx = state.books.findIndex((book) => book.id === action.payload.id);
-        state.books[findedBookIdx] = action.payload;
+        state.books[0].rating = action.payload;
       });
     // builder.addCase();
     // builder.addCase();

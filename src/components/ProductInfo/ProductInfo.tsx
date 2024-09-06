@@ -1,18 +1,15 @@
 import Image from 'next/image';
 
-import type { BookType } from '@/models/book';
 import backArrow from '@/images/Back Arrow.svg';
 
+import { useAppSelector } from '@/store/hooks';
 import { Wrapper } from './styles';
 import Rating from '../Rating/Rating';
 import Button from '../Button';
 
-type PropsType = {
-  product: BookType;
-};
-
-const ProductInfo = (props: PropsType) => {
-  const { cover, name, author, rating, description, price } = props.product;
+const ProductInfo = () => {
+  const book = useAppSelector((state) => state.book.books[0]);
+  const { cover, name, author, rating, description, price } = book;
   return (
     <Wrapper>
       <Image src={cover} alt="Cover" height={779} width={522} />

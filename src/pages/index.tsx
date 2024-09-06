@@ -30,9 +30,9 @@ type PropsType = {
 const Main: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
   const { booksArray, genres, sortOptions, pageCount } = props.data;
+
   useEffect(() => {
     dispatch(setBooks(booksArray));
-
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
