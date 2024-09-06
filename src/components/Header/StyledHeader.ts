@@ -16,10 +16,6 @@ export const HeaderWrap = styled.header`
     justify-self: center;
   }
 
-  :nth-child(3) {
-    margin: 0 10px;
-  }
-
   :nth-child(4) {
     justify-self: right;
   }

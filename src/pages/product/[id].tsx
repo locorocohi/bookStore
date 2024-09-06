@@ -19,8 +19,9 @@ type PropsType = {
 
 const ProductPage = (props: PropsType) => {
   const dispatch = useAppDispatch();
+  dispatch(setBooks([props.data.findedBook]));
+
   useEffect(() => {
-    dispatch(setBooks([props.data.findedBook]));
     dispatch(setComments(props.data.findedComments));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
