@@ -9,8 +9,8 @@ const EmptyCartSection = () => {
   return (
     <Wrapper>
       <Image src={books} alt="books" />
-      <div>
-        <h1>Your cart is empty</h1>
+      <div className="content">
+        <h1 className="title">Your cart is empty</h1>
         <p>Add items to cart to make a purchase. Go to the catalog now.</p>
         <Link className="redirect-button" href="/">Go to catalog</Link>
       </div>
