@@ -1,16 +1,14 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import { logInSchema as validationSchema } from '@/validationSchemas/logInForm';
 
 import useCustomFormik from '@/hooks/useCustomFormik';
 import { logIn } from '@/api/users';
 
-import passwordCloseEye from '@/images/hide.svg';
 import emailIcon from '@/images/email.svg';
-import openEye from '@/images/openEye.svg';
 
 import PasswordInput from '@/components/PasswordInput';
-import { useRouter } from 'next/router';
 import { FormWrapper } from '../SignUpForm/styles';
 import Button from '../../Button';
 import Input from '../../Input';
@@ -18,6 +16,7 @@ import { config } from '../../../../config';
 
 const LogInForm: React.FC = () => {
   const router = useRouter();
+
   const onSubmit = async (options: {email: string; password:string }) => {
     const { email, password } = options;
     await logIn({ email, password });
@@ -71,10 +70,7 @@ const LogInForm: React.FC = () => {
             $isFilled={!!formik.values.password}
             isError={!!formik.errors.password?.length}
             signature="Password"
-          >
-            <Image src={passwordCloseEye} alt="eye" priority />
-            <Image src={openEye} alt="view" priority />
-          </PasswordInput>
+           />
           <p className="hint">{passText}</p>
         </div>
         <Button type="submit" className="button">Log In</Button>

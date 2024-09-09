@@ -4,6 +4,7 @@ export const Wrapper = styled.section`
   display: grid;
   padding: 60px 80px;
   grid-template-columns: 1.5fr 2fr 1fr;
+  height: calc(100vh - 344px);
 
   .avatar {
     position: relative;
@@ -45,9 +46,7 @@ export const Wrapper = styled.section`
   }
 
   .profile-title h3{
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 30px;
+    ${(p) => p.theme.fonts.main_content};
   }
 
   .profile-title-button{
@@ -76,5 +75,19 @@ export const Wrapper = styled.section`
 
   .clear {
     display: none;
+  }
+
+  .info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-wrapper span {
+    color: ${(p) => p.theme.colors.dark_blue};
+  }
+
+  .info-wrapper .input-row:focus {
+    outline: none;
   }
 `;

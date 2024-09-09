@@ -1,15 +1,27 @@
 import styled from 'styled-components';
 
 export const StyledButton = styled.button`
-background-color: #344966;
-color: white;
-border: none;
-border-radius: 16px;
-padding: 10px 50px;
+  background-color: ${(p) => p.theme.colors.dark_blue};
+  color: ${(p) => p.theme.colors.white};
+  border: none;
+  border-radius: 16px;
+  padding: 10px 50px;
 
-font-size: 16px;
-font-weight: 500;
-line-height: 24px;
+  ${(p) => p.theme.fonts.button};
 
-cursor: pointer;
+  &:hover{
+    background-color: ${(p) => p.theme.colors.dark};
+  }
+
+  &:focus {
+    box-shadow: 0px 0px 0px 8px rgba(185, 186, 195, 0.5);
+  }
+  
+  &:disabled {
+    background-color: ${(p) => p.theme.colors.dark_grey};
+    color: ${(p) => p.theme.colors.light};
+    cursor: auto;
+  }
+
+  cursor: pointer;
 `;

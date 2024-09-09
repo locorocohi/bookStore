@@ -1,16 +1,41 @@
 import Image from 'next/image';
+import { useEffect } from 'react';
+import { useAppDispatch } from '@/store/hooks';
+import { setBooks } from '@/store/bookSlice';
+import { getBooks } from '@/api/books';
 
 import girlWithBooks from '@/images/girlWithBook.svg';
 import booksPic from '@/images/twoBooks.svg';
 import castlePic from '@/images/castle.svg';
 import fairy from '@/images/fairy.svg';
 
+import type { GetServerSideProps } from 'next';
+import type { BookType } from '@/models/book';
+
 import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
+import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
 import { Catalog } from './styles';
 
-const Main = () => {
+type PropsType = {
+  data: {
+    booksArray: BookType[];
+    genres: string [];
+    sortOptions: string [];
+    pageCount: number;
+  };
+};
+
+const Main: React.FC<PropsType> = (props) => {
+  const dispatch = useAppDispatch();
+  const { booksArray, genres, sortOptions, pageCount } = props.data;
+
+  useEffect(() => {
+    dispatch(setBooks(booksArray));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <Catalog>
       <Banner>
@@ -29,7 +54,12 @@ const Main = () => {
         </>
       </Banner>
 
-      <FilterToolbar />
+      <div className="toolbar">
+        <h1 className="main title">Catalog</h1>
+        <FilterToolbar genres={genres} sortOptions={sortOptions} />
+      </div>
+
+      <BooksSection pageCount={pageCount} />
 
       <Banner>
         <>
@@ -48,6 +78,13 @@ const Main = () => {
       </Banner>
     </Catalog>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const data = await getBooks(ctx.query);
+  return {
+    props: { data },
+  };
 };
 
 export default Main;

@@ -5,7 +5,7 @@ export const Wrapper = styled.div<{$isFilled?: boolean}>`
 position: relative;
 
 .input-row::placeholder{
-  color: #B9BAC3;
+  color: ${(p) => p.theme.colors.dark_grey};
 }
 
 .icon-wrapper {
@@ -17,7 +17,7 @@ position: relative;
 .input-row {
   width: 100%;
   height: 64px;
-  background-color: #F0F4EF;
+  background-color: ${(p) => p.theme.colors.light};
   border: none;
   border-radius: 16px;
   padding-left: 70px;
@@ -37,19 +37,18 @@ img {
 
 .input-row:active,
 .input-row:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #0D1821;
+  outline: 2px solid ${(p) => p.theme.colors.dark_blue};
+  outline-offset:-2px;
 }
 
 .input-row:active:disabled ,
 .input-row:focus:disabled  {
   outline: none;
-  box-shadow: none;
 }
 
 .input-row:disabled {
   pointer-events: none;
-  background-color: #F0F4EF;
+  background-color: ${(p) => p.theme.colors.light};
 
   .input-row::placeholder {
     color: #A0A3BD;
@@ -64,7 +63,7 @@ img {
   right: 25px;
   font-size: 26px;
   transform: rotate(45deg);
-  color: #B9BAC3;
+  color: ${(p) => p.theme.colors.dark_grey};
 
   border: none;
   background-color: transparent;  
@@ -72,10 +71,7 @@ img {
 }
 
 .input-span {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.75px;
+ ${(p) => p.theme.fonts.form_hint}
   padding-top: 6px;
   padding-left: 70px;
   cursor: inherit;
@@ -83,29 +79,11 @@ img {
   position: absolute;
 }
 
-/* .access {
-  .input-row {
-    box-shadow: 0 0 0 2px #00BA88;
-  }
-  .clear {
-    color: #00BA88;
-  }
-  .hint {
-    color: #00BA88;
-    cursor: inherit
-  }
+.span-access {
+  color: #00966D;
 }
 
-.denied {
-  .input-row {
-    box-shadow: 0 0 0 2px #ED2E7E;
-  }
-  .clear {
-    color: #ED2E7E;
-  }
-  .hint {
-    color: #ED2E7E;
-    cursor: inherit
-  }
-} */
+.span-denied {
+  color: #C30052;
+}
 `;

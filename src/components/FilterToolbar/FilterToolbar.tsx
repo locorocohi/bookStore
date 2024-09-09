@@ -1,11 +1,21 @@
 import { Wrapper } from './styles';
+import MultiSelector from './MultiSelector/MultiSelector';
+import Slider from './Slider/Slider';
+import Selector from './Selector/Selector';
 
-const FilterToolbar = () => {
+type PropsType = {
+  genres: string [];
+  sortOptions: string [];
+};
+
+const FilterToolbar: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
-      <div>Genre</div>
-      <div>Price</div>
-      <div>Sort by</div>
+
+     <MultiSelector filters={props.genres} />
+     <Slider />
+     <Selector options={props.sortOptions} />
+
     </Wrapper>
   );
 };
