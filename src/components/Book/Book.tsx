@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
+import { addBookInCart } from '@/api/cart';
 import type { BookType } from '@/models/book';
 import { Wrapper } from './styles';
 import Rating from '../Rating/Rating';
@@ -12,6 +14,15 @@ type PropsType = {
 };
 
 const Book: React.FC<PropsType> = (props) => {
+  // const booksInCart = useAppSelector((state) => state.cart.booksInCart);
+  // const hasInCart = booksInCart.some((bookInCart) => bookInCart.book.id === props.info.id);
+  const [selected, setSelected] = useState(false);
+
+  const handleClick = async () => {
+    await addBookInCart({ bookId: props.info.id });
+    setSelected(true);
+  };
+
   return (
     <Wrapper>
       <Image height={448} width={305} src={props.info.cover} alt="bookPic" className="book-cover" />
@@ -28,10 +39,16 @@ const Book: React.FC<PropsType> = (props) => {
         <Rating rating={props.info.rating} disabled />
         <p className="rating">{Number(props.info.rating).toFixed(1)}</p>
       </div>
-
-      <Button className="margin-top" disabled={!props.info.available}>
-        $ {props.info.price} USD
-      </Button>
+      { selected
+        ? <Link href={`http://${config.HOST}:${config.LOCAL_PORT}/cart/`} className="selected-item margin-top">Added in cart</Link>
+        : (<Button
+        className="margin-top"
+        disabled={!props.info.available}
+        onClick={handleClick}
+        >
+          $ {props.info.price} USD
+           </Button>)
+      }
     </Wrapper>
   );
 };

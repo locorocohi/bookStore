@@ -46,4 +46,15 @@ export const Wrapper = styled.div`
   .margin-top {
     margin-top: 30px;
   }
+
+  .selected-item {
+    background-color: ${(p) => p.theme.colors.dark};
+    text-decoration: none;
+    color: ${(p) => p.theme.colors.white};
+    border: none;
+    border-radius: 16px;
+    padding: 10px 50px;
+    text-align: center;
+    ${(p) => p.theme.fonts.button};
+  }
 `;
