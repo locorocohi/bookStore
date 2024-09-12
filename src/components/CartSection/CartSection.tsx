@@ -18,6 +18,7 @@ const CartSection = () => {
             price={price}
             title={name}
             author={author}
+            bookId={bookInCart.book.id}
           />);
       })}
       <p className="total">{total}</p>

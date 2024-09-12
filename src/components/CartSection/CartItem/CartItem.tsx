@@ -1,6 +1,8 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
+import { useAppDispatch } from '@/store/hooks';
+import { editCart } from '@/store/thunks';
 import basket from '@/images/Delete.svg';
 
 import { Wrapper } from './styles';
@@ -11,10 +13,12 @@ type PropsType = {
   price: string;
   title: string;
   author: string;
+  bookId: number;
 };
 
 const CartItem: React.FC<PropsType> = (props) => {
-  const { cover, price, title, author, booksCount } = props;
+  const dispatch = useAppDispatch();
+  const { bookId, cover, price, title, author, booksCount } = props;
 
   const [count, setCount] = useState(booksCount);
   const handleClickIncrease = () => {
@@ -31,6 +35,11 @@ const CartItem: React.FC<PropsType> = (props) => {
   const deleteItemFromCart = () => {
     setCount(0);
   };
+
+  useEffect(() => {
+    dispatch(editCart({ bookId, count }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count]);
 
   return (
     <Wrapper>

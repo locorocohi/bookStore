@@ -1,8 +1,10 @@
 import { getBookById, getBooks, updateRating } from '@/api/books';
-import type { CommentType } from '@/components/Comments/Comment/Comment';
+import type { CommentType } from '@/models/comment';
 import type { BookType } from '@/models/book';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import type { ParsedUrlQuery } from 'querystring';
+import type { BookInCartType } from '@/models/bookInCart';
+import { editBookInCart } from '@/api/cart';
 
 export const getFilteredBooks = createAsyncThunk<
   BookType[],
@@ -54,3 +56,20 @@ export const getUpdatedComments = createAsyncThunk<
       return thunkAPI.rejectWithValue({ errorMessage: 'ERROR' });
     }
   });
+
+export const editCart = createAsyncThunk<
+  {updatedBooksInCart: BookInCartType[]; total: number},
+  {bookId: number; count: number},
+  {
+    rejectValue: {
+      errorMessage: string;
+    };
+  }
+>('cart/editCart', async (params, thunkAPI) => {
+  try {
+    const data = await editBookInCart(params);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue({ errorMessage: 'ERROR' });
+  }
+});

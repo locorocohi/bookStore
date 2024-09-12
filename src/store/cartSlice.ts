@@ -2,6 +2,7 @@
 import type { BookInCartType } from '@/models/bookInCart';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
+import { editCart } from './thunks';
 
 type CartStateType = {
   booksInCart: BookInCartType[];
@@ -31,7 +32,16 @@ export const cartSlice = createSlice({
       state.booksInCart = [...action.payload.booksInCart];
       state.total = action.payload.total;
     },
+  },
 
+  extraReducers(builder) {
+    builder.addCase(
+      editCart.fulfilled,
+      (state, action) => {
+        state.booksInCart = [...action.payload.updatedBooksInCart];
+        state.total = action.payload.total;
+      },
+    );
   },
 });
 
