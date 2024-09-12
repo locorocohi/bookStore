@@ -28,7 +28,7 @@ export const cartSlice = createSlice({
 
   reducers: {
     setBooksInCart: (state, action: SetPayloadType) => {
-      state.booksInCart = action.payload.booksInCart;
+      state.booksInCart = [...action.payload.booksInCart];
       state.total = action.payload.total;
     },
 

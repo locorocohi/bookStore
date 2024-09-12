@@ -1,13 +1,22 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import cover from '@/images/unsplash_aZ_MmSmAcjg.svg';
 import basket from '@/images/Delete.svg';
 
 import { Wrapper } from './styles';
 
-const CartItem = () => {
-  const [count, setCount] = useState(1);
+type PropsType = {
+  booksCount: number;
+  cover: string;
+  price: string;
+  title: string;
+  author: string;
+};
+
+const CartItem: React.FC<PropsType> = (props) => {
+  const { cover, price, title, author, booksCount } = props;
+
+  const [count, setCount] = useState(booksCount);
   const handleClickIncrease = () => {
     setCount(count + 1);
   };
@@ -19,6 +28,10 @@ const CartItem = () => {
     setCount(count - 1);
   };
 
+  const deleteItemFromCart = () => {
+    setCount(0);
+  };
+
   return (
     <Wrapper>
       <div className="book-cover">
@@ -26,8 +39,8 @@ const CartItem = () => {
       </div>
       <div className="book-info">
         <div className="content">
-          <p className="title">The Weight of Things</p>
-          <p className="author">Marianne Flitz</p>
+          <p className="title">{title}</p>
+          <p className="author">{author}</p>
         </div>
         <div className="toolbar">
           <div className="counter">
@@ -43,9 +56,14 @@ const CartItem = () => {
             >+
             </button>
           </div>
-          <button className="delete-button"><Image src={basket} alt="delete" width={20} height={20} /> </button>
+          <button
+            className="delete-button"
+            onClick={deleteItemFromCart}
+          >
+            <Image src={basket} alt="delete" width={20} height={20} />
+          </button>
         </div>
-        <p className="price">$ 19.99 USD</p>
+        <p className="price">$ {(Number(price) * count).toFixed(2)} USD</p>
       </div>
     </Wrapper>
   );

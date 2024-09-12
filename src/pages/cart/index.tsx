@@ -6,6 +6,8 @@ import CartSection from '@/components/CartSection/CartSection';
 import EmptyCartSection from '@/components/EmptyCartSection/EmptyCartSection';
 import { setToken } from '@/axios/instance';
 import type { BookInCartType } from '@/models/bookInCart';
+import { useAppDispatch } from '@/store/hooks';
+import { setBooksInCart } from '@/store/cartSlice';
 
 type PropsType = {
   data: {
@@ -15,6 +17,9 @@ type PropsType = {
 };
 
 const Cart: React.FC<PropsType> = (props) => {
+  const dispatch = useAppDispatch();
+  dispatch(setBooksInCart(props.data));
+
   return (
     props.data.booksInCart.length < 1
       ? <EmptyCartSection />
