@@ -46,6 +46,7 @@ const CartItem: React.FC<PropsType> = (props) => {
       <div className="book-cover">
         <Image src={cover} alt="cover" width={197} height={289} />
       </div>
+
       <div className="book-info">
         <div className="content">
           <p className="title">{title}</p>

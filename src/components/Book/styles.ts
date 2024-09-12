@@ -48,13 +48,22 @@ export const Wrapper = styled.div`
   }
 
   .selected-item {
-    background-color: ${(p) => p.theme.colors.dark};
+    background-color: transparent;
     text-decoration: none;
-    color: ${(p) => p.theme.colors.white};
+    color: ${(p) => p.theme.colors.dark};
     border: none;
     border-radius: 16px;
+
+    outline: 1px solid ${(p) => p.theme.colors.dark};
+    outline-offset:-1px;
+
     padding: 10px 50px;
     text-align: center;
     ${(p) => p.theme.fonts.button};
+  }
+
+  .selected-item:hover {
+    outline: 3px solid ${(p) => p.theme.colors.dark};
+    outline-offset:-3px;
   }
 `;
