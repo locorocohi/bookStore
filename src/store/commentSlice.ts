@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import type { CommentType } from '@/components/Comments/Comment/Comment';
+import type { CommentType } from '@/models/comment';
 import { getUpdatedComments } from './thunks';
 
 type CommentsStateType = {

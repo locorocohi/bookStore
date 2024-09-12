@@ -3,15 +3,8 @@ import Image from 'next/image';
 
 import putin from '@/images/Putin.jpg';
 
-import type { UserType } from '@/models/user';
+import type { CommentType } from '@/models/comment';
 import { Wrapper } from './styles';
-
-export type CommentType = {
-  id: number;
-  text: string;
-  creationTime: string;
-  author: UserType;
-};
 
 type PropsType = {
   comment: CommentType;

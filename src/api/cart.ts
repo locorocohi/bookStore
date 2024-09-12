@@ -1,12 +1,11 @@
-/* eslint-disable no-console */
 import instance from '@/axios/instance';
+import { erroredToast } from '@/toasts/errorToast';
 
 export const getBooksFromCart = async () => {
   try {
     const response = await instance.get('cart/');
-    console.log('response', response);
-    return response;
+    return response.data;
   } catch (error) {
-    console.log(error);
+    erroredToast(error.message);
   }
 };

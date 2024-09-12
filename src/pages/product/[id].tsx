@@ -6,7 +6,7 @@ import { setBooks } from '@/store/bookSlice';
 import { setComments } from '@/store/commentSlice';
 import { getBookById } from '@/api/books';
 import type { BookType } from '@/models/book';
-import type { CommentType } from '@/components/Comments/Comment/Comment';
+import type { CommentType } from '@/models/comment';
 
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
 import Comments from '@/components/Comments/CommentsSection';
