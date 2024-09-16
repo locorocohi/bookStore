@@ -1,7 +1,7 @@
 import type { NextRouter } from 'next/router';
 import type { ParsedUrlQuery } from 'querystring';
 
-type KeysType = 'genre' | 'sortOption' | 'minPrice' | 'maxPrice' | 'page';
+type KeysType = 'genre' | 'sortOption' | 'minPrice' | 'maxPrice' | 'page' | 'search';
 
 type OptionsType = {
   query: ParsedUrlQuery;

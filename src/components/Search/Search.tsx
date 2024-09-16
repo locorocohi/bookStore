@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import { useState, type ChangeEventHandler } from 'react';
+import { createQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
+import { useRouter } from 'next/router';
 
 import loop from '@/images/search.svg';
 
 import Input from '../Input';
 
 const Search = () => {
+  const router = useRouter();
   const [text, setText] = useState('');
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -13,6 +16,17 @@ const Search = () => {
       return;
     }
     setText(event.target.value);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      const queryString = createQueryString({
+        query: router.query,
+        key: 'search',
+        option: text,
+      });
+      replaceURLQueryParams(router, 'search', queryString);
+    }
   };
 
   const clearInputValue = (event: MouseEvent) => {
@@ -32,6 +46,7 @@ const Search = () => {
         signature="Search"
         value={text}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
         >
         <Image src={loop} alt="loop"
           width={24} height={24}
