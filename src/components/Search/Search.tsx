@@ -18,7 +18,7 @@ const Search = () => {
     setText(event.target.value);
   };
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter') {
       const queryString = createQueryString({
         query: router.query,

@@ -35,12 +35,23 @@ const createQueryString = (options: OptionsType) => {
 };
 
 const replaceURLQueryParams = (router: NextRouter, key: string, queryString: string) => {
+  if (key === 'search') {
+    router.push({
+      query: {
+        page: '1',
+        [key]: queryString,
+      },
+      pathname: '/',
+    }, '', {});
+  }
+
   router.push({
     query: {
       ...router.query,
       page: '1',
       [key]: queryString,
     },
+    pathname: '/',
   }, '', {
     scroll: false,
   });
