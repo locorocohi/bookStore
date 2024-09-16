@@ -17,6 +17,8 @@ import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
 import { Catalog } from './styles';
+import { getMe } from '@/api/users';
+import { setToken } from '@/axios/instance';
 
 type PropsType = {
   data: {
@@ -81,7 +83,9 @@ const Main: React.FC<PropsType> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  setToken(ctx.req.cookies.accessToken);
   const data = await getBooks(ctx.query);
+  const [res1, res2] = await Promise.allSettled([getMe(), getBooks(ctx.query)]);
   return {
     props: { data },
   };

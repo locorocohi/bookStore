@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useAppSelector } from '@/store/hooks';
+import React from 'react';
 
 import CartItem from './CartItem/CartItem';
 import { Wrapper } from './styles';
@@ -15,9 +16,8 @@ const CartSection = () => {
         const { book, booksCount } = bookInCart;
         const { cover, price, name, author } = book;
         return (
-          <>
+          <React.Fragment key={index}>
             <CartItem
-              key={index}
               booksCount={booksCount}
               cover={cover}
               price={price}
@@ -26,7 +26,7 @@ const CartSection = () => {
               bookId={bookInCart.book.id}
             />
             <hr className="separator" />
-          </>);
+          </React.Fragment>);
       })}
       <p className="total">Total: <span className="total-price">{total.toFixed(2)}</span></p>
       <div className="buttons-container">
