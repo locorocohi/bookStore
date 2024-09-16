@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '@/store/hooks';
 import { setBooks } from '@/store/bookSlice';
 import { getBooks } from '@/api/books';
+import { setUser } from '@/store/userSlice';
+import { getMe } from '@/api/users';
+import { setToken } from '@/axios/instance';
 
 import girlWithBooks from '@/images/girlWithBook.svg';
 import booksPic from '@/images/twoBooks.svg';
@@ -11,6 +14,7 @@ import fairy from '@/images/fairy.svg';
 
 import type { GetServerSideProps } from 'next';
 import type { BookType } from '@/models/book';
+import type { UserType } from '@/models/user';
 
 import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
@@ -20,19 +24,23 @@ import { Catalog } from './styles';
 
 type PropsType = {
   data: {
-    booksArray: BookType[];
-    genres: string [];
-    sortOptions: string [];
-    pageCount: number;
+    user: UserType;
+    books: {
+      booksArray: BookType[];
+      genres: string [];
+      sortOptions: string [];
+      pageCount: number;
+    };
   };
 };
 
 const Main: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
-  const { booksArray, genres, sortOptions, pageCount } = props.data;
+  const { booksArray, genres, sortOptions, pageCount } = props.data.books;
 
   useEffect(() => {
     dispatch(setBooks(booksArray));
+    dispatch(setUser(props.data.user));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -81,7 +89,20 @@ const Main: React.FC<PropsType> = (props) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const data = await getBooks(ctx.query);
+  const token = ctx.req.cookies.accessToken;
+  setToken(token);
+
+  const [user, books] = await Promise.allSettled([getMe(), getBooks(ctx.query)]);
+
+  const data = { user: null, books: null };
+  if (user.status === 'fulfilled') {
+    data.user = user.value;
+  }
+
+  if (books.status === 'fulfilled') {
+    data.books = books.value;
+  }
+
   return {
     props: { data },
   };
