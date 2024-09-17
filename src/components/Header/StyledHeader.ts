@@ -42,7 +42,7 @@ export const HeaderWrap = styled.header`
   }
 
   .catalog {
-    text-decoration:none;
+    text-decoration: none;
   }
 
   .catalog:visited {

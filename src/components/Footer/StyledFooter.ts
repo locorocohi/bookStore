@@ -21,6 +21,12 @@ export const StyledFooter = styled.footer`
 
   .link {
     display: block;
+    text-decoration: none;
+    color: ${(p) => p.theme.colors.white};
+  }
+
+  .link:visited {
+    color: ${(p) => p.theme.colors.white};
   }
 }
 `;
