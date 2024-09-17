@@ -12,9 +12,6 @@ const Search = () => {
   const [text, setText] = useState('');
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    if (!event.target) {
-      return;
-    }
     setText(event.target.value);
   };
 

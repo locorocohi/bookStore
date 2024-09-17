@@ -16,15 +16,15 @@ export default function Header() {
 
   return (
     <HeaderWrap>
-      <Image src={logo} alt="logo" priority />
-      <Link className="catalog" href="http://localhost:3000/">Catalog</Link>
+      <Link href="/"><Image src={logo} alt="logo" priority className="logo" /></Link>
+      <Link className="catalog" href="/">Catalog</Link>
       <Search />
       {user
         ? <Menu />
         : (<Link className="login-button"
             href={`${path === '/signup'
-              ? 'http://localhost:3000/login'
-              : 'http://localhost:3000/signup'}`}
+              ? '/login'
+              : '/signup'}`}
           >
               Log In/ Sign Up
            </Link>)

@@ -9,7 +9,6 @@ export const HeaderWrap = styled.header`
 
   :nth-child(1) {
     justify-self: left;
-    pointer-events: none;
   }
 
   :nth-child(2) {
@@ -41,6 +40,10 @@ export const HeaderWrap = styled.header`
     box-shadow: 0px 0px 0px 8px rgba(185, 186, 195, 0.5);
   }
 
+  .logo {
+    pointer-events: none;
+  }
+  
   .catalog {
     text-decoration: none;
   }
