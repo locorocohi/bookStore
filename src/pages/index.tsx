@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '@/store/hooks';
 import { setBooks } from '@/store/bookSlice';
 import { getBooks } from '@/api/books';
+import { setUser } from '@/store/userSlice';
+import { getMe } from '@/api/users';
+import { setToken } from '@/axios/instance';
 
 import girlWithBooks from '@/images/girlWithBook.svg';
 import booksPic from '@/images/twoBooks.svg';
@@ -11,30 +14,33 @@ import fairy from '@/images/fairy.svg';
 
 import type { GetServerSideProps } from 'next';
 import type { BookType } from '@/models/book';
+import type { UserType } from '@/models/user';
 
 import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
 import Banner from '@/components/Banner/Banner';
 import Button from '@/components/Button';
 import { Catalog } from './styles';
-import { getMe } from '@/api/users';
-import { setToken } from '@/axios/instance';
 
 type PropsType = {
   data: {
-    booksArray: BookType[];
-    genres: string [];
-    sortOptions: string [];
-    pageCount: number;
+    user: UserType;
+    books: {
+      booksArray: BookType[];
+      genres: string [];
+      sortOptions: string [];
+      pageCount: number;
+    };
   };
 };
 
 const Main: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
-  const { booksArray, genres, sortOptions, pageCount } = props.data;
+  const { booksArray, genres, sortOptions, pageCount } = props.data.books;
 
   useEffect(() => {
     dispatch(setBooks(booksArray));
+    dispatch(setUser(props.data.user));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -63,29 +69,44 @@ const Main: React.FC<PropsType> = (props) => {
 
       <BooksSection pageCount={pageCount} />
 
-      <Banner>
-        <>
-        <Image className="castle-picture" src={castlePic} alt = "Castle" />
+      { !props.data.user
+        ? (
+        <Banner>
+          <>
+          <Image className="castle-picture" src={castlePic} alt = "Castle" />
 
-        <div className="content">
-          <h2 className="title">Authorize now</h2>
-          <p className="text">Authorize now and discover the fabulous world of books</p>
-          <Button className="button">Log In/ Sign Up</Button>
-        </div>
+          <div className="content">
+            <h2 className="title">Authorize now</h2>
+            <p className="text">Authorize now and discover the fabulous world of books</p>
+            <Button className="button">Log In/ Sign Up</Button>
+          </div>
 
-        <div className="image-wrapper">
-          <Image className="fairy-picture" src={fairy} alt = "Fairy" />
-        </div>
-        </>
-      </Banner>
+          <div className="image-wrapper">
+            <Image className="fairy-picture" src={fairy} alt = "Fairy" />
+          </div>
+          </>
+        </Banner>)
+        : null
+      }
     </Catalog>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  setToken(ctx.req.cookies.accessToken);
-  const data = await getBooks(ctx.query);
-  const [res1, res2] = await Promise.allSettled([getMe(), getBooks(ctx.query)]);
+  const token = ctx.req.cookies.accessToken;
+  setToken(token);
+
+  const [user, books] = await Promise.allSettled([getMe(), getBooks(ctx.query)]);
+
+  const data = { user: null, books: null };
+  if (user.status === 'fulfilled') {
+    data.user = user.value;
+  }
+
+  if (books.status === 'fulfilled') {
+    data.books = books.value;
+  }
+
   return {
     props: { data },
   };

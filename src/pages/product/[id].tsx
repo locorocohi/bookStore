@@ -5,8 +5,12 @@ import { useAppDispatch } from '@/store/hooks';
 import { setBooks } from '@/store/bookSlice';
 import { setComments } from '@/store/commentSlice';
 import { getBookById } from '@/api/books';
+import type { UserType } from '@/models/user';
 import type { BookType } from '@/models/book';
 import type { CommentType } from '@/models/comment';
+import { setToken } from '@/axios/instance';
+import { getMe } from '@/api/users';
+import { setUser } from '@/store/userSlice';
 
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
 import Comments from '@/components/Comments/CommentsSection';
@@ -14,15 +18,19 @@ import Recomendations from '@/components/Recomendations/Recomendations';
 import { Wrapper } from './styles';
 
 type PropsType = {
-  data: { findedBook: BookType; recommendedBooks: BookType[]; findedComments: CommentType[] };
+  data: {
+    user: UserType;
+    books: { findedBook: BookType; recommendedBooks: BookType[]; findedComments: CommentType[] };
+  };
 };
 
 const ProductPage = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  dispatch(setBooks([props.data.findedBook]));
+  dispatch(setBooks([props.data.books.findedBook]));
 
   useEffect(() => {
-    dispatch(setComments(props.data.findedComments));
+    dispatch(setComments(props.data.books.findedComments));
+    dispatch(setUser(props.data.user));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -30,8 +38,8 @@ const ProductPage = (props: PropsType) => {
     <Wrapper>
       <ProductInfo />
       <Comments />
-      { props.data.recommendedBooks.length > 0
-        ? <Recomendations books={props.data.recommendedBooks} />
+      { props.data.books.recommendedBooks.length > 0
+        ? <Recomendations books={props.data.books.recommendedBooks} />
         : null
       }
     </Wrapper>
@@ -39,8 +47,20 @@ const ProductPage = (props: PropsType) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const token = ctx.req.cookies.accessToken;
+  setToken(token);
+
   const params = ctx.params as {id: string};
-  const data = await getBookById(params.id);
+  const [user, books] = await Promise.allSettled([getMe(), getBookById(params.id)]);
+
+  const data = { user: null, books: null };
+  if (user.status === 'fulfilled') {
+    data.user = user.value;
+  }
+  if (books.status === 'fulfilled') {
+    data.books = books.value;
+  }
+
   return {
     props: { data },
   };

@@ -11,8 +11,8 @@ export const getBooks = async (query: ParsedUrlQuery) => {
         },
       });
 
-    const { booksArray, genres, sortOptions, pageCount } = response.data;
-    return { booksArray, genres, sortOptions, pageCount };
+    return response.data;
+    // return { booksArray, genres, sortOptions, pageCount };
   } catch (error) {
     console.log(error);
   }

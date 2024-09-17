@@ -9,11 +9,16 @@ import type { BookInCartType } from '@/models/bookInCart';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { setBooksInCart } from '@/store/cartSlice';
 import { useEffect } from 'react';
+import { getMe } from '@/api/users';
+import type { UserType } from '@/models/user';
+import { setUser } from '@/store/userSlice';
 
 type PropsType = {
   data: {
-    booksInCart: BookInCartType[];
-    total: number;
+    user?: UserType;
+    booksInCart: { booksInCart: BookInCartType[];
+      total: number;
+    };
   };
 };
 
@@ -22,7 +27,8 @@ const Cart: React.FC<PropsType> = (props) => {
   const booksInCart = useAppSelector((state) => state.cart.booksInCart);
 
   useEffect(() => {
-    dispatch(setBooksInCart(props.data));
+    dispatch(setBooksInCart(props.data.booksInCart));
+    dispatch(setUser(props.data.user));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -36,8 +42,17 @@ const Cart: React.FC<PropsType> = (props) => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const token = ctx.req.cookies.accessToken;
   setToken(token);
+  const [user, booksInCart] = await Promise.allSettled([getMe(), getBooksFromCart()]);
 
-  const data = await getBooksFromCart();
+  const data = { user: null, booksInCart: null };
+  if (user.status === 'fulfilled') {
+    data.user = user.value;
+  }
+
+  if (booksInCart.status === 'fulfilled') {
+    data.booksInCart = booksInCart.value;
+  }
+
   return {
     props: { data },
   };
