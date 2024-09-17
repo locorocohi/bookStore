@@ -99,7 +99,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const [user, books] = await Promise.allSettled([getMe(), getBooks(ctx.query)]);
 
   const data = { user: null, books: null };
-  if (user.status === 'fulfilled') {
+
+  if (token && user.status === 'fulfilled') {
     data.user = user.value;
   }
 
