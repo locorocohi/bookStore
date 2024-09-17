@@ -29,7 +29,7 @@ const Rating: React.FC<PropsType> = (props) => {
     <Wrapper className={props.disabled ? 'disabled' : ''}>
 
       {stars.map((_, index) => {
-        const isSelected = index <= Number(currItem);
+        const isSelected = index + 1 <= Number(currItem);
         return (
             <button
               key={index}

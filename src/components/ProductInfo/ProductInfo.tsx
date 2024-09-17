@@ -9,7 +9,13 @@ import Button from '../Button';
 
 const ProductInfo = () => {
   const book = useAppSelector((state) => state.book.books[0]);
+
+  if (!book) {
+    return null;
+  }
+
   const { cover, name, author, rating, description, price } = book;
+
   return (
     <Wrapper>
       <Image src={cover} alt="Cover" height={779} width={522} />

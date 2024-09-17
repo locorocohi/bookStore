@@ -21,6 +21,7 @@ const initialState: CartStateType = {
 };
 
 type SetPayloadType = PayloadAction<{booksInCart: BookInCartType[]; total: number}>;
+type RemovePayloadType = PayloadAction<number>;
 
 export const cartSlice = createSlice({
   name: 'cart',
@@ -29,8 +30,12 @@ export const cartSlice = createSlice({
 
   reducers: {
     setBooksInCart: (state, action: SetPayloadType) => {
-      state.booksInCart = [...action.payload.booksInCart];
+      state.booksInCart = action.payload.booksInCart;
       state.total = action.payload.total;
+    },
+    removeBookFromCart: (state, action: RemovePayloadType) => {
+      const bookId = action.payload;
+      state.booksInCart = state.booksInCart.filter((elem) => elem.book.id !== bookId);
     },
   },
 
@@ -38,12 +43,12 @@ export const cartSlice = createSlice({
     builder.addCase(
       editCart.fulfilled,
       (state, action) => {
-        state.booksInCart = [...action.payload.updatedBooksInCart];
+        state.booksInCart = action.payload.updatedBooksInCart;
         state.total = action.payload.total;
       },
     );
   },
 });
 
-export const { setBooksInCart } = cartSlice.actions;
+export const { setBooksInCart, removeBookFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

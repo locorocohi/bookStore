@@ -12,11 +12,11 @@ const CartSection = () => {
   const total = useAppSelector((state) => state.cart.total);
   return (
     <Wrapper>
-      {booksInCart.map((bookInCart, index) => {
+      {booksInCart.map((bookInCart) => {
         const { book, booksCount } = bookInCart;
         const { cover, price, name, author } = book;
         return (
-          <React.Fragment key={index}>
+          <React.Fragment key={bookInCart.book.id}>
             <CartItem
               booksCount={booksCount}
               cover={cover}

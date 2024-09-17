@@ -26,9 +26,9 @@ type PropsType = {
 
 const ProductPage = (props: PropsType) => {
   const dispatch = useAppDispatch();
-  dispatch(setBooks([props.data.books.findedBook]));
 
   useEffect(() => {
+    dispatch(setBooks([props.data.books.findedBook]));
     dispatch(setComments(props.data.books.findedComments));
     dispatch(setUser(props.data.user));
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -52,7 +52,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const params = ctx.params as {id: string};
   const [user, books] = await Promise.allSettled([getMe(), getBookById(params.id)]);
-
   const data = { user: null, books: null };
   if (user.status === 'fulfilled') {
     data.user = user.value;

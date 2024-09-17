@@ -14,8 +14,6 @@ type PropsType = {
 };
 
 const Book: React.FC<PropsType> = (props) => {
-  // const booksInCart = useAppSelector((state) => state.cart.booksInCart);
-  // const hasInCart = booksInCart.some((bookInCart) => bookInCart.book.id === props.info.id);
   const [selected, setSelected] = useState(false);
 
   const handleClick = async () => {
@@ -28,23 +26,25 @@ const Book: React.FC<PropsType> = (props) => {
       <Image height={448} width={305} src={props.info.cover} alt="bookPic" className="book-cover" />
       <div>
         <Link
-          href={`http://${config.HOST}:${config.LOCAL_PORT}/product/${props.info.id}`}
+          href={`/product/${props.info.id}`}
           className="product-link"
         >
           <p className="book-name">{props.info.name}</p>
         </Link>
         <p className="author">{props.info.author}</p>
       </div>
+
       <div className="rating-container">
         <Rating rating={props.info.rating} disabled />
         <p className="rating">{Number(props.info.rating).toFixed(1)}</p>
       </div>
+
       { selected
         ? <Link href={`http://${config.HOST}:${config.LOCAL_PORT}/cart/`} className="selected-item margin-top">Added in cart</Link>
         : (<Button
-        className="margin-top"
-        disabled={!props.info.available}
-        onClick={handleClick}
+            className="margin-top"
+            disabled={!props.info.available}
+            onClick={handleClick}
         >
           $ {props.info.price} USD
            </Button>)

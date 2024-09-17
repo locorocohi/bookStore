@@ -18,5 +18,9 @@ export const StyledFooter = styled.footer`
   
     text-align: left;
     ${(p) => p.theme.fonts.main_content};
+
+  .link {
+    display: block;
+  }
 }
 `;
