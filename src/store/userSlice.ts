@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
+import type { UserType } from '@/models/user';
 import { createSlice } from '@reduxjs/toolkit';
-import type { IUserData } from '@/pages/profile';
 
 type UsersStateType = {
-  user: IUserData | null;
+  user: UserType | null;
 };
 
 const initialState: UsersStateType = { user: null };
