@@ -9,7 +9,7 @@ import Input from '../Input';
 
 const Search = () => {
   const router = useRouter();
-  const [text, setText] = useState('');
+  const [text, setText] = useState(router.query.search as string);
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     if (!event.target) {
