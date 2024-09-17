@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import { useAppDispatch } from '@/store/hooks';
 import { createComment } from '@/api/comments';
-import { addComment } from '@/store/commentSlice';
+import { addComment } from '@/store/singleBookSlice';
 import { validatate } from '@/services/validate';
 
 import Button from '@/components/Button';

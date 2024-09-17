@@ -2,8 +2,8 @@ import { useEffect } from 'react';
 import type { GetServerSideProps } from 'next';
 import { useAppDispatch } from '@/store/hooks';
 
-import { setBooks } from '@/store/bookSlice';
-import { setComments } from '@/store/commentSlice';
+import { setSingleBook } from '@/store/singleBookSlice';
+import { setComments } from '@/store/singleBookSlice';
 import { getBookById } from '@/api/books';
 import type { UserType } from '@/models/user';
 import type { BookType } from '@/models/book';
@@ -12,9 +12,9 @@ import { setToken } from '@/axios/instance';
 import { getMe } from '@/api/users';
 import { setUser } from '@/store/userSlice';
 
+import Recomendations from '@/components/Recomendations/Recomendations';
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
 import Comments from '@/components/Comments/CommentsSection';
-import Recomendations from '@/components/Recomendations/Recomendations';
 import { Wrapper } from './styles';
 
 type PropsType = {
@@ -28,7 +28,7 @@ const ProductPage = (props: PropsType) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(setBooks([props.data.books.findedBook]));
+    dispatch(setSingleBook(props.data.books.findedBook));
     dispatch(setComments(props.data.books.findedComments));
     dispatch(setUser(props.data.user));
   // eslint-disable-next-line react-hooks/exhaustive-deps

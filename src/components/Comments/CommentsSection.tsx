@@ -5,7 +5,7 @@ import CommentPostForm from '../Forms/CommentPostForm/CommentPostForm';
 import { Wrapper } from './styles';
 
 const Comments: React.FC = () => {
-  const comments = useAppSelector((state) => state.comment.comments);
+  const comments = useAppSelector((state) => state.singleBook.comments);
 
   return (
     <Wrapper>

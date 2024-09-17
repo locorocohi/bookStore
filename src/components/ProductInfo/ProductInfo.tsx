@@ -8,7 +8,7 @@ import Rating from '../Rating/Rating';
 import Button from '../Button';
 
 const ProductInfo = () => {
-  const book = useAppSelector((state) => state.book.books[0]);
+  const book = useAppSelector((state) => state.singleBook.book);
 
   if (!book) {
     return null;
