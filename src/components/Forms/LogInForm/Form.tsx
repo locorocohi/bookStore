@@ -17,13 +17,16 @@ import { config } from '../../../../config';
 const LogInForm: React.FC = () => {
   const router = useRouter();
 
-  const onSubmit = async (options: {email: string; password:string }) => {
+  const onSubmit = async (options: { email: string; password: string }) => {
     const { email, password } = options;
     await logIn({ email, password });
     router.push(new URL(`http://${config.HOST}:${config.LOCAL_PORT}/profile`));
   };
 
-  const { formik, clearInputValue } = useCustomFormik({
+  const { formik, clearInputValue } = useCustomFormik<{
+    email: string;
+    password: string;
+  }>({
     initialValues: {
       email: '',
       password: '',
@@ -32,7 +35,10 @@ const LogInForm: React.FC = () => {
     onSubmit,
   });
 
-  const emailText = formik.values.email?.length && formik.errors.email?.length ? formik.errors.email : 'Enter your email';
+  const emailText =
+    formik.values.email?.length && formik.errors.email?.length
+      ? formik.errors.email
+      : 'Enter your email';
   const passText = formik.errors.password || 'Enter your password';
 
   return (
@@ -52,9 +58,7 @@ const LogInForm: React.FC = () => {
             isError={!!formik.errors.email?.length}
             signature="Email"
           >
-            <Image src={emailIcon} alt="email"
-            width={24} height={24}
-             />
+            <Image src={emailIcon} alt="email" width={24} height={24} />
           </Input>
           <p className="hint">{emailText}</p>
         </label>
@@ -70,10 +74,12 @@ const LogInForm: React.FC = () => {
             $isFilled={!!formik.values.password}
             isError={!!formik.errors.password?.length}
             signature="Password"
-           />
+          />
           <p className="hint">{passText}</p>
         </div>
-        <Button type="submit" className="button">Log In</Button>
+        <Button type="submit" className="button">
+          Log In
+        </Button>
       </form>
     </FormWrapper>
   );

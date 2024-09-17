@@ -8,6 +8,7 @@ import type { GetServerSideProps } from 'next';
 import type { UserType } from '@/models/user';
 
 import ProfileSection from '@/components/ProfileSection';
+import { setBooksCount } from '@/store/cartSlice';
 
 type PropsType = {
   data: {findedUser: UserType; booksInCartCount: number};
@@ -24,6 +25,7 @@ const Profile: React.FC<PropsType> = (props) => {
     }
 
     dispatch(setUser(props.data.findedUser));
+    dispatch(setBooksCount(props.data.booksInCartCount));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

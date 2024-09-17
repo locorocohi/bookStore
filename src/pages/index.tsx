@@ -5,6 +5,7 @@ import { setBooks } from '@/store/bookSlice';
 import { getBooks } from '@/api/books';
 import { setUser } from '@/store/userSlice';
 import { getMe } from '@/api/users';
+import { setBooksCount } from '@/store/cartSlice';
 import { setToken } from '@/axios/instance';
 
 import girlWithBooks from '@/images/girlWithBook.svg';
@@ -41,6 +42,7 @@ const Main: React.FC<PropsType> = (props) => {
   useEffect(() => {
     dispatch(setBooks(booksArray));
     dispatch(setUser(props.data.user.findedUser));
+    dispatch(setBooksCount(props.data.user.booksInCartCount));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

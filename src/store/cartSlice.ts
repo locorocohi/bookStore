@@ -6,6 +6,7 @@ import { editCart } from './thunks';
 
 type CartStateType = {
   booksInCart: BookInCartType[];
+  count: number;
   total: number;
   isLoading: boolean;
   isError: boolean;
@@ -14,6 +15,7 @@ type CartStateType = {
 
 const initialState: CartStateType = {
   booksInCart: [],
+  count: 0,
   total: 0,
   isLoading: true,
   isError: false,
@@ -37,6 +39,9 @@ export const cartSlice = createSlice({
       const bookId = action.payload;
       state.booksInCart = state.booksInCart.filter((elem) => elem.book.id !== bookId);
     },
+    setBooksCount: (state, action: PayloadAction<number>) => {
+      state.count = action.payload;
+    },
   },
 
   extraReducers(builder) {
@@ -50,5 +55,5 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setBooksInCart, removeBookFromCart } = cartSlice.actions;
+export const { setBooksInCart, removeBookFromCart, setBooksCount } = cartSlice.actions;
 export default cartSlice.reducer;

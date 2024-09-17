@@ -7,7 +7,7 @@ import EmptyCartSection from '@/components/EmptyCartSection/EmptyCartSection';
 import { setToken } from '@/axios/instance';
 import type { BookInCartType } from '@/models/bookInCart';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { setBooksInCart } from '@/store/cartSlice';
+import { setBooksCount, setBooksInCart } from '@/store/cartSlice';
 import { useEffect } from 'react';
 import { getMe } from '@/api/users';
 import type { UserType } from '@/models/user';
@@ -15,7 +15,7 @@ import { setUser } from '@/store/userSlice';
 
 type PropsType = {
   data: {
-    user?: {findedUser: UserType; booksInCartCount: number};
+    user: {findedUser: UserType; booksInCartCount: number};
     booksInCart: { booksInCart: BookInCartType[];
       total: number;
     };
@@ -29,6 +29,7 @@ const Cart: React.FC<PropsType> = (props) => {
   useEffect(() => {
     dispatch(setBooksInCart(props.data.booksInCart));
     dispatch(setUser(props.data.user?.findedUser));
+    dispatch(setBooksCount(props.data.user.booksInCartCount));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -8,7 +8,8 @@ import type { IProps as InputProps } from '../Input';
 import PrimoryInput from '../Input';
 import { Wrapper } from './styles';
 
-const PasswordInput: React.FC<InputProps> = (props) => {
+type PropsType = Omit<InputProps, 'children'>;
+const PasswordInput: React.FC<PropsType> = (props) => {
   const [isHide, setHide] = useState(false);
   const { isError, $isFilled } = props;
   const toggleInput = () => {

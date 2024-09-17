@@ -7,12 +7,19 @@ import favorite from '@/images/Heart.svg';
 
 import { Wrapper } from './styles';
 
-const Menu = () => {
+type PropsType = {
+  booksCount: number;
+};
+
+const Menu: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
-      <Link href="/cart" className="button">
-        <Image src={cart} alt="Cart" />
-      </Link>
+      <div className="cart-button-container">
+        <Link href="/cart" className="button">
+          <Image src={cart} alt="Cart" />
+        </Link>
+        <div className="counter-container"><p className="counter">{props.booksCount}</p></div>
+      </div>
 
       <Link href="/favorite" className="button">
         <Image src={favorite} alt="Favorite" />

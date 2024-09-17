@@ -4,7 +4,7 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   children: React.ReactNode;
   signature: string;
 
-  clearInputValue: (arg0: unknown) => void;
+  clearInputValue?: (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   $isFilled: boolean;
   isError?: boolean;
   isDisabled?: boolean;

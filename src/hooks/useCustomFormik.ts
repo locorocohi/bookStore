@@ -1,21 +1,29 @@
 import { useFormik } from 'formik';
 
-type ValuesType = {
-  name?: string;
-  email?: string;
-  password?: string;
-  secondPassword?: string;
-  thirdPassword?: string;
-};
+type ValuesType =
+  | {
+      password: string;
+      secondPassword: string;
+      thirdPassword: string;
+    }
+  | {
+      email: string;
+      password: string;
+      secondPassword: string;
+    }
+  | {
+      email: string;
+      password: string;
+    };
 
-type OptionsType = {
-  initialValues: ValuesType;
+type OptionsType<T> = {
+  initialValues: T;
   validationSchema?: object;
   validateOnChange?: boolean;
-  onSubmit: (options: ValuesType) => Promise<void>;
+  onSubmit: (options: T) => Promise<void>;
 };
 
-const useCustomFormik = (options: OptionsType) => {
+const useCustomFormik = <T extends ValuesType>(options: OptionsType<T>) => {
   const formik = useFormik({
     initialValues: options.initialValues,
     validationSchema: options.validationSchema,

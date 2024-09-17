@@ -9,20 +9,26 @@ import Input from '../Input';
 
 const Search = () => {
   const router = useRouter();
-  const [text, setText] = useState('');
+  const [text, setText] = useState(router.query.search as string || '');
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setText(event.target.value);
+    router.push('/');
   };
 
-  // useDebounce(() => {
-  //   const queryString = createQueryString({
-  //     query: router.query,
-  //     key: 'search',
-  //     option: text,
-  //   });
-  //   replaceURLQueryParams(router, 'search', queryString);
-  // }, [text], 1200);
+  useDebounce(() => {
+    const queryString = createQueryString({
+      query: router.query,
+      key: 'search',
+      option: text,
+    });
+
+    if (!queryString) {
+      return;
+    }
+
+    replaceURLQueryParams(router, 'search', queryString);
+  }, [text], 1200);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter') {
@@ -35,7 +41,7 @@ const Search = () => {
     }
   };
 
-  const clearInputValue = (event: MouseEvent) => {
+  const clearInputValue = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     const currElem = event.target as HTMLButtonElement;
     if (!currElem.previousSibling) {
       return;

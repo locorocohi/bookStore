@@ -12,6 +12,7 @@ import Search from '../Search/Search';
 
 export default function Header() {
   const user = useAppSelector((store) => store.user.user);
+  const booksInCartCount = useAppSelector((store) => store.cart.count);
   const path = usePathname();
 
   return (
@@ -20,7 +21,7 @@ export default function Header() {
       <Link className="catalog" href="/">Catalog</Link>
       <Search />
       {user
-        ? <Menu />
+        ? <Menu booksCount={booksInCartCount} />
         : (<Link className="login-button"
             href={`${path === '/signup'
               ? '/login'

@@ -22,7 +22,11 @@ const SignUpForm: React.FC = () => {
     router.push(new URL(`http://${config.HOST}:${config.LOCAL_PORT}/profile`));
   };
 
-  const { formik, clearInputValue } = useCustomFormik({
+  const { formik, clearInputValue } = useCustomFormik<{
+    email: string;
+    password: string;
+    secondPassword: string;
+  }>({
     initialValues: {
       email: '',
       password: '',

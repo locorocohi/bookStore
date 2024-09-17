@@ -10,6 +10,7 @@ import type { CommentType } from '@/models/comment';
 import { setToken } from '@/axios/instance';
 import { getMe } from '@/api/users';
 import { setUser } from '@/store/userSlice';
+import { setBooksCount } from '@/store/cartSlice';
 
 import Recomendations from '@/components/Recomendations/Recomendations';
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
@@ -30,6 +31,7 @@ const ProductPage = (props: PropsType) => {
     dispatch(setSingleBook(props.data.books.findedBook));
     dispatch(setComments(props.data.books.findedComments));
     dispatch(setUser(props.data.user.findedUser));
+    dispatch(setBooksCount(props.data.user.booksInCartCount));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

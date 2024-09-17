@@ -17,4 +17,30 @@ gap: 27px;
   justify-content: center;
   align-items: center;
 }
+
+.cart-button-container {
+  position: relative;
+}
+
+.counter-container {
+  position: absolute;
+  top: -6px;
+  left: 33px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background-color: ${(p) => p.theme.colors.green};
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter {
+  color: ${(p) => p.theme.colors.dark_blue};
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
 `;
