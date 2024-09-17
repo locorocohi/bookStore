@@ -31,18 +31,17 @@ const CartItem: React.FC<PropsType> = (props) => {
       return;
     }
     setCount(count - 1);
-
-    if (count === 0) {
-      dispatch(removeBookFromCart(bookId));
-    }
   };
 
   const deleteItemFromCart = () => {
-    dispatch(removeBookFromCart(bookId));
     setCount(0);
   };
 
   useEffect(() => {
+    if (count === 0) {
+      dispatch(removeBookFromCart(bookId));
+    }
+
     dispatch(editCart({ bookId, count }));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count]);

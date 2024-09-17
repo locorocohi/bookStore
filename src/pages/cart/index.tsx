@@ -15,7 +15,7 @@ import { setUser } from '@/store/userSlice';
 
 type PropsType = {
   data: {
-    user?: UserType;
+    user?: {findedUser: UserType; booksInCartCount: number};
     booksInCart: { booksInCart: BookInCartType[];
       total: number;
     };
@@ -28,7 +28,7 @@ const Cart: React.FC<PropsType> = (props) => {
 
   useEffect(() => {
     dispatch(setBooksInCart(props.data.booksInCart));
-    dispatch(setUser(props.data.user));
+    dispatch(setUser(props.data.user?.findedUser));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

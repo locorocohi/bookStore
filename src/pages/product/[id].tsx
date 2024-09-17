@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import type { GetServerSideProps } from 'next';
 import { useAppDispatch } from '@/store/hooks';
 
-import { setSingleBook } from '@/store/singleBookSlice';
-import { setComments } from '@/store/singleBookSlice';
+import { setSingleBook, setComments } from '@/store/singleBookSlice';
 import { getBookById } from '@/api/books';
 import type { UserType } from '@/models/user';
 import type { BookType } from '@/models/book';
@@ -19,7 +18,7 @@ import { Wrapper } from './styles';
 
 type PropsType = {
   data: {
-    user: UserType;
+    user: {findedUser: UserType; booksInCartCount: number};
     books: { findedBook: BookType; recommendedBooks: BookType[]; findedComments: CommentType[] };
   };
 };
@@ -30,7 +29,7 @@ const ProductPage = (props: PropsType) => {
   useEffect(() => {
     dispatch(setSingleBook(props.data.books.findedBook));
     dispatch(setComments(props.data.books.findedComments));
-    dispatch(setUser(props.data.user));
+    dispatch(setUser(props.data.user.findedUser));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

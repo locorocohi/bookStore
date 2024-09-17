@@ -9,10 +9,8 @@ import type { UserType } from '@/models/user';
 
 import ProfileSection from '@/components/ProfileSection';
 
-export interface IUserData extends Omit<UserType, 'password'> {}
-
 type PropsType = {
-  data: IUserData;
+  data: {findedUser: UserType; booksInCartCount: number};
 };
 
 const Profile: React.FC<PropsType> = (props) => {
@@ -25,7 +23,7 @@ const Profile: React.FC<PropsType> = (props) => {
       return;
     }
 
-    dispatch(setUser(props.data));
+    dispatch(setUser(props.data.findedUser));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

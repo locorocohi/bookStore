@@ -24,7 +24,7 @@ import { Catalog } from './styles';
 
 type PropsType = {
   data: {
-    user: UserType;
+    user: {findedUser: UserType; booksInCartCount: number};
     books: {
       booksArray: BookType[];
       genres: string [];
@@ -40,7 +40,7 @@ const Main: React.FC<PropsType> = (props) => {
 
   useEffect(() => {
     dispatch(setBooks(booksArray));
-    dispatch(setUser(props.data.user));
+    dispatch(setUser(props.data.user.findedUser));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

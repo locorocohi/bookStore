@@ -9,7 +9,7 @@ import Input from '../Input';
 
 const Search = () => {
   const router = useRouter();
-  const [text, setText] = useState(router.query.search as string);
+  const [text, setText] = useState('');
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     if (!event.target) {
@@ -18,14 +18,14 @@ const Search = () => {
     setText(event.target.value);
   };
 
-  useDebounce(() => {
-    const queryString = createQueryString({
-      query: router.query,
-      key: 'search',
-      option: text,
-    });
-    replaceURLQueryParams(router, 'search', queryString);
-  }, [text], 1200);
+  // useDebounce(() => {
+  //   const queryString = createQueryString({
+  //     query: router.query,
+  //     key: 'search',
+  //     option: text,
+  //   });
+  //   replaceURLQueryParams(router, 'search', queryString);
+  // }, [text], 1200);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter') {
