@@ -3,8 +3,8 @@ import { useState, type ChangeEventHandler } from 'react';
 import { createQueryString, replaceURLQueryParams } from '@/services/queryStringServices';
 import { useRouter } from 'next/router';
 
+import { useDebounce } from '@/hooks/useDebounce';
 import loop from '@/images/search.svg';
-
 import Input from '../Input';
 
 const Search = () => {
@@ -17,6 +17,15 @@ const Search = () => {
     }
     setText(event.target.value);
   };
+
+  useDebounce(() => {
+    const queryString = createQueryString({
+      query: router.query,
+      key: 'search',
+      option: text,
+    });
+    replaceURLQueryParams(router, 'search', queryString);
+  }, [text], 1200);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (event) => {
     if (event.key === 'Enter') {
