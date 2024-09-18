@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import instance from '@/axios/instance';
+import { erroredToast } from '@/toasts/errorToast';
 import type { ParsedUrlQuery } from 'querystring';
 
 export const getBooks = async (query: ParsedUrlQuery) => {
@@ -12,7 +13,6 @@ export const getBooks = async (query: ParsedUrlQuery) => {
       });
 
     return response.data;
-    // return { booksArray, genres, sortOptions, pageCount };
   } catch (error) {
     console.log(error);
   }
@@ -33,5 +33,23 @@ export const updateRating = async (options: {rating: number; bookId: number}) =>
     return response.data;
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const addBookToFavorite = async (bookId: number) => {
+  try {
+    const response = await instance.post('book/favorite', { bookId });
+    return response.data;
+  } catch (error) {
+    erroredToast(error.message);
+  }
+};
+
+export const removeBookFromFavorite = async (bookId: number) => {
+  try {
+    const response = await instance.post('book/favorite/remove', { bookId });
+    return response.data;
+  } catch (error) {
+    erroredToast(error.message);
   }
 };

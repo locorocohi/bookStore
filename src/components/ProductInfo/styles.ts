@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
+  .cover-container {
+    position: relative;
+  }
   .info {
     display: flex;
     flex-direction: column;

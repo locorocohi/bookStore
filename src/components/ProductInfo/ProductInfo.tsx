@@ -6,6 +6,7 @@ import { useAppSelector } from '@/store/hooks';
 import { Wrapper } from './styles';
 import Rating from '../Rating/Rating';
 import Button from '../Button';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
 const ProductInfo = () => {
   const book = useAppSelector((state) => state.singleBook.book);
@@ -18,7 +19,10 @@ const ProductInfo = () => {
 
   return (
     <Wrapper>
-      <Image src={cover} alt="Cover" height={779} width={522} />
+      <div className="cover-container">
+        <Image src={cover} alt="Cover" height={779} width={522} />
+        <FavoriteButton pageType="product" bookId={book.id} />
+      </div>
 
       <div className="info">
 

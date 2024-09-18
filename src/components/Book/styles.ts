@@ -4,6 +4,10 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 305px;
+  
+  .cover-container {
+    position: relative;
+  }
 
   .rating-container {
     display: flex;

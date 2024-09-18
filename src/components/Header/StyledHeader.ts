@@ -36,7 +36,7 @@ export const HeaderWrap = styled.header`
     background-color: ${(p) => p.theme.colors.dark};
   }
 
-  .login-button:focus {
+  .login-button:active {
     box-shadow: 0px 0px 0px 8px rgba(185, 186, 195, 0.5);
   }
 

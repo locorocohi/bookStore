@@ -4,10 +4,12 @@ import { useState } from 'react';
 
 import { addBookInCart } from '@/api/cart';
 import type { BookType } from '@/models/book';
+import { config } from '../../../config';
+
 import { Wrapper } from './styles';
 import Rating from '../Rating/Rating';
 import Button from '../Button';
-import { config } from '../../../config';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
 type PropsType = {
   info: BookType;
@@ -23,7 +25,10 @@ const Book: React.FC<PropsType> = (props) => {
 
   return (
     <Wrapper>
-      <Image height={448} width={305} src={props.info.cover} alt="bookPic" className="book-cover" />
+      <div className="cover-container">
+        <Image height={448} width={305} src={props.info.cover} alt="bookPic" className="book-cover" />
+        <FavoriteButton pageType="catalog" bookId={props.info.id} />
+      </div>
       <div>
         <Link
           href={`/product/${props.info.id}`}
