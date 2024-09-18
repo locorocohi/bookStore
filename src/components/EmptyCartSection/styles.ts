@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   padding: 108px;
+  height: calc(100vh - 98px - 344px);
 
   .content {
     max-width: 465px;

@@ -1,6 +1,9 @@
 import Image from 'next/image';
+import { useAppDispatch } from '@/store/hooks';
 
 import basket from '@/images/Delete.svg';
+import { removeBookFromFavorite } from '@/api/books';
+import { removeFavoriteBook } from '@/store/userSlice';
 
 import { Wrapper } from './styles';
 
@@ -13,10 +16,12 @@ type PropsType = {
 };
 
 const FavoriteItem: React.FC<PropsType> = (props) => {
+  const dispatch = useAppDispatch();
   const { cover, price, title, author, bookId } = props;
 
   const deleteItemFromFavorite = () => {
-    console.log(bookId);
+    removeBookFromFavorite(bookId);
+    dispatch(removeFavoriteBook(bookId));
   };
 
   return (

@@ -47,6 +47,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const data = { user: null, booksInCart: null };
   if (user.status === 'fulfilled') {
+    if (!user.value) {
+      return {
+        redirect: { destination: '/login' },
+      };
+    }
     data.user = user.value;
   }
 
