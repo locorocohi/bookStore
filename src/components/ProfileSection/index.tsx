@@ -10,7 +10,6 @@ import emptyAvatar from '@/images/profilePic.svg';
 
 import { Wrapper } from './styles';
 import Input from '../Input';
-import ChangeForm from '../Forms/ChangeForm/ChangeForm';
 import ChangePasswordForm from '../Forms/ChangePasswordForm/ChangePasswordForm';
 
 const ProfileSection = () => {
@@ -18,8 +17,9 @@ const ProfileSection = () => {
   const [currAvatar, setAvatar] = useState(user?.avatar || emptyAvatar);
   const [isChanging, setChangingStatus] = useState(false);
   const [isChangingPass, setChangingPass] = useState(false);
+  const [userName, setUserName] = useState(user?.name);
 
-  const onChange: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
+  const onChangeAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
       const reader = new FileReader();
       const newPicture = event.target.files[0];
@@ -32,6 +32,10 @@ const ProfileSection = () => {
         await saveNewAvatar({ encodedImage, fileType, id: user?.id || 1123 });
       };
     }
+  };
+
+  const changeUserName: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    setUserName(event.target.value);
   };
 
   const toggleInfoForm = () => {
@@ -47,7 +51,7 @@ const ProfileSection = () => {
       <div className="avatar">
         <Image fill src={currAvatar} alt="avatar" />
         <label className="upload-button">
-          <input type="file" className="input-file" onChange={onChange} />
+          <input type="file" className="input-file" onChange={onChangeAvatar} />
           <Image src={cameraPic} alt="photo" />
         </label>
       </div>
@@ -58,31 +62,29 @@ const ProfileSection = () => {
             <h3>Personal information</h3>
             <button onClick={toggleInfoForm} className="profile-title-button">Change information</button>
           </div>
-          { isChanging
-            ? <ChangeForm toggleInfoForm={toggleInfoForm} />
-            : (<div className="info-wrapper">
-                 <Input
-                   value={user?.name}
-                   signature="Your name"
-                   readOnly
-                   $isFilled
-                 >
-                   <Image src={profilePic} alt="profile"
-                     width={24} height={24}
-                   />
-                 </Input>
-
-                 <Input
-                   value={user?.email}
-                   signature="Your email"
-                   readOnly
-                   $isFilled
-                 >
-                   <Image src={emailIcon} alt="email"
-                     width={24} height={24}
-                   />
-                 </Input>
-               </div>)}
+          <div className="info-wrapper">
+            <Input
+              value={userName}
+              signature="Your name"
+              $isFilled
+              disabled={!isChanging}
+              onChange={changeUserName}
+            >
+              <Image src={profilePic} alt="profile"
+                width={24} height={24}
+              />
+            </Input>
+            <Input
+              value={user?.email}
+              signature="Your email"
+              readOnly
+              $isFilled
+            >
+              <Image src={emailIcon} alt="email"
+                width={24} height={24}
+              />
+            </Input>
+          </div>
         </div>
         <div className="profile-password">
           <div className="profile-title">

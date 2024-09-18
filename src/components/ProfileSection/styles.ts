@@ -86,8 +86,4 @@ export const Wrapper = styled.section`
   .info-wrapper span {
     color: ${(p) => p.theme.colors.dark_blue};
   }
-
-  .info-wrapper .input-row:focus {
-    outline: none;
-  }
 `;
