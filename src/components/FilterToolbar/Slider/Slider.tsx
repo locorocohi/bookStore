@@ -7,7 +7,7 @@ import { Wrapper } from './styles';
 
 const Slider = () => {
   const router = useRouter();
-  const defaultValue = [0, 100];
+  const defaultValue = [Number(router.query.minPrice) ?? 0, Number(router.query.maxPrice) ?? 100];
   const [minValue, setMinValue] = useState(defaultValue[0]);
   const [maxValue, setMaxValue] = useState(defaultValue[1]);
 
@@ -41,7 +41,6 @@ const Slider = () => {
           defaultValue={defaultValue}
           ariaLabel={['Lower thumb', 'Upper thumb']}
           ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
-          renderThumb={(props) => <div {...props} />}
           pearling
           minDistance={1}
           onAfterChange={handleAfterChange}

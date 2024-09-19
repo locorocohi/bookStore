@@ -14,8 +14,8 @@ type PropsType = {
 };
 
 const FilterDropdown: React.FC<PropsType> = (props) => {
-  const [isOpen, setIsOpen] = useState(true);
-  const ref = useOutsideClick(() => setIsOpen(true));
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useOutsideClick(() => setIsOpen(false));
 
   const handleListOpen = () => {
     setIsOpen(!isOpen);
@@ -29,13 +29,13 @@ const FilterDropdown: React.FC<PropsType> = (props) => {
         onClick={handleListOpen}
       >
         <span className="dropdown-title">{props.title}</span>
-        <div className={`arrow ${isOpen ? 'rotate' : ''}`}>
+        <div className={`arrow ${!isOpen ? 'rotate' : ''}`}>
           { props.buttonType === 'primary' ? <Image src={arrowPic} alt="Arrow" /> : <Image src={blackForward} alt="Arrow" />}
         </div>
 
       </button>
 
-      { !isOpen && (
+      {isOpen && (
         <div className="list">
           <div className="triangle" />
           {props.children}

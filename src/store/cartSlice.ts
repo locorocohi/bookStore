@@ -35,6 +35,9 @@ export const cartSlice = createSlice({
       state.booksInCart = action.payload.booksInCart;
       state.total = action.payload.total;
     },
+    addBookInLocalCart: (state) => {
+      state.count += 1;
+    },
     removeBookFromCart: (state, action: RemovePayloadType) => {
       const bookId = action.payload;
       state.booksInCart = state.booksInCart.filter((elem) => elem.book.id !== bookId);
@@ -55,5 +58,9 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setBooksInCart, removeBookFromCart, setBooksCount } = cartSlice.actions;
+export const {
+  setBooksInCart,
+  removeBookFromCart,
+  setBooksCount,
+  addBookInLocalCart } = cartSlice.actions;
 export default cartSlice.reducer;

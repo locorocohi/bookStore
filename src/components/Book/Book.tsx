@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useAppDispatch } from '@/store/hooks';
 
+import { addBookInLocalCart } from '@/store/cartSlice';
 import { addBookInCart } from '@/api/cart';
 import type { BookType } from '@/models/book';
 import { config } from '../../../config';
@@ -16,9 +18,11 @@ type PropsType = {
 };
 
 const Book: React.FC<PropsType> = (props) => {
+  const dispatch = useAppDispatch();
   const [selected, setSelected] = useState(false);
 
   const handleClick = async () => {
+    dispatch(addBookInLocalCart());
     await addBookInCart({ bookId: props.info.id });
     setSelected(true);
   };
