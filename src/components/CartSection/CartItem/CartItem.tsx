@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { useAppDispatch } from '@/store/hooks';
 import { editCart } from '@/store/thunks';
-import { removeBookFromCart } from '@/store/cartSlice';
+import { deleteFromCart, removeBookFromCart } from '@/store/cartSlice';
 import basket from '@/images/Delete.svg';
 
 import { Wrapper } from './styles';
@@ -34,6 +34,7 @@ const CartItem: React.FC<PropsType> = (props) => {
   };
 
   const deleteItemFromCart = () => {
+    dispatch(deleteFromCart());
     setCount(0);
   };
 

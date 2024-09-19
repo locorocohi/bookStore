@@ -18,7 +18,7 @@ const Menu: React.FC<PropsType> = (props) => {
         <Link href="/cart" className="button">
           <Image src={cart} alt="Cart" />
         </Link>
-        <div className="counter-container"><p className="counter">{props.booksCount}</p></div>
+        {props.booksCount ? <div className="counter-container"><p className="counter">{props.booksCount}</p></div> : null}
       </div>
 
       <Link href="/favorite" className="button">
