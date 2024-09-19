@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { useEffect } from 'react';
 import { useAppDispatch } from '@/store/hooks';
 import { setBooks } from '@/store/bookSlice';
@@ -8,19 +7,14 @@ import { getMe } from '@/api/users';
 import { setBooksCount } from '@/store/cartSlice';
 import { setToken } from '@/axios/instance';
 
-import girlWithBooks from '@/images/girlWithBook.svg';
-import booksPic from '@/images/twoBooks.svg';
-import castlePic from '@/images/castle.svg';
-import fairy from '@/images/fairy.svg';
-
 import type { GetServerSideProps } from 'next';
 import type { BookType } from '@/models/book';
 import type { UserType } from '@/models/user';
 
 import FilterToolbar from '@/components/FilterToolbar/FilterToolbar';
 import BooksSection from '@/components/BooksSection/BooksSection';
-import Banner from '@/components/Banner/Banner';
-import Button from '@/components/Button';
+import AuthBanner from '@/components/Banners/AuthBanner/AuthBanner';
+import WelcomeBanner from '@/components/Banners/WelcomeBanner/WelcomeBanner';
 import { Catalog } from './styles';
 
 type PropsType = {
@@ -50,21 +44,7 @@ const Main: React.FC<PropsType> = (props) => {
 
   return (
     <Catalog>
-      <Banner>
-        <>
-        <div className="content">
-          <h2 className="title">Build your library with us</h2>
-          <p className="text">Buy two books and get one for free</p>
-          <Button className="button">Choose a book</Button>
-        </div>
-
-        <Image className="girl-picture" src={girlWithBooks} alt = "Girl with book" />
-
-        <div className="image-wrapper">
-          <Image className="books-picture" src={booksPic} alt = "Books" />
-        </div>
-        </>
-      </Banner>
+      <WelcomeBanner />
 
       <div className="toolbar">
         <h1 className="main title">Catalog</h1>
@@ -74,22 +54,7 @@ const Main: React.FC<PropsType> = (props) => {
       <BooksSection pageCount={pageCount} />
 
       { !props.data.user
-        ? (
-        <Banner>
-          <>
-          <Image className="castle-picture" src={castlePic} alt = "Castle" />
-
-          <div className="content">
-            <h2 className="title">Authorize now</h2>
-            <p className="text">Authorize now and discover the fabulous world of books</p>
-            <Button className="button">Log In/ Sign Up</Button>
-          </div>
-
-          <div className="image-wrapper">
-            <Image className="fairy-picture" src={fairy} alt = "Fairy" />
-          </div>
-          </>
-        </Banner>)
+        ? <AuthBanner />
         : null
       }
     </Catalog>

@@ -6,14 +6,15 @@ import { Wrapper } from './styles';
 
 const Comments: React.FC = () => {
   const comments = useAppSelector((state) => state.singleBook.comments);
+  const user = useAppSelector((state) => state.user.user);
 
   return (
     <Wrapper>
-      <h2 className="title">Comments</h2>
+      {comments.length ? <h2 className="title">Comments</h2> : null}
       <div className="comments-container">
         {comments.map((comment) => <Comment key={comment.id} comment={comment} />)}
       </div>
-      <CommentPostForm />
+      {user ? <CommentPostForm /> : null}
     </Wrapper>
   );
 };

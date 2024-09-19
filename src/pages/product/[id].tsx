@@ -15,6 +15,7 @@ import { setBooksCount } from '@/store/cartSlice';
 import Recomendations from '@/components/Recomendations/Recomendations';
 import ProductInfo from '@/components/ProductInfo/ProductInfo';
 import Comments from '@/components/Comments/CommentsSection';
+import AuthBanner from '@/components/Banners/AuthBanner/AuthBanner';
 import { Wrapper } from './styles';
 
 type PropsType = {
@@ -28,10 +29,12 @@ const ProductPage = (props: PropsType) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    if (props.data.user?.findedUser) {
+      dispatch(setUser(props.data.user.findedUser));
+      dispatch(setBooksCount(props.data.user.booksInCartCount));
+    }
     dispatch(setSingleBook(props.data.books.findedBook));
     dispatch(setComments(props.data.books.findedComments));
-    dispatch(setUser(props.data.user.findedUser));
-    dispatch(setBooksCount(props.data.user.booksInCartCount));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -43,6 +46,7 @@ const ProductPage = (props: PropsType) => {
         ? <Recomendations books={props.data.books.recommendedBooks} />
         : null
       }
+      {props.data.user?.findedUser ? null : <AuthBanner />}
     </Wrapper>
   );
 };
@@ -54,7 +58,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const params = ctx.params as {id: string};
   const [user, books] = await Promise.allSettled([getMe(), getBookById(params.id)]);
   const data = { user: null, books: null };
-  if (user.status === 'fulfilled') {
+
+  if (user.status === 'fulfilled' && user.value) {
     data.user = user.value;
   }
   if (books.status === 'fulfilled') {

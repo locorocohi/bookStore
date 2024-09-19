@@ -7,7 +7,9 @@ import { Wrapper } from './styles';
 
 const Slider = () => {
   const router = useRouter();
-  const defaultValue = [Number(router.query.minPrice) ?? 0, Number(router.query.maxPrice) ?? 100];
+  const initialFirstState = router.query.minPrice ? Number(router.query.minPrice) : 0;
+  const initialSecondState = router.query.maxPrice ? Number(router.query.maxPrice) : 100;
+  const defaultValue = [initialFirstState, initialSecondState];
   const [minValue, setMinValue] = useState(defaultValue[0]);
   const [maxValue, setMaxValue] = useState(defaultValue[1]);
 
