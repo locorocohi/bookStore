@@ -2,7 +2,7 @@
 import type { BookType } from '@/models/book';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
-import { getFilteredBooks, setBookRating } from './thunks';
+import { getFilteredBooks } from './thunks';
 
 type BooksStateType = {
   books: BookType[];
@@ -48,13 +48,6 @@ export const booksSlice = createSlice({
         state.errorMessage = action.payload?.errorMessage ?? '';
       },
     );
-
-    builder.addCase(setBookRating.fulfilled,
-      (state, action) => {
-        state.books[0].rating = action.payload;
-      });
-    // builder.addCase();
-    // builder.addCase();
   },
 });
 

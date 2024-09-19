@@ -30,7 +30,7 @@ const FavoriteButton: React.FC<PropsType> = (props) => {
   };
 
   return (
-    <Wrapper pageType={props.pageType}>
+    <Wrapper $pageType={props.pageType}>
       {selected
         ? (<button type="button" className="button selected" onClick={removeFromFavorite}>
              <Image src={filledFavorite} alt="heart" width={heartSize} height={heartSize} />

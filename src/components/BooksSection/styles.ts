@@ -9,8 +9,10 @@ export const Wrapper = styled.div<{$count: number}>`
   flex-direction: column;
   
   .books {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 20px;
     row-gap: 80px;
 
     ${(p) => (p.$count < 12 ? 'margin-bottom: 92px;' : '')}

@@ -19,6 +19,10 @@ const GlobalStyles = createGlobalStyle<{font: string}>`
   body {
     width: 100%;
     height: 100vh;
+
+    > #__next {
+      height: 100%;
+    }
   }
     
     
@@ -27,12 +31,13 @@ const GlobalStyles = createGlobalStyle<{font: string}>`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
   }
 
   .width-limiter {
     width: 100%;
     max-width: 1440px;
-    min-height: 100%
+    /* min-height: 100% */
   }
   `;
 

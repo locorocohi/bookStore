@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div<{pageType: string}>`
+export const Wrapper = styled.div<{$pageType: string}>`
   position: absolute;
   opacity: 50%;
-  ${(p) => (p.pageType === 'catalog'
+  ${(p) => (p.$pageType === 'catalog'
     ? `top: 20px;
        left: 20px;`
     : `top: 30px;
@@ -16,7 +16,7 @@ export const Wrapper = styled.div<{pageType: string}>`
     margin: 0;
     pointer-events: auto;
 
-    ${(p) => (p.pageType === 'catalog'
+    ${(p) => (p.$pageType === 'catalog'
     ? `width: 48px;
        height: 48px;`
     : `width: 59px;

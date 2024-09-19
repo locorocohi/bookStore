@@ -18,8 +18,10 @@ export const userSlice = createSlice({
       state.user = action.payload;
     },
     removeFavoriteBook: (state, action) => {
-      const filteredArr = state.user?.favorites.filter((book) => book.id !== action.payload);
-      state.user.favorites = filteredArr;
+      if (state.user) {
+        const filteredArr = state.user.favorites.filter((book) => book.id !== action.payload);
+        state.user.favorites = filteredArr;
+      }
     },
   },
   // extraReducers: (builder) => {
