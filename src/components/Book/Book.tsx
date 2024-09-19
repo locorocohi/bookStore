@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useAppDispatch } from '@/store/hooks';
+import { useRouter } from 'next/router';
 
 import { addBookInLocalCart } from '@/store/cartSlice';
 import { addBookInCart } from '@/api/cart';
@@ -18,12 +19,16 @@ type PropsType = {
 };
 
 const Book: React.FC<PropsType> = (props) => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const [selected, setSelected] = useState(false);
 
   const handleClick = async () => {
+    const bookInCart = await addBookInCart({ bookId: props.info.id });
+    if (!bookInCart) {
+      router.push('/login');
+    }
     dispatch(addBookInLocalCart());
-    await addBookInCart({ bookId: props.info.id });
     setSelected(true);
   };
 
