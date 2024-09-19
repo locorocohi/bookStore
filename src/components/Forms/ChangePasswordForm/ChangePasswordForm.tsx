@@ -6,7 +6,7 @@ import Button from '@/components/Button';
 import PasswordInput from '@/components/PasswordInput';
 import useCustomFormik from '@/hooks/useCustomFormik';
 import { changePasswordSchema as validationSchema } from '@/validationSchemas/changePasswordForm';
-import { ChangeFormWrapper } from '../ChangeForm/styles';
+import { ChangeFormWrapper } from './styles';
 
 type PropsType = {
   togglePasswordForm: () => void;
@@ -16,12 +16,12 @@ const ChangePasswordForm: React.FC<PropsType> = (props) => {
   const dispatch = useAppDispatch();
   const onSubmit = async ({
     password,
-    thirdPassword,
+    secondPassword,
   }: {
     password: string;
-    thirdPassword: string;
+    secondPassword: string;
   }) => {
-    const user = await changePassword({ password, thirdPassword });
+    const user = await changePassword({ password, secondPassword });
     dispatch(setUser(user));
     props.togglePasswordForm();
   };
@@ -30,6 +30,7 @@ const ChangePasswordForm: React.FC<PropsType> = (props) => {
     initialValues: {
       password: '',
       secondPassword: '',
+      thirdPassword: '',
     },
     validationSchema,
     onSubmit,

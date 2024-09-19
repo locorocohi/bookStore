@@ -44,7 +44,7 @@ const LogInForm: React.FC = () => {
   return (
     <FormWrapper>
       <h1>Log In</h1>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className="width-413">
         <label>
           <Input
             id="email"

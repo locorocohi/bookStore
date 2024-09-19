@@ -42,7 +42,7 @@ export const saveNewAvatar = async (options: {encodedImage:string; fileType:stri
   }
 };
 
-export const changeInfo = async (options: { email: string; name:string }) => {
+export const changeInfo = async (options: { name:string }) => {
   try {
     const user = await instance.patch('user/changeinfo', options);
     return user.data;
@@ -51,7 +51,7 @@ export const changeInfo = async (options: { email: string; name:string }) => {
   }
 };
 
-export const changePassword = async (options: {password: string; thirdPassword: string}) => {
+export const changePassword = async (options: {password: string; secondPassword: string}) => {
   try {
     const user = await instance.patch('user/changepassword', options);
     return user.data;

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { saveNewAvatar } from '@/api/users';
-import { useAppSelector } from '@/store/hooks';
+import { changeInfo, saveNewAvatar } from '@/api/users';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { setUser } from '@/store/userSlice';
 
 import emailIcon from '@/images/email.svg';
 import profilePic from '@/images/profile.svg';
@@ -13,11 +14,12 @@ import Input from '../Input';
 import ChangePasswordForm from '../Forms/ChangePasswordForm/ChangePasswordForm';
 
 const ProfileSection = () => {
+  const dispatch = useAppDispatch();
   const user = useAppSelector((store) => store.user.user);
   const [currAvatar, setAvatar] = useState(user?.avatar || emptyAvatar);
   const [isChanging, setChangingStatus] = useState(false);
   const [isChangingPass, setChangingPass] = useState(false);
-  const [userName, setUserName] = useState(user?.name);
+  const [userName, setUserName] = useState(user?.name ?? '');
 
   const onChangeAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
     if (event.target.files) {
@@ -38,8 +40,21 @@ const ProfileSection = () => {
     setUserName(event.target.value);
   };
 
-  const toggleInfoForm = () => {
+  const toggleInfoForm = async () => {
     setChangingStatus(!isChanging);
+
+    if (!isChanging) {
+      const user = await changeInfo({ name: userName });
+      dispatch(setUser(user));
+    }
+  };
+
+  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = async (event) => {
+    if (event.code === 'Enter') {
+      const user = await changeInfo({ name: userName });
+      dispatch(setUser(user));
+      setChangingStatus(false);
+    }
   };
 
   const togglePasswordForm = () => {
@@ -69,6 +84,7 @@ const ProfileSection = () => {
               $isFilled
               disabled={!isChanging}
               onChange={changeUserName}
+              onKeyDown={handleKeyDown}
             >
               <Image src={profilePic} alt="profile"
                 width={24} height={24}
@@ -78,6 +94,7 @@ const ProfileSection = () => {
               value={user?.email}
               signature="Your email"
               readOnly
+              disabled
               $isFilled
             >
               <Image src={emailIcon} alt="email"

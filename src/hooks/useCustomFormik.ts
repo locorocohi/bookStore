@@ -14,6 +14,14 @@ type ValuesType =
   | {
       email: string;
       password: string;
+    }
+  | {
+    password: string;
+    secondPassword: string;
+    }
+  | {
+    password: string;
+    thirdPassword: string;
     };
 
 type OptionsType<T> = {

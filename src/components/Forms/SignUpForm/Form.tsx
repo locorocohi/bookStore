@@ -43,7 +43,7 @@ const SignUpForm: React.FC = () => {
   return (
     <FormWrapper>
       <h1>Sign Up</h1>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} className="width-413">
         <label>
           <Input
             id="email"

@@ -4,9 +4,12 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 60px;
-  max-width: 413px;
   width: 100%;
-  
+
+  .width-413 {
+    max-width: 413px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
