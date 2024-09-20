@@ -23,5 +23,8 @@ export const StyledButton = styled.button`
     cursor: auto;
   }
 
+  @media (max-width: 1150px) {
+
+  }
   cursor: pointer;
 `;

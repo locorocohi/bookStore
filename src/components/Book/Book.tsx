@@ -35,7 +35,12 @@ const Book: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
       <div className="cover-container">
-        <Image height={448} width={305} src={props.info.cover} alt="bookPic" className="book-cover" />
+        <Image
+          fill
+          src={props.info.cover}
+          alt="bookPic"
+          className="book-cover"
+        />
         <FavoriteButton pageType="catalog" bookId={props.info.id} />
       </div>
       <div>

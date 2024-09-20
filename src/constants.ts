@@ -27,6 +27,10 @@ const fonts = {
     font-size: 20px;
     font-weight: 400;
     line-height: 30px;
+    @media (max-width: 1150px) {
+      font-size: 16px;
+      line-height: 24px;
+    }
   `,
 
   filters: css`

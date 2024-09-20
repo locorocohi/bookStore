@@ -15,4 +15,13 @@ export const Catalog = styled.section`
     align-items: center;
     margin-bottom: 40px;
   }
+
+  @media (max-width: 1030px) {
+    padding: 0 15px;
+    .toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 20px;
+    }
+  }
 `;

@@ -17,7 +17,13 @@ export const Wrapper = styled.div<{$count: number}>`
 
     ${(p) => (p.$count < 12 ? 'margin-bottom: 92px;' : '')}
   }
-  
+
+  @media (max-width: 1150px) {
+    .books {
+      row-gap: 30px;
+    }
+  }
+
   .pages-container {
     margin-top: 78px;
     margin-bottom: 92px;

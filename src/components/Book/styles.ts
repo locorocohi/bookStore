@@ -7,6 +7,19 @@ export const Wrapper = styled.div`
   
   .cover-container {
     position: relative;
+    height: 448px; 
+    width: 305px;
+  }
+
+  @media (max-width: 1130px) {
+    .cover-container {
+      height: 372px;
+      width: 254px;
+      margin-bottom: 30px;
+    }
+    .rating-container {
+      margin-top: -10px;
+  }
   }
 
   .rating-container {
