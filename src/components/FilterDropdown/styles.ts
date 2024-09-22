@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  min-width: 196px;
+  
+  @media (max-width: 1030px) {
+    min-width: 249px;
+  }
 
   .primary {
     background-color: ${(p) => p.theme.colors.light};
@@ -20,12 +25,12 @@ export const Wrapper = styled.div`
   }
 
   .selected-row {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border: none;
 
-    width: 196px;
     height: 48px;
     padding: 10px 8px 10px 15px;
 

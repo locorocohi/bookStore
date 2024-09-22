@@ -21,13 +21,18 @@ const fonts = {
     font-size: 40px;
     font-weight: 700;
     line-height: 60px;
+
+    @media (max-width: 1030px) {
+      font-size: 32px;
+      line-height: 48px;
+    }
   `,
 
   main_content: css`
     font-size: 20px;
     font-weight: 400;
     line-height: 30px;
-    @media (max-width: 1150px) {
+    @media (max-width: 1030px) {
       font-size: 16px;
       line-height: 24px;
     }

@@ -14,10 +14,27 @@ export const Banner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  align-self: center;
 
   border-radius: 16px;
   background-color: ${(p) => p.theme.colors.light};
 
+  @media (max-width: 1030px) {
+    padding: 10px 0;
+    margin-bottom: 60px;
+    max-width: 804px;
+    max-height: 289px;
+
+    .content {
+      margin-left: 40px;
+    }
+
+    .girl-picture {
+      width: 328px;
+      height: 364px;
+    }
+  }
+  
   .content {
     display: flex;
     flex-direction: column;
@@ -57,6 +74,7 @@ export const Banner = styled.div`
     width: 406px;
     height: 400px;
     align-self: flex-end;
+    z-index: 1000;
   }
 
   .fairy-picture {

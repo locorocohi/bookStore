@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import star from '@/images/Star.svg';
 import emptyStar from '@/images/Star(1).svg';
-// import smallStar from '@/images/smallStar.svg';
 
 export const Wrapper = styled.div`
   display: flex;

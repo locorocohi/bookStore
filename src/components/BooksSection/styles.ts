@@ -21,6 +21,7 @@ export const Wrapper = styled.div<{$count: number}>`
   @media (max-width: 1150px) {
     .books {
       row-gap: 30px;
+      column-gap: 13px;
     }
   }
 

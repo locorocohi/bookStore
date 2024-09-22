@@ -6,6 +6,11 @@ export const HeaderWrap = styled.header`
   max-width: 100%;
   padding: 24px 80px 10px;
   align-items: center;
+  gap: 51px;
+
+  @media (max-width: 1030px) {
+    padding: 24px 15px 10px;
+  }
 
   :nth-child(1) {
     justify-self: left;
@@ -20,6 +25,7 @@ export const HeaderWrap = styled.header`
   }
 
   .login-button {
+    min-width: 232px;
     text-decoration:none;
     background-color: ${(p) => p.theme.colors.dark_blue};
     color: white;
