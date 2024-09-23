@@ -43,19 +43,23 @@ export const Banner = styled.div`
     margin-top: 50px;
   }
 
-  .fairy-picture {
+  .books-picture {
     position: absolute;
-    top: -200px;
-    right: 0;
-    width: 478px;
-    height: 759px;
+
+    width: 542px;
+    height: 327px;
+
+    left: 0;
+    top: 25%;
+    z-index: 0;
   }
   
-  .castle-picture {
+  .girl-picture {
     position: relative;
     align-self: flex-end;
-    width: 521px;
-    height: 462px;
+    width: 406px;
+    height: 400px;
+    z-index: 1000;
   }
 
   .image-wrapper {
@@ -67,28 +71,16 @@ export const Banner = styled.div`
   @media (max-width: 1030px) {
     padding: 0;
     margin-bottom: 60px;
-    max-width: 803px;
-    max-height: 400px;
+    max-width: 804px;
+    max-height: 289px;
 
     .content {
       margin-left: 40px;
     }
 
-    .castle-picture {
-      width: 389px;
-      height: 345px;
-    }
-
-    .next-castle-picture {
-      top: 20px;
-    }
-
-    .fairy-picture {
-      position: absolute;
-      top: -160px;
-      right: 0;
-      width: 377px;
-      height: 599px;
+    .girl-picture {
+      width: 328px;
+      height: 364px;
     }
   }
 `;

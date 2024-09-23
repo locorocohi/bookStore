@@ -4,7 +4,7 @@ import girlWithBooks from '@/images/girlWithBook.svg';
 import booksPic from '@/images/twoBooks.svg';
 
 import Button from '@/components/Button';
-import { Banner } from '../AuthBanner/styles';
+import { Banner } from './styles';
 
 const WelcomeBanner = () => {
   return (
@@ -15,7 +15,9 @@ const WelcomeBanner = () => {
         <Button className="button">Choose a book</Button>
       </div>
 
-      <Image className="girl-picture" src={girlWithBooks} alt = "Girl with book" />
+      <div className="girl-picture">
+        <Image fill src={girlWithBooks} alt = "Girl with book" />
+      </div>
 
       <div className="image-wrapper">
         <Image className="books-picture" src={booksPic} alt = "Books" />

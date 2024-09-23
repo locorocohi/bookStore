@@ -9,7 +9,9 @@ import { Banner } from './styles';
 const AuthBanner = () => {
   return (
       <Banner>
-        <Image className="castle-picture" src={castlePic} alt = "Castle" />
+        <div className="castle-picture">
+          <Image fill src={castlePic} alt = "Castle" />
+        </div>
 
         <div className="content">
           <h2 className="title">Authorize now</h2>
@@ -18,7 +20,9 @@ const AuthBanner = () => {
         </div>
 
         <div className="image-wrapper">
-          <Image className="fairy-picture" src={fairy} alt = "Fairy" />
+          <div className="fairy-picture">
+            <Image fill src={fairy} alt = "Fairy" />
+          </div>
         </div>
       </Banner>);
 };

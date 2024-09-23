@@ -9,7 +9,7 @@ export const HeaderWrap = styled.header`
   gap: 51px;
 
   @media (max-width: 1030px) {
-    padding: 24px 15px 10px;
+    padding: 24px 15px 20px;
   }
 
   :nth-child(1) {

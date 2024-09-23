@@ -8,7 +8,7 @@ export interface IProps extends React.InputHTMLAttributes<HTMLInputElement> {
   $isFilled: boolean;
   isError?: boolean;
   isDisabled?: boolean;
-  ref?: React.MutableRefObject<HTMLInputElement>;
+  customRef?: React.MutableRefObject<HTMLInputElement | null>;
 }
 
 const Input: React.FC<IProps> = (props) => {
@@ -19,7 +19,7 @@ const Input: React.FC<IProps> = (props) => {
     $isFilled,
     isError,
     isDisabled,
-    ref,
+    customRef,
     ...rest } = props;
   const inputStatus = isError ? 'denied' : 'access';
 
@@ -34,7 +34,7 @@ const Input: React.FC<IProps> = (props) => {
     <Wrapper className={$isFilled ? inputStatus : ''} $isFilled={$isFilled}>
       <div className="icon-wrapper">{children}</div>
       { $isFilled ? <span className={`${spanStatus} input-span`}>{signature}</span> : null }
-      <input ref={ref} className="input-row" disabled={isDisabled} {...rest} />
+      <input ref={customRef} className="input-row" disabled={isDisabled} {...rest} />
       { $isFilled ? <button type="button" className="clear" onClick={clearInputValue}>+</button> : null }
     </Wrapper>
   );

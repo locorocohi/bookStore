@@ -12,6 +12,8 @@ export const Wrapper = styled.div`
   }
 
   @media (max-width: 1130px) {
+    max-width: 254px;
+    
     .cover-container {
       height: 372px;
       width: 254px;

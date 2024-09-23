@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { changeInfo, saveNewAvatar } from '@/api/users';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -15,6 +15,7 @@ import ChangePasswordForm from '../Forms/ChangePasswordForm/ChangePasswordForm';
 
 const ProfileSection = () => {
   const dispatch = useAppDispatch();
+  const ref = useRef<HTMLInputElement | null>(null);
   const user = useAppSelector((store) => store.user.user);
   const [currAvatar, setAvatar] = useState(user?.avatar || emptyAvatar);
   const [isChanging, setChangingStatus] = useState(false);
@@ -47,6 +48,8 @@ const ProfileSection = () => {
       const user = await changeInfo({ name: userName });
       dispatch(setUser(user));
     }
+
+    ref.current?.focus();
   };
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = async (event) => {
@@ -79,10 +82,11 @@ const ProfileSection = () => {
           </div>
           <div className="info-wrapper">
             <Input
+              customRef={ref}
               value={userName}
               signature="Your name"
               $isFilled
-              disabled={!isChanging}
+              isDisabled={!isChanging}
               onChange={changeUserName}
               onKeyDown={handleKeyDown}
             >

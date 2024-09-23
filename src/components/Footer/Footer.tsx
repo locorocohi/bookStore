@@ -24,7 +24,9 @@ export default function Footer() {
       </div>
       <div>
         <p>6391 Elgin St. Celina, Delaware 10299</p>
-        <Image src={map} alt="map" />
+        <div className="map-image">
+          <Image src={map} alt="map" fill />
+        </div>
       </div>
     </div>
     </StyledFooter>

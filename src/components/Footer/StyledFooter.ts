@@ -15,18 +15,32 @@ export const StyledFooter = styled.footer`
     width: 100%;
     max-width: 1280px;
     align-self: end;
-  
+
     text-align: left;
     ${(p) => p.theme.fonts.main_content};
 
-  .link {
-    display: block;
-    text-decoration: none;
-    color: ${(p) => p.theme.colors.white};
+    .link {
+      display: block;
+      text-decoration: none;
+      color: ${(p) => p.theme.colors.white};
+    }
+
+    .link:visited {
+      color: ${(p) => p.theme.colors.white};
+    }
+
+    .map-image {
+      position: relative;
+      width: 413px;
+      height: 160px;
+    }
   }
 
-  .link:visited {
-    color: ${(p) => p.theme.colors.white};
+  @media (max-width: 1150px) {
+    padding: 73px 15px;
+
+    .map-image {
+      width: 392px;
+    }
   }
-}
 `;
