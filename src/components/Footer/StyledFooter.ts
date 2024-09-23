@@ -38,9 +38,32 @@ export const StyledFooter = styled.footer`
 
   @media (max-width: 1150px) {
     padding: 73px 15px;
+    .wrapper {
+      :nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .map-image {
+        width: 392px;
+      }
+    }
+  }
+  
+  @media (max-width: 780px) {
+    .wrapper {
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+  }
 
-    .map-image {
-      width: 392px;
+  @media (max-width: 480px) {
+    .wrapper {
+      flex-direction: column;
+      .map-image {
+        width: 291px;
+      }
     }
   }
 `;

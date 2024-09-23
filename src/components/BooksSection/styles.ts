@@ -66,4 +66,15 @@ export const Wrapper = styled.div<{$count: number}>`
   .next-link {
     margin-left: 20px;
   }
+  
+  @media (max-width: 570px) {
+    .pages-container {
+      margin-top: 40px;
+      margin-bottom: 70px;
+      max-width: 268px;
+      width: 100%;
+      gap: 0;
+      justify-content: space-between;
+    }
+  }
 `;

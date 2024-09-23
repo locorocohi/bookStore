@@ -16,17 +16,23 @@ const Menu: React.FC<PropsType> = (props) => {
     <Wrapper>
       <div className="cart-button-container">
         <Link href="/cart" className="button">
-          <Image src={cart} alt="Cart" />
+        <div className="icon-wrapper">
+          <Image src={cart} alt="Cart" fill />
+        </div>
         </Link>
         {props.booksCount ? <div className="counter-container"><p className="counter">{props.booksCount}</p></div> : null}
       </div>
 
       <Link href="/favorite" className="button">
-        <Image src={favorite} alt="Favorite" />
+      <div className="icon-wrapper">
+        <Image src={favorite} alt="Favorite" fill />
+      </div>
       </Link>
 
       <Link href="/profile" className="button">
-        <Image src={profile} alt="Profile" />
+      <div className="icon-wrapper">
+        <Image src={profile} alt="Profile" fill />
+      </div>
       </Link>
     </Wrapper>
   );

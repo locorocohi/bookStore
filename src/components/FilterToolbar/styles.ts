@@ -7,4 +7,9 @@ export const Wrapper = styled.div`
   @media (max-width: 1030px) {
     flex-wrap: wrap;
   }
+
+  @media (max-width: 570px) {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
 `;

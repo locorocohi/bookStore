@@ -17,8 +17,10 @@ export default function Header() {
 
   return (
     <HeaderWrap>
-      <Link href="/"><Image src={logo} alt="logo" priority className="logo" /></Link>
-      <Link className="catalog" href="/">Catalog</Link>
+      <div className="links-wrapper">
+        <Link href="/" className="logo-link"><Image fill src={logo} alt="logo" priority className="logo" /></Link>
+        <Link className="catalog" href="/">Catalog</Link>
+      </div>
       <Search />
       {user
         ? <Menu booksCount={booksInCartCount} />

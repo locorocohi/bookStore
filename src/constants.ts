@@ -51,6 +51,11 @@ const fonts: Record<string, ReturnType<typeof css>> = {
       font-size: 32px;
       line-height: 48px;
     }
+
+    @media (max-width: 570px) {
+      font-size: 18px;
+      line-height: 27px;
+    }
   `,
 
   main_content: css`
@@ -61,6 +66,11 @@ const fonts: Record<string, ReturnType<typeof css>> = {
     @media (max-width: 1030px) {
       font-size: 16px;
       line-height: 24px;
+    }
+
+    @media (max-width: 570px) {
+      font-size: 14px;
+      line-height: 21px;
     }
   `,
 
@@ -76,6 +86,12 @@ const fonts: Record<string, ReturnType<typeof css>> = {
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0.75px;
+
+    @media (max-width: 770px) {
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: 500;
+    }
   `,
 
   form_hint: css`

@@ -69,7 +69,6 @@ export const Banner = styled.div`
   }
 
   @media (max-width: 1030px) {
-    padding: 0;
     margin-bottom: 60px;
     max-width: 804px;
     max-height: 289px;
@@ -81,6 +80,35 @@ export const Banner = styled.div`
     .girl-picture {
       width: 328px;
       height: 364px;
+    }
+  }
+
+  @media (max-width: 570px) {
+    padding-right: 20px;
+    max-width: 290px;
+    max-height: 505px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .content {
+      margin-top: 20px;
+      margin-left: 20px;
+      gap: 20px;
+    }
+
+    .girl-picture {
+      width: 253px;
+      height: 282px;
+    }
+
+    .title {
+      padding: 0;
+    }
+
+    .content .button {
+      margin-top: 0;
+      margin-bottom: 55px;
+      min-width: 200px;
     }
   }
 `;

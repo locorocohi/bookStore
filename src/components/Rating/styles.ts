@@ -15,17 +15,6 @@ export const Wrapper = styled.div`
     background-color: transparent;
   }
 
-  @media (max-width: 1150px) {
-    .star {
-      width: 20px;
-      height: 20px;
-      background-size: 20px 20px;
-    }
-
-    .star.selected {
-    }
-    gap: 24px;
-  }
   
   .star.selected {
     background-image: url('${star.src}');
@@ -38,5 +27,26 @@ export const Wrapper = styled.div`
 &.disabled {
   cursor: auto;
   pointer-events: none;
+}
+
+@media (max-width: 1150px) {
+  .star {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+  }
+
+  .star.selected {
+  }
+  gap: 24px;
+}
+
+@media (max-width: 570px) {
+  .star {
+    width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+  }
+  gap: 7px;
 }
 `;

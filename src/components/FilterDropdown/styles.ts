@@ -3,10 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   min-width: 196px;
   
-  @media (max-width: 1030px) {
-    min-width: 249px;
-  }
-
+  
   .primary {
     background-color: ${(p) => p.theme.colors.light};
     border-radius: 16px;
@@ -15,7 +12,7 @@ export const Wrapper = styled.div`
   .secondary {
     background-color: transparent;
   }
-
+  
   .secondary .arrow {
     transform: rotate(90deg);
   }
@@ -23,14 +20,14 @@ export const Wrapper = styled.div`
   .secondary .arrow.rotate {
     transform: rotate(0deg);
   }
-
+  
   .selected-row {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border: none;
-
+    
     height: 48px;
     padding: 10px 8px 10px 15px;
 
@@ -83,5 +80,16 @@ export const Wrapper = styled.div`
     border-right: 15px solid transparent; 
     border-bottom: 15px solid ${(p) => p.theme.colors.light};
   }
+  
+  @media (max-width: 1030px) {
+    min-width: 249px;
+  }
 
-`;
+  @media (max-width: 570px) {
+    min-width: 290px;
+    
+    .list {
+      min-width: 290px;
+    }
+  }
+  `;

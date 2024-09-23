@@ -22,6 +22,12 @@ gap: 27px;
   position: relative;
 }
 
+.icon-wrapper {
+  position: relative;
+  width: 26px;
+  height: 26px;
+}
+
 .counter-container {
   position: absolute;
   top: -6px;
@@ -42,5 +48,18 @@ gap: 27px;
   font-weight: 700;
   line-height: 18px;
   text-align: center;
+}
+  
+@media (max-width: 570px) {
+  gap: 17px;
+  .button {
+    width: 33px;
+    height: 33px;
+  }
+
+  .icon-wrapper {
+    width: 17.5px;
+    height: 17.5px;
+  }
 }
 `;
