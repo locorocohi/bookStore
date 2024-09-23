@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
 
   .buttons-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     margin-top: -10px;
   }
@@ -47,5 +48,26 @@ export const Wrapper = styled.div`
   .secondary-button:hover {
     outline: 3px solid ${(p) => p.theme.colors.dark};
     outline-offset:-3px;
+  }
+
+  @media (max-width: 1130px) {
+    padding: 45px 15px 100px;
+  }
+
+  @media (max-width: 570px) {
+    gap: 20px;
+    .secondary-button {
+      min-width: 290px;
+    }
+    .checkout {
+      min-width: 290px;
+    }
+    .total {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: 36px;
+      font-weight: 500;
+    }
   }
 `;

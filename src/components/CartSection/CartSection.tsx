@@ -36,7 +36,7 @@ const CartSection = () => {
           Continue shopping
         </Link>
 
-        <Button>Checkout</Button>
+        <Button className="checkout">Checkout</Button>
       </div>
     </Wrapper>
   );

@@ -50,7 +50,7 @@ const CartItem: React.FC<PropsType> = (props) => {
   return (
     <Wrapper>
       <div className="book-cover">
-        <Image src={cover} alt="cover" width={197} height={289} />
+        <Image src={cover} alt="cover" fill />
       </div>
 
       <div className="book-info">
