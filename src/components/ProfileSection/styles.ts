@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.section`
-  display: grid;
+  display: flex;
   padding: 60px 80px;
-  grid-template-columns: 1.5fr 2fr 1fr;
-  /* height: calc(100vh - 344px); */
+  justify-content: space-around;
+  gap: 20px;
 
   .avatar {
     position: relative;
-    width: 305px;
+    min-width: 305px;
     height: 305px;
     border-radius: 16px;
     overflow: hidden;
@@ -85,5 +85,31 @@ export const Wrapper = styled.section`
 
   .info-wrapper span {
     color: ${(p) => p.theme.colors.dark_blue};
+  }
+
+  @media (max-width: 1130px) {
+    padding: 60px 15px 100px;
+  }
+  
+  @media (max-width: 880px) {
+    .avatar {
+      min-width: 255px;
+      height: 255px;
+    }
+  }
+
+  @media (max-width: 660px) {
+    padding: 30px 15px 100px;
+    flex-direction: column;
+    gap: 30px;
+
+    .avatar {
+      width: 290px;
+      height: 290px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    
   }
 `;

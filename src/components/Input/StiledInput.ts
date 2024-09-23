@@ -29,6 +29,12 @@ position: relative;
   line-height: ${(props) => (props.$isFilled ? '24px' : '28px')};
   letter-spacing: 0.75px;
 }
+@media (max-width: 480px) {
+  .input-row {
+    font-size: 14px;
+    line-height: 28px;
+  }
+}
 
 img {
   pointer-events: none;

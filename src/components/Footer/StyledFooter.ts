@@ -36,7 +36,7 @@ export const StyledFooter = styled.footer`
     }
   }
 
-  @media (max-width: 1150px) {
+  @media (max-width: 1130px) {
     padding: 73px 15px;
     .wrapper {
       :nth-child(2) {
