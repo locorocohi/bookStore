@@ -108,8 +108,4 @@ export const Wrapper = styled.section`
       height: 290px;
     }
   }
-
-  @media (max-width: 480px) {
-    
-  }
 `;

@@ -4,7 +4,14 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   padding: 108px;
-  height: calc(100vh - 98px - 344px);
+  gap: 40px;
+  flex-wrap: wrap-reverse;
+  
+  .image-wrapper {
+    position: relative;
+    width: 433px;
+    height: 261px;
+  }
 
   .content {
     max-width: 465px;
@@ -39,5 +46,38 @@ export const Wrapper = styled.div`
     font-weight: 500;
 
     cursor: pointer;
+  }
+
+  @media (max-width: 1130px) {
+    padding: 100px 15px 108px;
+
+    .image-wrapper {
+      width: 350px;
+      height: 212px;
+  }
+  }
+
+  @media (max-width: 830px) {
+    .image-wrapper {
+      width: 290px;
+      height: 176px;
+  }
+  }
+
+  @media (max-width: 770px) {
+    padding-top: 30px;
+
+    .redirect-button {
+      min-width: 290px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 570px) {
+    .content {
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 18px;
+    }
   }
 `;
