@@ -12,7 +12,9 @@ const AuthSection:React.FC<IProps> = (props) => {
 
       {props.children}
 
-      <Image src={manPicture} alt="Man with book" />
+      <div className="man-picture">
+        <Image src={manPicture} alt="Man with book" fill />
+      </div>
 
     </StyledSection>
   );

@@ -10,6 +10,9 @@ export const FormWrapper = styled.div`
     max-width: 413px;
   }
 
+  .hint {
+    ${(p) => p.theme.fonts.form_hint}
+  }
   form {
     display: flex;
     flex-direction: column;
@@ -63,4 +66,20 @@ export const FormWrapper = styled.div`
       color: #C30052;
       cursor: inherit
     }
+
+  @media (max-width: 1130px) {
+    .width-413 {
+      max-width: 392px;
+    }
+    
+    form {
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    form {
+      gap: 20px;
+    }
+}
 `;

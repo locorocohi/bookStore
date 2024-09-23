@@ -59,11 +59,13 @@ export const HeaderWrap = styled.header`
     color: ${(p) => p.theme.colors.dark};
   }
 
+  @media (max-width: 1200px) {
+    gap: 51px;   
+  }
   @media (max-width: 1130px) {
     .links-wrapper {
       gap: 51px;
     }
-    gap: 51px;
     padding: 24px 15px 20px;
   }
 

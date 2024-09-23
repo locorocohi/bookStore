@@ -99,6 +99,12 @@ const fonts: Record<string, ReturnType<typeof css>> = {
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0.75px;
+
+    @media (max-width: 700px) {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 18px;
+    }
   `,
 };
 
