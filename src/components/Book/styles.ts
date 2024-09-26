@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
     position: relative;
     height: 448px; 
     width: 305px;
+    margin-bottom: 30px;
   }
 
   
@@ -80,10 +81,6 @@ export const Wrapper = styled.div`
     .cover-container {
       height: 372px;
       width: 254px;
-      margin-bottom: 30px;
-    }
-    .rating-container {
-      margin-top: -10px;
     }
 
     .margin-top {

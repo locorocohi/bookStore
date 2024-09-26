@@ -20,7 +20,7 @@ const ProductInfo = () => {
   return (
     <Wrapper>
       <div className="cover-container">
-        <Image src={cover} alt="Cover" height={779} width={522} />
+        <Image src={cover} alt="Cover" fill />
         <FavoriteButton pageType="product" bookId={book.id} />
       </div>
 
@@ -37,15 +37,17 @@ const ProductInfo = () => {
             <p className="rating">{Number(rating).toFixed(1)}</p>
           </div>
 
-          <Rating />
-
-          <div className="hint">
-            <Image src={backArrow} alt="arrow" width={24} height={24} />
-            <p className="rating">Rate this book</p>
+          <div className="rating-controller">
+            <Rating />
+            <div className="hint">
+              <Image src={backArrow} alt="arrow" width={24} height={24} className="arrow" />
+              <p className="rating">Rate this book</p>
+            </div>
           </div>
+
         </div>
 
-        <div>
+        <div className="description-container">
           <h2 className="description">Description</h2>
           <p className="description-content">{description}</p>
         </div>

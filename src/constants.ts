@@ -15,7 +15,6 @@ export const sortOptions = [
   'Name',
   'Author name',
   'Rating',
-  'Date of issue',
 ];
 
 type ColorsKeysType =
@@ -86,6 +85,12 @@ const fonts: Record<string, ReturnType<typeof css>> = {
     font-weight: 600;
     line-height: 24px;
     letter-spacing: 0.75px;
+
+    @media (max-width: 930px) {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 500;
+    }
 
     @media (max-width: 770px) {
       font-size: 12px;

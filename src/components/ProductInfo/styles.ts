@@ -4,10 +4,14 @@ import star from '@/images/Star.svg';
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 
   .cover-container {
     position: relative;
+    min-width: 522px;
+    height: 779px;
   }
+
   .info {
     display: flex;
     flex-direction: column;
@@ -22,6 +26,7 @@ export const Wrapper = styled.div`
 
   .rating-container {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 30px;
   }
@@ -79,5 +84,66 @@ export const Wrapper = styled.div`
     color: ${(p) => p.theme.colors.dark_grey};
     ${(p) => p.theme.fonts.button};
     font-weight: 400;
+  }
+
+  .rating-controller {
+    display: flex;
+    gap: 40px;
+  }
+
+  @media (max-width: 1130px) {
+    .cover-container {
+      min-width: 391px;
+      height: 584px;
+    }
+
+    .star-pic {
+      width: 20px;
+      height: 20px;
+      background-size: 20px 20px;
+    }
+  }
+
+  @media (max-width: 930px) {
+    .info {
+      gap: 20px;
+    }
+    .rating-container {
+      row-gap: 15px;
+    }
+    .rating-controller {
+      flex-wrap: wrap;
+      row-gap: 15px;
+    }
+
+    .description {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    .description-content {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      margin-top: 10px;
+    }
+
+    .buttons-container{
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 830px) {
+    .arrow {
+      display: none;
+    }
+  }
+
+  @media (max-width: 570px) {
+    .cover-container {
+      min-width: 135px;
+      height: 202px;
+    }
   }
 `;
