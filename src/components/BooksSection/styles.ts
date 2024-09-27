@@ -3,7 +3,7 @@ import pageCircle from '@/images/pageCircle.svg';
 import filledPageCircle from '@/images/filledPageCircle.svg';
 import arrowPic from '@/images/blackForward.svg';
 
-export const Wrapper = styled.div<{$count: number}>`
+export const Wrapper = styled.div<{$isVisible: boolean}>`
 
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const Wrapper = styled.div<{$count: number}>`
     column-gap: 20px;
     row-gap: 80px;
 
-    ${(p) => (p.$count < 12 ? 'margin-bottom: 92px;' : '')}
+    ${(p) => (!p.$isVisible ? 'margin-bottom: 92px;' : '')}
   }
 
   @media (max-width: 1150px) {
@@ -38,7 +38,7 @@ export const Wrapper = styled.div<{$count: number}>`
     min-width: 268px;
     height: 24px;
 
-    ${(p) => (p.$count < 12 ? 'display: none;' : '')}
+    ${(p) => (!p.$isVisible ? 'display: none;' : '')}
   }
 
   .page {

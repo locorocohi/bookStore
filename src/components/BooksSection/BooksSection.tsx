@@ -17,6 +17,7 @@ const BooksSection: React.FC<PropsType> = (props) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const books = useAppSelector((store) => store.book.books);
+  const currentPage = router.query.page ? Number(router.query.page) - 1 : null;
 
   const handlePageClick: PageHandlerType = (event) => {
     const pageNumber = event.selected;
@@ -36,7 +37,7 @@ const BooksSection: React.FC<PropsType> = (props) => {
 
   return (
     <Wrapper
-      $count={books.length}
+      $isVisible={!!props.pageCount}
     >
       <div className="books">
         { books.length
@@ -58,6 +59,7 @@ const BooksSection: React.FC<PropsType> = (props) => {
         previousLinkClassName="previous-link"
         nextLinkClassName="next-link"
         pageLabelBuilder={() => (<div className="page" />) }
+        forcePage={currentPage ?? undefined}
       />
 
     </Wrapper>
