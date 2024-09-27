@@ -12,6 +12,7 @@ export const Wrapper = styled.section`
   @media (max-width: 1130px) {
     padding: 0 15px;
     padding-top: 80px;
+    gap: 90px
   }
 
   @media (max-width: 770px) {
@@ -19,6 +20,6 @@ export const Wrapper = styled.section`
   }
 
   @media (max-width: 570px) {
-
+    gap: 50px;
   }
 `;

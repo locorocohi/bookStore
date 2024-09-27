@@ -10,6 +10,9 @@ export const Wrapper = styled.div`
   gap: 20px;
 
   .avatar-wrapper {
+    position: relative;
+    width: 60px;
+    height: 60px;
   }
 
   .comment-content {
@@ -35,5 +38,18 @@ export const Wrapper = styled.div`
     ${(p) => p.theme.fonts.button};
     font-weight: 400;
     color: ${(p) => p.theme.colors.dark_blue};
+  }
+
+  @media (max-width: 1030px) {
+    padding: 20px 25px;
+  }
+
+  @media (max-width: 570px) {
+    padding: 13px 10px;
+    gap: 13px;
+    .avatar-wrapper {
+      width: 35px;
+      height: 35px;
+  }
   }
 `;

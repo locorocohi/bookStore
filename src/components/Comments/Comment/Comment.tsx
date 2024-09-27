@@ -16,7 +16,7 @@ const Comment:React.FC<PropsType> = (props) => {
     <Wrapper>
       <div className="avatar-wrapper">
         <Image src={author.avatar.length > 0 ? author.avatar : putin} alt="human"
-          width={60} height={60}
+         fill
           style={{
             objectFit: 'cover',
             borderRadius: '50%',

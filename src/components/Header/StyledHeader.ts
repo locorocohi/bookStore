@@ -73,7 +73,7 @@ export const HeaderWrap = styled.header`
     flex-wrap: wrap;
     gap: 18px;
 
-    :nth-child(2) {
+    div:nth-child(2) {
       order: 4;
     }
   }

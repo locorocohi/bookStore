@@ -42,11 +42,11 @@ const ProductPage = (props: PropsType) => {
     <Wrapper>
       <ProductInfo />
       <Comments />
+      {props.data.user?.findedUser ? null : <AuthBanner />}
       { props.data.books.recommendedBooks.length > 0
         ? <Recomendations books={props.data.books.recommendedBooks} />
         : null
       }
-      {props.data.user?.findedUser ? null : <AuthBanner />}
     </Wrapper>
   );
 };

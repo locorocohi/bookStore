@@ -11,4 +11,10 @@ export const Wrapper = styled.section`
     ${(p) => p.theme.fonts.title}
     color: ${(p) => p.theme.colors.dark};
   }
+
+  @media (max-width: 570px) {
+    .title {
+      display: none;
+    }
+  }
 `;

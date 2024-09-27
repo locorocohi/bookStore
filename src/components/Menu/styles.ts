@@ -30,8 +30,8 @@ gap: 27px;
 
 .counter-container {
   position: absolute;
-  top: -6px;
-  left: 33px;
+  top: -10%;
+  left: 70%;
   width: 23px;
   height: 23px;
   border-radius: 50%;
@@ -60,6 +60,11 @@ gap: 27px;
   .icon-wrapper {
     width: 17.5px;
     height: 17.5px;
+  }
+
+  .counter-container {
+    width: 16px;
+    height: 16px;
   }
 }
 `;

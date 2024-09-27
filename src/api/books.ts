@@ -41,7 +41,7 @@ export const addBookToFavorite = async (bookId: number) => {
     const response = await instance.post('book/favorite', { bookId });
     return response.data;
   } catch (error) {
-    erroredToast(error.message);
+    erroredToast('Нужно быть авторизованным');
   }
 };
 
@@ -50,6 +50,6 @@ export const removeBookFromFavorite = async (bookId: number) => {
     const response = await instance.post('book/favorite/remove', { bookId });
     return response.data;
   } catch (error) {
-    erroredToast(error.message);
+    erroredToast('Нужно быть авторизованным');
   }
 };

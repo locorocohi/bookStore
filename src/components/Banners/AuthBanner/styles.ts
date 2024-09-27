@@ -69,6 +69,7 @@ export const Banner = styled.div`
     margin-bottom: 60px;
     max-width: 803px;
     max-height: 400px;
+    margin-top: -30px;
 
     .content {
       margin-left: 40px;

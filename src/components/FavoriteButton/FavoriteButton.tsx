@@ -17,7 +17,6 @@ const FavoriteButton: React.FC<PropsType> = (props) => {
   const favoriteBooks = useAppSelector((store) => store.user.user?.favorites);
   const isSelected = favoriteBooks?.some((book) => book.id === props.bookId);
   const [selected, setSelected] = useState(isSelected);
-  const heartSize = props.pageType === 'catalog' ? 26 : 32;
 
   const addToFavorite = () => {
     addBookToFavorite(props.bookId);
@@ -33,11 +32,15 @@ const FavoriteButton: React.FC<PropsType> = (props) => {
     <Wrapper $pageType={props.pageType}>
       {selected
         ? (<button type="button" className="button selected" onClick={removeFromFavorite}>
-             <Image src={filledFavorite} alt="heart" width={heartSize} height={heartSize} />
+              <div className="heart-wrapper">
+                 <Image src={filledFavorite} alt="heart" fill />
+              </div>
            </button>)
 
         : (<button type="button" className="button" onClick={addToFavorite}>
-             <Image src={favorite} alt="heart" width={heartSize} height={heartSize} />
+              <div className="heart-wrapper">
+               <Image src={favorite} alt="heart" fill />
+              </div>
            </button>)
       }
     </Wrapper>

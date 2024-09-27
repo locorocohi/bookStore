@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const data = { user: null, books: null };
 
-  if (token && user.status === 'fulfilled') {
+  if (user.value) {
     data.user = user.value;
   }
 

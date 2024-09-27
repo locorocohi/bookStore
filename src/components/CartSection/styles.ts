@@ -6,6 +6,9 @@ export const Wrapper = styled.div`
   gap: 40px;
   padding: 50px 80px 110px;
 
+  hr:nth-last-of-type(1) {
+    display: none;
+  }
   .total {
     font-size: 36px;
     line-height: 54px;
