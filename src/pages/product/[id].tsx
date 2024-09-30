@@ -20,7 +20,7 @@ import { Wrapper } from './styles';
 
 type PropsType = {
   data: {
-    user: {findedUser: UserType; booksInCartCount: number};
+    user: {findedUser: UserType | null; booksInCartCount: number};
     books: { findedBook: BookType; recommendedBooks: BookType[]; findedComments: CommentType[] };
   };
 };
@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const params = ctx.params as {id: string};
   const [user, books] = await Promise.allSettled([getMe(), getBookById(params.id)]);
-  const data = { user: null, books: null };
+  const data = { user: {}, books: null };
 
   if (user.status === 'fulfilled' && user.value) {
     data.user = user.value;

@@ -24,9 +24,6 @@ export const userSlice = createSlice({
       }
     },
   },
-  // extraReducers: (builder) => {
-
-  // },
 });
 
 export const { setUser, removeFavoriteBook } = userSlice.actions;

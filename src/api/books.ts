@@ -1,11 +1,18 @@
 /* eslint-disable no-console */
 import instance from '@/axios/instance';
+import type { BookType } from '@/models/book';
 import { erroredToast } from '@/toasts/errorToast';
+import { isAxiosError, type AxiosResponse } from 'axios';
 import type { ParsedUrlQuery } from 'querystring';
 
 export const getBooks = async (query: ParsedUrlQuery) => {
   try {
-    const response = await instance.get('book/',
+    const response: AxiosResponse<
+    { booksArray: BookType[];
+      pageCount: number;
+      sortOptions: string[];
+      genres: string[];
+    }> = await instance.get('book/',
       {
         params: {
           ...query,
@@ -14,6 +21,9 @@ export const getBooks = async (query: ParsedUrlQuery) => {
 
     return response.data;
   } catch (error) {
+    if (isAxiosError(error)) {
+      return [];
+    }
     console.log(error);
   }
 };

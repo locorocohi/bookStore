@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import instance from '@/axios/instance';
+import type { UserType } from '@/models/user';
 import { erroredToast } from '@/toasts/errorToast';
+import type { AxiosResponse } from 'axios';
 import { setCookie } from 'cookies-next';
 
 export const saveNewUser = async (options: {email: string; password: string}) => {
@@ -16,7 +18,7 @@ export const saveNewUser = async (options: {email: string; password: string}) =>
 
 export const getMe = async () => {
   try {
-    const user = await instance.get('user/me');
+    const user: AxiosResponse<{findedUser: UserType; booksInCartCount: number}> = await instance.get('user/me');
     return user.data;
   } catch (error) {
     erroredToast(error.message);

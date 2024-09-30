@@ -119,3 +119,4 @@ export const theme: DefaultTheme = {
 };
 
 export const itemsPerPage = 12;
+export const ITEMS_PER_PAGE = 12;

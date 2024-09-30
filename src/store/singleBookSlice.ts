@@ -63,8 +63,6 @@ export const singleBookSlice = createSlice({
           state.book.rating = action.payload;
         }
       });
-    // builder.addCase();
-    // builder.addCase();
   },
 });
 

@@ -41,7 +41,7 @@ const BooksSection: React.FC<PropsType> = (props) => {
     >
       <div className="books">
         { books.length
-          ? books.map((book, idx) => (<Book info={book} key={idx} />))
+          ? books.map((book) => (<Book info={book} key={book.id} />))
           : null
         }
       </div>

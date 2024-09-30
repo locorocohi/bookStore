@@ -67,9 +67,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const [user, books] = await Promise.allSettled([getMe(), getBooks(ctx.query)]);
 
-  const data = { user: null, books: null };
+  const data: {
+    user: {findedUser: UserType; booksInCartCount: number} | null;
+    books: BookType[] | undefined;
+  } = { user: null, books: [] };
 
-  if (user.value) {
+  if (user.status === 'fulfilled' && user.value) {
     data.user = user.value;
   }
 

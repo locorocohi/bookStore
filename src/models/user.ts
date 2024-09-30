@@ -5,5 +5,5 @@ export type UserType = {
   email: string;
   avatar: string;
   name: string;
-  favorites: BookType[] | [];
+  favorites: BookType[];
 };
